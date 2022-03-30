@@ -8,5 +8,5 @@
 import Foundation
 
 class SignUpViewModel: ObservableObject {
-    
+    @Published var user = User()
 }

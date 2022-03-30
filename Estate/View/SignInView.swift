@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct SignInView: View {
+    
+    @StateObject private var signInViewModel = SignInViewModel()
+    
     var body: some View {
         VStack {
             NavigationView {
                 VStack {
                     TopView()
                     Spacer()
-                    InputView()
+                    InputView(user: $signInViewModel.user)
                     ForgotPasswordView()
-                    BottomView()
+                    BottomView(user: $signInViewModel.user)
                     Spacer()
                 }
                 .navigationBarHidden(true)
@@ -43,12 +46,21 @@ struct TopView: View {
 }
 
 struct BottomView: View {
+    
+    @Binding var user: User
+    @State var signedIn: Bool = false
+    
     var body: some View {
         VStack {
             Button {
-                
+                Task {
+                    let (result) = try? await user.signInAsync(emailAddress: user.emailAddress, password: user.password)
+                    if let result = result {
+                        self.signedIn = result
+                    }
+                }
             } label: {
-                Text("Sign In")
+                Text(self.signedIn ? "Success" : "Sign In")
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
                     .font(Font.custom("gilroy-semibold", size: 18))
@@ -77,8 +89,7 @@ struct BottomView: View {
 
 struct InputView: View {
     
-    @State var emailAddress: String = ""
-    @State var password: String = ""
+    @Binding var user: User
     
     var body: some View {
         VStack {
@@ -93,7 +104,7 @@ struct InputView: View {
                     Text("Username")
                     Spacer()
                 }
-                TextField("Enter User Name", text: $emailAddress)
+                TextField("Enter User Name", text: $user.emailAddress)
             }.padding([.leading, .trailing, .top],30)
             
             VStack {
@@ -101,7 +112,7 @@ struct InputView: View {
                     Text("Password")
                     Spacer()
                 }
-                SecureField("Enter Password", text: $password)
+                SecureField("Enter Password", text: $user.password)
                     
             }.padding(EdgeInsets(top: 10, leading: 30, bottom: 0, trailing: 30))
             

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		386FE358E82313CC331EF62F /* Pods_Estate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACD1163F198FF42A8AD8D05 /* Pods_Estate.framework */; };
 		387F965472F669F83393330A /* Pods_Estate_EstateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B47DE85F4852A5ABF0BE9849 /* Pods_Estate_EstateUITests.framework */; };
-		4F71996B27F4C43500024AC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F71996A27F4C43500024AC3 /* GoogleService-Info.plist */; };
 		4F71996D27F4C71E00024AC3 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F71996C27F4C71E00024AC3 /* SignUpViewModel.swift */; };
 		4FADBFD427F36F6800503E5A /* EstateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FADBFD327F36F6800503E5A /* EstateApp.swift */; };
 		4FADBFD827F36F6A00503E5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FADBFD727F36F6A00503E5A /* Assets.xcassets */; };
@@ -48,7 +47,6 @@
 
 /* Begin PBXFileReference section */
 		1CF766718431429D70E72A0C /* Pods-Estate-EstateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate-EstateUITests.release.xcconfig"; path = "Target Support Files/Pods-Estate-EstateUITests/Pods-Estate-EstateUITests.release.xcconfig"; sourceTree = "<group>"; };
-		4F71996A27F4C43500024AC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F71996C27F4C71E00024AC3 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		4FADBFD027F36F6800503E5A /* Estate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Estate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FADBFD327F36F6800503E5A /* EstateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstateApp.swift; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 		4FADBFD227F36F6800503E5A /* Estate */ = {
 			isa = PBXGroup;
 			children = (
-				4F71996A27F4C43500024AC3 /* GoogleService-Info.plist */,
 				4FADC01B27F3714100503E5A /* Info.plist */,
 				4FADC00827F3706600503E5A /* Model */,
 				4FADC00A27F3706600503E5A /* Services */,
@@ -358,7 +355,6 @@
 			files = (
 				4FADC00727F3703800503E5A /* gilroy-bold.ttf in Resources */,
 				4FADBFDB27F36F6A00503E5A /* Preview Assets.xcassets in Resources */,
-				4F71996B27F4C43500024AC3 /* GoogleService-Info.plist in Resources */,
 				4FADC01727F3706600503E5A /* Launch Screen.storyboard in Resources */,
 				4FADBFD827F36F6A00503E5A /* Assets.xcassets in Resources */,
 				4FADC00327F3703800503E5A /* gilroy-medium.ttf in Resources */,
@@ -673,7 +669,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hishd.Estate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hishd.EstateApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -705,7 +701,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hishd.Estate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hishd.EstateApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

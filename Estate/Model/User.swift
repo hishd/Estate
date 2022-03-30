@@ -25,7 +25,7 @@ class User {
     var gender: String
     var locationLat: Double
     var locationLon: Double
-    
+        
     init(nicNo: String, password: String, name: String, mobileNo: String, emailAddress: String, dobDay: Int, dobMonth: Int, dobYear: Int, gender: String, locationLat: Double, locationLon: Double) {
         self.nicNo = nicNo
         self.password = password
@@ -42,6 +42,10 @@ class User {
     
     convenience init(emailAddress: String, password: String) {
         self.init(nicNo: "", password: password, name: "", mobileNo: "", emailAddress: emailAddress, dobDay: 0, dobMonth: 0, dobYear: 0, gender: "", locationLat: 0, locationLon: 0)
+    }
+    
+    convenience init() {
+        self.init(nicNo: "", password: "", name: "", mobileNo: "", emailAddress: "", dobDay: 0, dobMonth: 0, dobYear: 0, gender: "", locationLat: 0, locationLon: 0)
     }
     
     var isSignedIn: Bool {
