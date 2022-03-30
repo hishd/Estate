@@ -62,4 +62,8 @@ class User {
             }
         }
     }
+    
+    func signUpAsync(user: User) async throws -> Bool {
+        return false
+    }
 }
