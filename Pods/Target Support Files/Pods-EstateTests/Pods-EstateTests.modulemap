@@ -1,0 +1,6 @@
+framework module Pods_EstateTests {
+  umbrella header "Pods-EstateTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
