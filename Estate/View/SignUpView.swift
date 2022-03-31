@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct SignUpView: View {
+    
+    @State var isShowingSuccess = false
+    @Binding var showSignUpView: Bool
+    @StateObject var viewModel = SignUpViewModel()
+    
     var body: some View {
         VStack {
             ScrollView {
                 SignUpTopView()
                     .padding(.bottom, 30)
-                SignUpInputView()
+                SignUpInputView(user: $viewModel.user, viewModel: viewModel)
+                    .alert("Signup Successful", isPresented: $isShowingSuccess) {
+                        Button("Ok") {
+                            self.isShowingSuccess = false
+                        }
+                    }
             }
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
@@ -34,18 +44,23 @@ struct SignUpTopView: View {
     }
 }
 
+struct ErrorPlaceholder: View {
+    @Binding var isValid: Bool
+    let message: String
+    
+    var body: some View {
+        if !isValid {
+            Text(message)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+                .foregroundColor(.red)
+                .font(Font.custom("gilroy-regular", size: 15))
+        }
+    }
+}
+
 struct SignUpInputView: View {
-    @State var nicNumber: String = ""
-    @State var name: String = ""
-    @State var mobileNo: String = ""
-    @State var emailAddress: String = ""
-    @State var dDob: String = ""
-    @State var mDob: String = ""
-    @State var yDob: String = ""
-    @State var isMale: Bool = true
-    @State var location: String = ""
-    @State var password: String = ""
-    @State var confPassword: String = ""
+    @Binding var user: User
+    @ObservedObject var viewModel: SignUpViewModel
     
     var body: some View {
         VStack {
@@ -54,7 +69,11 @@ struct SignUpInputView: View {
                     Text("NIC Number")
                     Spacer()
                 }
-                TextField("Enter NIC Number", text: $nicNumber)
+                TextField("Enter NIC Number", text: $user.nicNo)
+                    .onChange(of: user.nicNo) { newValue in
+                        viewModel.isValidNIC = FieldValidator.shared.isValidNIC(of: newValue)
+                    }
+                ErrorPlaceholder(isValid: $viewModel.isValidNIC, message: "Invalid NIC no.")
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -63,8 +82,12 @@ struct SignUpInputView: View {
                     Text("Your Name")
                     Spacer()
                 }
-                TextField("Enter Name", text: $name)
+                TextField("Enter Name", text: $user.name)
                     .textContentType(.name)
+                    .onChange(of: user.name) { newValue in
+                        viewModel.isValidName = FieldValidator.shared.isValidPersonName(of: newValue)
+                    }
+                ErrorPlaceholder(isValid: $viewModel.isValidName,message: "Invalid person name")
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -73,9 +96,13 @@ struct SignUpInputView: View {
                     Text("Mobile Number")
                     Spacer()
                 }
-                TextField("Enter Mobile no.", text: $mobileNo)
+                TextField("Enter Mobile no.", text: $user.mobileNo)
                     .textContentType(.telephoneNumber)
                     .keyboardType(.namePhonePad)
+                    .onChange(of: user.mobileNo) { newValue in
+                        viewModel.isValidMobile = FieldValidator.shared.isValidMobileNo(of: newValue)
+                    }
+                ErrorPlaceholder(isValid: $viewModel.isValidMobile, message: "Invalid Mobile no.")
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -84,9 +111,13 @@ struct SignUpInputView: View {
                     Text("Email Address")
                     Spacer()
                 }
-                TextField("Enter Email Address", text: $emailAddress)
+                TextField("Enter Email Address", text: $user.emailAddress)
                     .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
+                    .onChange(of: user.emailAddress) { newValue in
+                        viewModel.isValidEmail = FieldValidator.shared.isValidEmailAddress(of: newValue)
+                    }
+                ErrorPlaceholder(isValid: $viewModel.isValidEmail, message: "Invalid Email Address")
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -96,21 +127,21 @@ struct SignUpInputView: View {
                     Spacer()
                 }
                 HStack {
-                    TextField("Day", text: $dDob)
+                    TextField("Day", text: $user.dobDay)
                         .padding(.trailing, 10)
                         .keyboardType(.numberPad)
-                    TextField("Month", text: $mDob)
+                    TextField("Month", text: $user.dobMonth)
                         .padding(.trailing, 10)
                         .keyboardType(.numberPad)
-                    TextField("Year", text: $yDob)
+                    TextField("Year", text: $user.dobYear)
                         .keyboardType(.numberPad)
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
             
             HStack {
-                Text("Gender : \(isMale ? "Male" : "Female")")
-                Toggle("", isOn: $isMale)
+                Text("Gender : \(viewModel.isMale ? "Male" : "Female")")
+                Toggle("", isOn: $viewModel.isMale)
                     .tint(Color("color-primary"))
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
@@ -121,7 +152,7 @@ struct SignUpInputView: View {
                     Spacer()
                 }
                 HStack {
-                    TextField("Press Fetch to load", text: $location)
+                    TextField("Press Fetch to load", text: $viewModel.location)
                         .disabled(true)
                     Button {
                         
@@ -143,7 +174,7 @@ struct SignUpInputView: View {
                     Text("Password")
                     Spacer()
                 }
-                SecureField("Enter Password", text: $password)
+                SecureField("Enter Password", text: $viewModel.password)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
             
@@ -152,7 +183,7 @@ struct SignUpInputView: View {
                     Text("Confirm Password")
                     Spacer()
                 }
-                SecureField("Re-enter Password", text: $confPassword)
+                SecureField("Re-enter Password", text: $viewModel.confPassword)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
             
@@ -167,6 +198,7 @@ struct SignUpInputView: View {
             .background(Color("color-primary"))
             .cornerRadius(18)
             .padding(.top, 10)
+            .disabled(viewModel.signUpDisabled)
         }
         .font(Font.custom("gilroy-regular", size: 18))
         .textFieldStyle(.roundedBorder)
@@ -174,8 +206,9 @@ struct SignUpInputView: View {
 }
 
 struct SignUpView_Previews: PreviewProvider {
+    @State static var showSignUpView = false
     static var previews: some View {
-        SignUpView()
+        SignUpView(showSignUpView: self.$showSignUpView)
             .previewDevice("iPhone 11")
     }
 }

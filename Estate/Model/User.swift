@@ -19,14 +19,14 @@ class User {
     var name: String
     var mobileNo: String
     var emailAddress: String
-    var dobDay: Int
-    var dobMonth: Int
-    var dobYear: Int
+    var dobDay: String
+    var dobMonth: String
+    var dobYear: String
     var gender: String
     var locationLat: Double
     var locationLon: Double
         
-    init(nicNo: String, password: String, name: String, mobileNo: String, emailAddress: String, dobDay: Int, dobMonth: Int, dobYear: Int, gender: String, locationLat: Double, locationLon: Double) {
+    init(nicNo: String, password: String, name: String, mobileNo: String, emailAddress: String, dobDay: String, dobMonth: String, dobYear: String, gender: String, locationLat: Double, locationLon: Double) {
         self.nicNo = nicNo
         self.password = password
         self.name = name
@@ -41,11 +41,11 @@ class User {
     }
     
     convenience init(emailAddress: String, password: String) {
-        self.init(nicNo: "", password: password, name: "", mobileNo: "", emailAddress: emailAddress, dobDay: 0, dobMonth: 0, dobYear: 0, gender: "", locationLat: 0, locationLon: 0)
+        self.init(nicNo: "", password: password, name: "", mobileNo: "", emailAddress: emailAddress, dobDay: "", dobMonth: "", dobYear: "", gender: "", locationLat: 0, locationLon: 0)
     }
     
     convenience init() {
-        self.init(nicNo: "", password: "", name: "", mobileNo: "", emailAddress: "", dobDay: 0, dobMonth: 0, dobYear: 0, gender: "", locationLat: 0, locationLon: 0)
+        self.init(nicNo: "", password: "", name: "", mobileNo: "", emailAddress: "", dobDay: "", dobMonth: "", dobYear: "", gender: "", locationLat: 0, locationLon: 0)
     }
     
     var isSignedIn: Bool {

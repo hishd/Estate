@@ -9,4 +9,5 @@ import Foundation
 
 class SignInViewModel: ObservableObject {
     @Published var user = User()
+    @Published var showSignUpView = false
 }

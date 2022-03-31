@@ -10,20 +10,19 @@ import SwiftUI
 struct SignInView: View {
     
     @StateObject private var signInViewModel = SignInViewModel()
-    @State var showSignUpView = false
     
     var body: some View {
         VStack {
             NavigationView {
                 VStack {
-                    SignInTopView(showSignUpView: $showSignUpView)
+                    SignInTopView(showSignUpView: $signInViewModel.showSignUpView)
                     Spacer()
                     SignInInputView(user: $signInViewModel.user)
                     SignInForgotPasswordView()
                     SignInBottomView(user: $signInViewModel.user)
                     Spacer()
                     
-                    NavigationLink("Sign Up", destination: SignUpView(), isActive: $showSignUpView)
+                    NavigationLink("Sign Up", destination: SignUpView(showSignUpView: $signInViewModel.showSignUpView), isActive: $signInViewModel.showSignUpView)
                         .navigationTitle("Sign in")
                 }
                 .navigationBarHidden(true)
