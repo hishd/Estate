@@ -4,11 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>gilroy-medium</string>
-		<string>gilroy-regular</string>
-		<string>gilroy-extrabold</string>
-		<string>gilroy-semibold</string>
-		<string>gilroy-bold</string>
+		<string>gilroy-medium.ttf</string>
+		<string>gilroy-regular.ttf</string>
+		<string>gilroy-extrabold.ttf</string>
+		<string>gilroy-semibold.ttf</string>
+		<string>gilroy-bold.ttf</string>
 	</array>
 </dict>
 </plist>

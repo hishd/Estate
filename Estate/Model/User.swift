@@ -58,6 +58,7 @@ class User {
             let auth = Auth.auth()
             auth.signIn(withEmail: emailAddress, password: password) { [weak self] result, error in
                 guard result != nil, error == nil else {
+                    debugPrint(error)
                     continuation.resume(throwing: SignInError.operationError)
                     return
                 }

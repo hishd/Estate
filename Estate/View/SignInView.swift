@@ -10,17 +10,21 @@ import SwiftUI
 struct SignInView: View {
     
     @StateObject private var signInViewModel = SignInViewModel()
+    @State var showSignUpView = false
     
     var body: some View {
         VStack {
             NavigationView {
                 VStack {
-                    TopView()
+                    SignInTopView(showSignUpView: $showSignUpView)
                     Spacer()
-                    InputView(user: $signInViewModel.user)
-                    ForgotPasswordView()
-                    BottomView(user: $signInViewModel.user)
+                    SignInInputView(user: $signInViewModel.user)
+                    SignInForgotPasswordView()
+                    SignInBottomView(user: $signInViewModel.user)
                     Spacer()
+                    
+                    NavigationLink("Sign Up", destination: SignUpView(), isActive: $showSignUpView)
+                        .navigationTitle("Sign in")
                 }
                 .navigationBarHidden(true)
             }
@@ -28,13 +32,15 @@ struct SignInView: View {
     }
 }
 
-struct TopView: View {
+struct SignInTopView: View {
+    @Binding var showSignUpView: Bool
+    
     var body: some View {
         VStack {
             HStack {
                 Spacer()
                 Button {
-                    
+                    showSignUpView = true
                 } label: {
                     Text("Sign up")
                 }
@@ -45,7 +51,7 @@ struct TopView: View {
     }
 }
 
-struct BottomView: View {
+struct SignInBottomView: View {
     
     @Binding var user: User
     @State var signedIn: Bool = false
@@ -54,9 +60,11 @@ struct BottomView: View {
         VStack {
             Button {
                 Task {
-                    let (result) = try? await user.signInAsync(emailAddress: user.emailAddress, password: user.password)
-                    if let result = result {
+                    do {
+                        let (result) = try await user.signInAsync(emailAddress: user.emailAddress, password: user.password)
                         self.signedIn = result
+                    } catch {
+                        debugPrint(error.localizedDescription)
                     }
                 }
             } label: {
@@ -87,7 +95,7 @@ struct BottomView: View {
     }
 }
 
-struct InputView: View {
+struct SignInInputView: View {
     
     @Binding var user: User
     
@@ -96,15 +104,17 @@ struct InputView: View {
             
             Image("img-logo")
                 .resizable()
-                .frame(width: 240, height: 90, alignment: .center)
+                .frame(width: 240, height: 120, alignment: .center)
                 .padding(.bottom, 30)
             
             VStack {
                 HStack {
-                    Text("Username")
+                    Text("Email Address")
                     Spacer()
                 }
-                TextField("Enter User Name", text: $user.emailAddress)
+                TextField("Enter Email Address", text: $user.emailAddress)
+                    .textContentType(.emailAddress)
+                    .keyboardType(.emailAddress)
             }.padding([.leading, .trailing, .top],30)
             
             VStack {
@@ -123,7 +133,7 @@ struct InputView: View {
 }
 
 
-struct ForgotPasswordView: View {
+struct SignInForgotPasswordView: View {
     var body: some View {
         HStack {
             Spacer()
