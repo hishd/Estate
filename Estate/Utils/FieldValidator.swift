@@ -15,6 +15,7 @@ class FieldValidator {
     lazy var emailPredicate = NSPredicate(format: "SELF MATCHES %@", Patterns.emailRegex.rawValue)
     lazy var mobilePredicate = NSPredicate(format: "SELF MATCHES %@", Patterns.mobileRegex.rawValue)
     lazy var nicPredicate = NSPredicate(format: "SELF MATCHES %@", Patterns.nicRegex.rawValue)
+    lazy var dobPredicate = NSPredicate(format: "SELF MATCHES %@", Patterns.dobRegex.rawValue)
     
     func isValidPersonName(of name: String) -> Bool {
         return self.namePredicate.evaluate(with: name)
@@ -31,6 +32,10 @@ class FieldValidator {
     func isValidNIC(of nic: String) -> Bool {
         return self.nicPredicate.evaluate(with: nic)
     }
+    
+    func isValidDOB(of dob: String) -> Bool {
+        return self.dobPredicate.evaluate(with: dob)
+    }
 }
 
 enum Patterns: String {
@@ -38,4 +43,5 @@ enum Patterns: String {
     case emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
     case mobileRegex = "^[0-9]{5,20}$"
     case nicRegex = "^([0-9]{9}[x|X|v|V]|[0-9]{12})$"
+    case dobRegex = "(?:0[1-9]|[12][0-9]|3[01])[-/.](?:0[1-9]|1[012])[-/.](?:19\\d{2}|20[01][0-9]|2020)"
 }
