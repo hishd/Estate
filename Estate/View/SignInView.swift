@@ -8,25 +8,51 @@
 import SwiftUI
 
 struct SignInView: View {
-    
-    @StateObject private var signInViewModel = SignInViewModel()
+    let screenHeight: Int = Int(UIScreen.main.bounds.height)
     
     var body: some View {
         VStack {
-            NavigationView {
-                VStack {
+            if screenHeight > 667 {
+                LargeScaleDevice()
+            } else {
+                SmallScaleDevice()
+            }
+        }
+    }
+}
+
+struct LargeScaleDevice: View {
+    @StateObject private var signInViewModel = SignInViewModel()
+    var body: some View {
+        NavigationView {
+            VStack {
+                SignInTopView(showSignUpView: $signInViewModel.showSignUpView)
+                Spacer()
+                SignInInputView(signInViewModel: signInViewModel, user: $signInViewModel.user, isSmallDevice: false)
+                SignInForgotPasswordView()
+                SignInBottomView(user: $signInViewModel.user)
+                Spacer()
+            }
+            .navigationBarHidden(true)
+        }
+    }
+}
+
+struct SmallScaleDevice: View {
+    @StateObject private var signInViewModel = SignInViewModel()
+    var body: some View {
+        NavigationView {
+            VStack {
+                ScrollView {
                     SignInTopView(showSignUpView: $signInViewModel.showSignUpView)
                     Spacer()
-                    SignInInputView(user: $signInViewModel.user)
+                    SignInInputView(signInViewModel: signInViewModel, user: $signInViewModel.user, isSmallDevice: true)
                     SignInForgotPasswordView()
                     SignInBottomView(user: $signInViewModel.user)
                     Spacer()
-                    
-                    NavigationLink("Sign Up", destination: SignUpView(showSignUpView: $signInViewModel.showSignUpView), isActive: $signInViewModel.showSignUpView)
-                        .navigationTitle("Sign in")
                 }
-                .navigationBarHidden(true)
             }
+            .navigationBarHidden(true)
         }
     }
 }
@@ -38,15 +64,81 @@ struct SignInTopView: View {
         VStack {
             HStack {
                 Spacer()
-                Button {
-                    showSignUpView = true
-                } label: {
-                    Text("Sign up")
-                }
-                .foregroundColor(Color("color-primary"))
-                .font(Font.custom("gilroy-semibold", size: 18))
-            }.padding()
+                NavigationLink("Sign Up", destination: SignUpView(showSignUpView: $showSignUpView), isActive: $showSignUpView)
+                    .navigationTitle("Sign in")
+                    .foregroundColor(Color("color-primary"))
+                    .font(Font.custom("gilroy-semibold", size: 18))
+            }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 30))
         }
+    }
+}
+
+struct SignInInputView: View {
+    @ObservedObject var signInViewModel: SignInViewModel
+    @Binding var user: User
+    let isSmallDevice: Bool
+    
+    var body: some View {
+        VStack {
+            
+            Image("img-logo")
+                .resizable()
+                .frame(width: 240, height: 120, alignment: .center)
+                .padding(
+                    isSmallDevice ?
+                    EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 0) :
+                        EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0)
+                )
+            
+            VStack {
+                HStack {
+                    Text("Email Address")
+                    Spacer()
+                }
+                TextField("Enter Email Address", text: $user.emailAddress)
+                    .textContentType(.emailAddress)
+                    .keyboardType(.emailAddress)
+                    .onChange(of: user.emailAddress) { newValue in
+                        signInViewModel.isValidEmail = FieldValidator.shared.isValidEmailAddress(of: user.emailAddress)
+                    }
+                ErrorPlaceholder(isValid: $signInViewModel.isValidEmail, message: ValidationCaptions.invalidEmail.rawValue)
+                    .frame(width: .infinity, height: 20, alignment: .trailing)
+            }.padding([.leading, .trailing, .top],30)
+            
+            VStack {
+                HStack {
+                    Text("Password")
+                    Spacer()
+                }
+                SecureField("Enter Password", text: $user.password)
+                    .onChange(of: user.password) { newValue in
+                        signInViewModel.isValidPassword = FieldValidator.shared.isValidPassword(of: user.password)
+                    }
+                ErrorPlaceholder(isValid: $signInViewModel.isValidPassword, message: ValidationCaptions.invalidPassword.rawValue)
+                    .frame(width: .infinity, height: 20, alignment: .trailing)
+                    
+            }.padding(EdgeInsets(top: 10, leading: 30, bottom: 0, trailing: 30))
+            
+        }
+        .font(Font.custom("gilroy-regular", size: 18))
+        .textFieldStyle(.roundedBorder)
+    }
+}
+
+
+struct SignInForgotPasswordView: View {
+    var body: some View {
+        HStack {
+            Spacer()
+            Button {
+                
+            } label: {
+                Text("Forgot Password")
+            }
+            .foregroundColor(Color("color-primary"))
+            .font(Font.custom("gilroy-medium", size: 16))
+            
+        }.padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 30))
     }
 }
 
@@ -94,59 +186,7 @@ struct SignInBottomView: View {
     }
 }
 
-struct SignInInputView: View {
-    
-    @Binding var user: User
-    
-    var body: some View {
-        VStack {
-            
-            Image("img-logo")
-                .resizable()
-                .frame(width: 240, height: 120, alignment: .center)
-                .padding(.bottom, 30)
-            
-            VStack {
-                HStack {
-                    Text("Email Address")
-                    Spacer()
-                }
-                TextField("Enter Email Address", text: $user.emailAddress)
-                    .textContentType(.emailAddress)
-                    .keyboardType(.emailAddress)
-            }.padding([.leading, .trailing, .top],30)
-            
-            VStack {
-                HStack {
-                    Text("Password")
-                    Spacer()
-                }
-                SecureField("Enter Password", text: $user.password)
-                    
-            }.padding(EdgeInsets(top: 10, leading: 30, bottom: 0, trailing: 30))
-            
-        }
-        .font(Font.custom("gilroy-regular", size: 18))
-        .textFieldStyle(.roundedBorder)
-    }
-}
 
-
-struct SignInForgotPasswordView: View {
-    var body: some View {
-        HStack {
-            Spacer()
-            Button {
-                
-            } label: {
-                Text("Forgot Password")
-            }
-            .foregroundColor(Color("color-primary"))
-            .font(Font.custom("gilroy-medium", size: 16))
-            
-        }.padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 30))
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

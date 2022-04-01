@@ -24,7 +24,7 @@ class SignUpViewModel: ObservableObject {
 }
 
 extension SignUpViewModel {
-    private func validateData() -> Bool {
+    private func validateInput() -> Bool {
         if !FieldValidator.shared.isValidNIC(of: user.nicNo) {
             isValidNIC = false
             return false
@@ -59,7 +59,7 @@ extension SignUpViewModel {
     
     func registeruser() {
         //Final check of the input fields
-        if validateData() {
+        if validateInput() {
             //Process Gender, Location before sending the user instance
         }
     }

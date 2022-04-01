@@ -44,20 +44,6 @@ struct SignUpTopView: View {
     }
 }
 
-struct ErrorPlaceholder: View {
-    @Binding var isValid: Bool
-    let message: String
-    
-    var body: some View {
-        if !isValid {
-            Text(message)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-                .foregroundColor(.red)
-                .font(Font.custom("gilroy-regular", size: 15))
-        }
-    }
-}
-
 struct SignUpInputView: View {
     @Binding var user: User
     @ObservedObject var viewModel: SignUpViewModel
@@ -73,7 +59,7 @@ struct SignUpInputView: View {
                     .onChange(of: user.nicNo) { newValue in
                         viewModel.isValidNIC = FieldValidator.shared.isValidNIC(of: newValue)
                     }
-                ErrorPlaceholder(isValid: $viewModel.isValidNIC, message: "Invalid NIC no.")
+                ErrorPlaceholder(isValid: $viewModel.isValidNIC, message: ValidationCaptions.invalidNIC.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -87,7 +73,7 @@ struct SignUpInputView: View {
                     .onChange(of: user.name) { newValue in
                         viewModel.isValidName = FieldValidator.shared.isValidPersonName(of: newValue)
                     }
-                ErrorPlaceholder(isValid: $viewModel.isValidName,message: "Invalid person name")
+                ErrorPlaceholder(isValid: $viewModel.isValidName,message: ValidationCaptions.invalidName.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -102,7 +88,7 @@ struct SignUpInputView: View {
                     .onChange(of: user.mobileNo) { newValue in
                         viewModel.isValidMobile = FieldValidator.shared.isValidMobileNo(of: newValue)
                     }
-                ErrorPlaceholder(isValid: $viewModel.isValidMobile, message: "Invalid Mobile no.")
+                ErrorPlaceholder(isValid: $viewModel.isValidMobile, message: ValidationCaptions.invalidMobileNo.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -117,7 +103,7 @@ struct SignUpInputView: View {
                     .onChange(of: user.emailAddress) { newValue in
                         viewModel.isValidEmail = FieldValidator.shared.isValidEmailAddress(of: newValue)
                     }
-                ErrorPlaceholder(isValid: $viewModel.isValidEmail, message: "Invalid Email Address")
+                ErrorPlaceholder(isValid: $viewModel.isValidEmail, message: ValidationCaptions.invalidEmail.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -171,7 +157,7 @@ struct SignUpInputView: View {
                     .padding(.leading, 30)
                 }
                 
-                ErrorPlaceholder(isValid: $viewModel.isValidLocation, message: "Select fetch to load location")
+                ErrorPlaceholder(isValid: $viewModel.isValidLocation, message: ValidationCaptions.invalidLocation.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -185,7 +171,7 @@ struct SignUpInputView: View {
                         viewModel.isValidPassword = FieldValidator.shared.isValidPassword(of: user.password)
                         viewModel.isMatchingPasswords = user.password.elementsEqual(viewModel.confPassword)
                     }
-                ErrorPlaceholder(isValid: $viewModel.isValidPassword, message: "Password minimum length is 8")
+                ErrorPlaceholder(isValid: $viewModel.isValidPassword, message: ValidationCaptions.invalidPassword.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
             
@@ -198,7 +184,7 @@ struct SignUpInputView: View {
                     .onChange(of: viewModel.confPassword) { newValue in
                         viewModel.isMatchingPasswords = user.password.elementsEqual(viewModel.confPassword)
                     }
-                ErrorPlaceholder(isValid: $viewModel.isMatchingPasswords, message: "Passwords don't match")
+                ErrorPlaceholder(isValid: $viewModel.isMatchingPasswords, message: ValidationCaptions.passwordsNoMatch.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
             
@@ -212,7 +198,7 @@ struct SignUpInputView: View {
             }
             .background(Color("color-primary"))
             .cornerRadius(18)
-            .padding(.top, 10)
+            .padding([.top, .bottom], 10)
         }
         .font(Font.custom("gilroy-regular", size: 18))
         .textFieldStyle(.roundedBorder)
