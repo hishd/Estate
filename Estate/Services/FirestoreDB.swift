@@ -17,15 +17,15 @@ class FirestoreDB {
     
     func registerUserAsync(user: User) async throws -> Bool {
         try await withCheckedThrowingContinuation { continuation in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/YYYY"
             self.db.collection("users")
                 .addDocument(data: [
                     "nicNo" : user.nicNo,
                     "name": user.name,
                     "mobileNo": user.mobileNo,
                     "emailAddress": user.emailAddress,
-                    "dobDay": user.dobDay,
-                    "dobMonth": user.dobMonth,
-                    "dobYear": user.dobYear,
+                    "dob": dateFormatter.string(from: user.dob),
                     "gender": user.gender,
                     "locationLat": user.locationLat,
                     "locationLon": user.locationLon

@@ -11,40 +11,56 @@ class SignUpViewModel: ObservableObject {
     @Published var user = User()
     @Published var isMale: Bool = true
     @Published var location: String = ""
-    @Published var password: String = ""
     @Published var confPassword: String = ""
-    @Published var signUpDisabled = true
     
     // MARK: - Input Field Validations
     @Published var isValidName: Bool = true
     @Published var isValidEmail: Bool = true
     @Published var isValidNIC: Bool = true
     @Published var isValidMobile: Bool = true
-    @Published var isValidDOB: Bool = true
+    @Published var isValidLocation: Bool = true
     @Published var isValidPassword: Bool = true
     @Published var isMatchingPasswords: Bool = true
 }
 
 extension SignUpViewModel {
-    func validateData() {
+    private func validateData() -> Bool {
         if !FieldValidator.shared.isValidNIC(of: user.nicNo) {
             isValidNIC = false
-            return
+            return false
         }
         if !FieldValidator.shared.isValidPersonName(of: user.name) {
             isValidName = false
-            return
+            return false
         }
         if !FieldValidator.shared.isValidMobileNo(of: user.mobileNo) {
             isValidMobile = false
-            return
+            return false
+        }
+        if location.isEmpty {
+            isValidLocation = false
+            return false
         }
         if !FieldValidator.shared.isValidEmailAddress(of: user.emailAddress) {
             isValidEmail = false
-            return
+            return false
+        }
+        if !FieldValidator.shared.isValidPassword(of: user.password) {
+            isValidPassword = false
+            return false
+        }
+        if user.password.elementsEqual(confPassword) {
+            isMatchingPasswords = false
+            return false
         }
         
-        //Disable the sign up button if validations failed
-        signUpDisabled = false
+        return true
+    }
+    
+    func registeruser() {
+        //Final check of the input fields
+        if validateData() {
+            //Process Gender, Location before sending the user instance
+        }
     }
 }

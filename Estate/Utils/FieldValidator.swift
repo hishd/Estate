@@ -16,6 +16,7 @@ class FieldValidator {
     lazy var mobilePredicate = NSPredicate(format: "SELF MATCHES %@", Patterns.mobileRegex.rawValue)
     lazy var nicPredicate = NSPredicate(format: "SELF MATCHES %@", Patterns.nicRegex.rawValue)
     lazy var dobPredicate = NSPredicate(format: "SELF MATCHES %@", Patterns.dobRegex.rawValue)
+    lazy var passwordPredicate = NSPredicate(format: "SELF MATCHES %@", Patterns.passwordRegex.rawValue)
     
     func isValidPersonName(of name: String) -> Bool {
         return self.namePredicate.evaluate(with: name)
@@ -36,6 +37,10 @@ class FieldValidator {
     func isValidDOB(of dob: String) -> Bool {
         return self.dobPredicate.evaluate(with: dob)
     }
+    
+    func isValidPassword(of password: String) -> Bool {
+        return self.passwordPredicate.evaluate(with: password)
+    }
 }
 
 enum Patterns: String {
@@ -44,4 +49,6 @@ enum Patterns: String {
     case mobileRegex = "^[0-9]{5,20}$"
     case nicRegex = "^([0-9]{9}[x|X|v|V]|[0-9]{12})$"
     case dobRegex = "(?:0[1-9]|[12][0-9]|3[01])[-/.](?:0[1-9]|1[012])[-/.](?:19\\d{2}|20[01][0-9]|2020)"
+    //Password should contain minimum 8 chars
+    case passwordRegex = "[A-Za-z\\d]{8,}"
 }

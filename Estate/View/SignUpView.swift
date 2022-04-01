@@ -122,19 +122,23 @@ struct SignUpInputView: View {
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
             VStack {
-                HStack {
+//                HStack {
+//                    Text("Date of Birth")
+//                    Spacer()
+//                }
+//                HStack {
+//                    TextField("Day", text: $user.dobDay)
+//                        .padding(.trailing, 10)
+//                        .keyboardType(.numberPad)
+//                    TextField("Month", text: $user.dobMonth)
+//                        .padding(.trailing, 10)
+//                        .keyboardType(.numberPad)
+//                    TextField("Year", text: $user.dobYear)
+//                        .keyboardType(.numberPad)
+//                }
+                
+                DatePicker(selection: $user.dob, in: ...Date(), displayedComponents: .date) {
                     Text("Date of Birth")
-                    Spacer()
-                }
-                HStack {
-                    TextField("Day", text: $user.dobDay)
-                        .padding(.trailing, 10)
-                        .keyboardType(.numberPad)
-                    TextField("Month", text: $user.dobMonth)
-                        .padding(.trailing, 10)
-                        .keyboardType(.numberPad)
-                    TextField("Year", text: $user.dobYear)
-                        .keyboardType(.numberPad)
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
@@ -166,6 +170,8 @@ struct SignUpInputView: View {
                     .cornerRadius(20)
                     .padding(.leading, 30)
                 }
+                
+                ErrorPlaceholder(isValid: $viewModel.isValidLocation, message: "Select fetch to load location")
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -174,7 +180,12 @@ struct SignUpInputView: View {
                     Text("Password")
                     Spacer()
                 }
-                SecureField("Enter Password", text: $viewModel.password)
+                SecureField("Enter Password", text: $user.password)
+                    .onChange(of: user.password) { newValue in
+                        viewModel.isValidPassword = FieldValidator.shared.isValidPassword(of: user.password)
+                        viewModel.isMatchingPasswords = user.password.elementsEqual(viewModel.confPassword)
+                    }
+                ErrorPlaceholder(isValid: $viewModel.isValidPassword, message: "Password minimum length is 8")
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
             
@@ -184,11 +195,15 @@ struct SignUpInputView: View {
                     Spacer()
                 }
                 SecureField("Re-enter Password", text: $viewModel.confPassword)
+                    .onChange(of: viewModel.confPassword) { newValue in
+                        viewModel.isMatchingPasswords = user.password.elementsEqual(viewModel.confPassword)
+                    }
+                ErrorPlaceholder(isValid: $viewModel.isMatchingPasswords, message: "Passwords don't match")
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
             
             Button {
-                
+                viewModel.registeruser()
             } label: {
                 Text("Sign Up")
                     .foregroundColor(.white)
@@ -198,7 +213,6 @@ struct SignUpInputView: View {
             .background(Color("color-primary"))
             .cornerRadius(18)
             .padding(.top, 10)
-            .disabled(viewModel.signUpDisabled)
         }
         .font(Font.custom("gilroy-regular", size: 18))
         .textFieldStyle(.roundedBorder)
