@@ -22,6 +22,7 @@ struct SignUpView: View {
                     .alert("Signup Successful", isPresented: $isShowingSuccess) {
                         Button("Ok") {
                             self.isShowingSuccess = false
+                            self.showSignUpView = false
                         }
                     }
             }

@@ -30,7 +30,7 @@ struct LargeScaleDevice: View {
                 Spacer()
                 SignInInputView(signInViewModel: signInViewModel, user: $signInViewModel.user, isSmallDevice: false)
                 SignInForgotPasswordView()
-                SignInBottomView(user: $signInViewModel.user)
+                SignInBottomView(signInViewModel: signInViewModel)
                 Spacer()
             }
             .navigationBarHidden(true)
@@ -48,7 +48,7 @@ struct SmallScaleDevice: View {
                     Spacer()
                     SignInInputView(signInViewModel: signInViewModel, user: $signInViewModel.user, isSmallDevice: true)
                     SignInForgotPasswordView()
-                    SignInBottomView(user: $signInViewModel.user)
+                    SignInBottomView(signInViewModel: signInViewModel)
                     Spacer()
                 }
             }
@@ -80,7 +80,6 @@ struct SignInInputView: View {
     
     var body: some View {
         VStack {
-            
             Image("img-logo")
                 .resizable()
                 .frame(width: 240, height: 120, alignment: .center)
@@ -89,6 +88,8 @@ struct SignInInputView: View {
                     EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 0) :
                         EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0)
                 )
+            
+            ErrorDisplayView(isShown: $signInViewModel.isError, message: $signInViewModel.errorCaption)
             
             VStack {
                 HStack {
@@ -122,6 +123,10 @@ struct SignInInputView: View {
         }
         .font(Font.custom("gilroy-regular", size: 18))
         .textFieldStyle(.roundedBorder)
+        .onAppear {
+            signInViewModel.isError = true
+            signInViewModel.errorCaption = "Sample Error"
+        }
     }
 }
 
@@ -143,23 +148,14 @@ struct SignInForgotPasswordView: View {
 }
 
 struct SignInBottomView: View {
-    
-    @Binding var user: User
-    @State var signedIn: Bool = false
+    @ObservedObject var signInViewModel: SignInViewModel
     
     var body: some View {
         VStack {
             Button {
-                Task {
-                    do {
-                        let (result) = try await user.signInAsync(emailAddress: user.emailAddress, password: user.password)
-                        self.signedIn = result
-                    } catch {
-                        debugPrint(error.localizedDescription)
-                    }
-                }
+                signInViewModel.userSignIn(emailAddress: signInViewModel.user.emailAddress, password: signInViewModel.user.password)
             } label: {
-                Text(self.signedIn ? "Success" : "Sign In")
+                Text(signInViewModel.isSignedIn ? "Success" : "Sign In")
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
                     .font(Font.custom("gilroy-semibold", size: 18))

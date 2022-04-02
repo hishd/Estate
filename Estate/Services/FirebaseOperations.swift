@@ -7,13 +7,36 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseAuth
 
-class FirestoreDB {
-    static let shared = FirestoreDB()
+class FirebaseOperations {
+    static let shared = FirebaseOperations()
     private let db = Firestore.firestore()
     weak var ref: DocumentReference?
+    lazy var auth = Auth.auth()
     
-    private init() {}
+    var isSignedIn: Bool {
+        return auth.currentUser != nil
+    }
+    
+    private init() {
+        
+    }
+    
+    func signInAsync(emailAddress: String, password: String) async throws -> Bool {
+        try await withCheckedThrowingContinuation { continuation in
+            let auth = Auth.auth()
+            auth.signIn(withEmail: emailAddress, password: password) { [weak self] result, error in
+                guard result != nil, error == nil else {
+                    debugPrint(error)
+                    continuation.resume(throwing: SignInError.operationError)
+                    return
+                }
+                
+                continuation.resume(returning: true)
+            }
+        }
+    }
     
     func registerUserAsync(user: User) async throws -> Bool {
         try await withCheckedThrowingContinuation { continuation in

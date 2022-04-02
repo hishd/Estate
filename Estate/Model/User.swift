@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseAuth
 
 enum SignInError: Error {
     case operationError
@@ -44,27 +43,15 @@ class User {
         self.init(nicNo: "", password: "", name: "", mobileNo: "", emailAddress: "", dob: Date(), gender: "", locationLat: 0, locationLon: 0)
     }
     
-    var isSignedIn: Bool {
-        let auth = Auth.auth()
-        return auth.currentUser != nil
-    }
-    
-    func signInAsync(emailAddress: String, password: String) async throws -> Bool {
-        try await withCheckedThrowingContinuation { continuation in
-            let auth = Auth.auth()
-            auth.signIn(withEmail: emailAddress, password: password) { [weak self] result, error in
-                guard result != nil, error == nil else {
-                    debugPrint(error)
-                    continuation.resume(throwing: SignInError.operationError)
-                    return
-                }
-                
-                continuation.resume(returning: true)
-            }
+    func signIn(emailAddress: String, password: String) async throws -> Bool {
+        if FirebaseOperations.shared.isSignedIn {
+            return true
+        } else {
+            return try await FirebaseOperations.shared.signInAsync(emailAddress: emailAddress, password: password)
         }
     }
     
-    func signUpAsync(user: User) async throws -> Bool {
-        return false
+    func signUp(user: User) async throws -> Bool {
+        return try await FirebaseOperations.shared.registerUserAsync(user: user)
     }
 }
