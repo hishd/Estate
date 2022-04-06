@@ -1,0 +1,54 @@
+//
+//  AddItem.swift
+//  Estate
+//
+//  Created by Hishara Dilshan on 2022-04-06.
+//
+
+import Foundation
+import UIKit
+
+class AddItem {
+    var addCaption: String
+    var deedImageUrl: String?
+    var addImageUrls: [String]?
+    var price: String
+    var landSize: String
+    var district: String
+    var town: String
+    var locationLat: Double
+    var locationLon: Double
+    var isLand: Bool
+    var information: String
+    //Users email address
+    var createdUser: String
+    
+    init(addCaption: String, deedImageUrl: String?, addImageUrls: [String]?, price: Double, landSize: Double, district: String, town: String, locationLat: Double, locationLon: Double, isLand: Bool, information: String, createdUser: String) {
+        self.addCaption = addCaption
+        self.deedImageUrl = deedImageUrl
+        self.addImageUrls = addImageUrls
+        self.price = String(price)
+        self.landSize = String(landSize)
+        self.district = district
+        self.town = town
+        self.locationLat = locationLat
+        self.locationLon = locationLon
+        self.isLand = isLand
+        self.information = information
+        self.createdUser = createdUser
+    }
+    
+    convenience init() {
+        self.init(addCaption: "", deedImageUrl: nil, addImageUrls: nil, price: 0, landSize: 0, district: "", town: "", locationLat: 0, locationLon: 0, isLand: true, information: "", createdUser: "")
+    }
+}
+
+extension AddItem {
+    func createAdvertisement(addItem: AddItem) async throws -> Bool {
+        return false
+    }
+    
+    func removeAdvertisement() async throws -> Bool {
+        return false
+    }
+}
