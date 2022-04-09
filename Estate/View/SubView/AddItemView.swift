@@ -29,7 +29,7 @@ struct AddItemView: View {
                             .padding(.trailing, 5)
                         Text(addItem.town)
                             .foregroundColor(Color("color-dark"))
-                            .font(Font.custom("gilroy-bold", size: 20))
+                            .font(Font.custom("gilroy-bold", size: 18))
                         Spacer()
                     }
                     HStack {
@@ -39,23 +39,26 @@ struct AddItemView: View {
                             .padding(.trailing, 5)
                         Text(addItem.price)
                             .foregroundColor(Color("color-dark"))
-                            .font(Font.custom("gilroy-bold", size: 20))
+                            .font(Font.custom("gilroy-bold", size: 18))
                         Spacer()
                     }
                 }
-                .padding()
+                .padding(10)
             }
             HStack {
                 Spacer()
                 Image(addItem.isLand ? "land" : "house")
-                    .padding()
+                    .resizable()
+                    .frame(width: 20, height: 20, alignment: .center)
+                    .padding(5)
                     .background(Color.white)
                     .clipShape(Circle())
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-            .padding()
+            .padding([.top, .trailing], 8)
         }
         .background(Color("color-lightgray"))
+        .cornerRadius(10)
     }
 }
 
