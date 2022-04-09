@@ -13,6 +13,7 @@
 		4F0815C127FE12DE00418BDD /* NewAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0815C027FE12DE00418BDD /* NewAddViewModel.swift */; };
 		4F2D42EF27F792A5006155FA /* ErrorPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D42EE27F792A5006155FA /* ErrorPlaceholderView.swift */; };
 		4F2D42F227F7960B006155FA /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D42F127F7960B006155FA /* AppConstants.swift */; };
+		4F2E471D27FFFCD30071AC9B /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E471C27FFFCD30071AC9B /* AddItemView.swift */; };
 		4F6E18D827F5BC1500375B25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F6E18D727F5BC1500375B25 /* GoogleService-Info.plist */; };
 		4F6E18DA27F5C1BA00375B25 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6E18D927F5C1BA00375B25 /* SignUpView.swift */; };
 		4F6E18DC27F5DF6200375B25 /* FirebaseOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6E18DB27F5DF6100375B25 /* FirebaseOperations.swift */; };
@@ -60,6 +61,7 @@
 		4F0815C027FE12DE00418BDD /* NewAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddViewModel.swift; sourceTree = "<group>"; };
 		4F2D42EE27F792A5006155FA /* ErrorPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPlaceholderView.swift; sourceTree = "<group>"; };
 		4F2D42F127F7960B006155FA /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		4F2E471C27FFFCD30071AC9B /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 		4F6E18D727F5BC1500375B25 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F6E18D927F5C1BA00375B25 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		4F6E18DB27F5DF6100375B25 /* FirebaseOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseOperations.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				4F2D42EE27F792A5006155FA /* ErrorPlaceholderView.swift */,
 				4F909A5F27F80C7400FF1CC2 /* ErrorDisplayView.swift */,
+				4F2E471C27FFFCD30071AC9B /* AddItemView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				4F71996D27F4C71E00024AC3 /* SignUpViewModel.swift in Sources */,
 				4F6E18DC27F5DF6200375B25 /* FirebaseOperations.swift in Sources */,
 				4FADC01427F3706600503E5A /* User.swift in Sources */,
+				4F2E471D27FFFCD30071AC9B /* AddItemView.swift in Sources */,
 				4F0815BF27FE0FEF00418BDD /* AddItem.swift in Sources */,
 				4F6E18DA27F5C1BA00375B25 /* SignUpView.swift in Sources */,
 				4FADC01627F3706600503E5A /* SignInView.swift in Sources */,

@@ -51,4 +51,18 @@ extension AddItem {
     func removeAdvertisement() async throws -> Bool {
         return false
     }
+    
+    static var sample: AddItem {
+        AddItem(
+            addCaption: "Add Caption",
+            deedImageUrl: "https://picsum.photos/200",
+            addImageUrls: ["https://picsum.photos/id/237/200"],
+            price: 500410, landSize: 50,
+            district: "District",
+            town: "Town Name",
+            locationLat: 0, locationLon: 0,
+            isLand: true,
+            information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec turpis vel libero laoreet congue eu vitae risus. Donec ornare tellus nec lorem ullamcorper rhoncus.",
+            createdUser: "sample@email.com")
+    }
 }
