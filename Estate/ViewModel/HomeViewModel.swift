@@ -12,6 +12,15 @@ class HomeViewModel: ObservableObject {
     @Published var ads: [HomeViewAddItem] = []
     @Published var selectedDistrict: String = "Colombo"
     
+    //Bottom Filterview Properties
+    @Published var isVisible: Bool = false
+    @Published var minPrice: String = ""
+    @Published var maxPrice: String = ""
+    @Published var searchRadius: Double = 0
+    @Published var priceRangeMin: Double = 0
+    @Published var priceRangeMax: Double = 0
+    @Published var filterLands: Bool = true
+    
     //Fetching all ads and present it on Home View
     func getAllAds() {
         for _ in 0...20 {

@@ -66,7 +66,7 @@ struct SignInTopView: View {
                 Spacer()
                 NavigationLink("Sign Up", destination: SignUpView(showSignUpView: $showSignUpView), isActive: $showSignUpView)
                     .navigationTitle("Sign in")
-                    .foregroundColor(Color("color-primary"))
+                    .foregroundColor(AppColor.colorPrimary)
                     .font(Font.custom("gilroy-semibold", size: 18))
             }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 30))
         }
@@ -140,7 +140,7 @@ struct SignInForgotPasswordView: View {
             } label: {
                 Text("Forgot Password")
             }
-            .foregroundColor(Color("color-primary"))
+            .foregroundColor(AppColor.colorPrimary)
             .font(Font.custom("gilroy-medium", size: 16))
             
         }.padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 30))
@@ -160,19 +160,19 @@ struct SignInBottomView: View {
                     .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
                     .font(Font.custom("gilroy-semibold", size: 18))
             }
-            .background(Color("color-primary"))
+            .background(AppColor.colorPrimary)
             .cornerRadius(18)
             .padding(.top, 20)
             
             VStack {
                 Text("By continuing, you agree to NIBM Broker App's")
-                    .foregroundColor(Color("color-gray"))
+                    .foregroundColor(AppColor.colorGray)
                     .font(Font.custom("gilroy-medium", size: 13))
                 Button {
                     
                 } label: {
                     Text("Terms & Privacy Policy")
-                        .foregroundColor(Color("color-primary"))
+                        .foregroundColor(AppColor.colorPrimary)
                         .font(Font.custom("gilroy-semibold", size: 13))
                         .padding(.top, 2)
                 }

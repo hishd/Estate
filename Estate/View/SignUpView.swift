@@ -39,7 +39,7 @@ struct SignUpTopView: View {
                 .frame(width: 240, height: 120, alignment: .center)
                 .padding(.bottom, 10)
             Text("Sign Up")
-                .foregroundColor(Color("color-primary"))
+                .foregroundColor(AppColor.colorPrimary)
                 .font(Font.custom("gilroy-bold", size: 22))
         }
     }
@@ -133,7 +133,7 @@ struct SignUpInputView: View {
             HStack {
                 Text("Gender : \(viewModel.isMale ? "Male" : "Female")")
                 Toggle("", isOn: $viewModel.isMale)
-                    .tint(Color("color-primary"))
+                    .tint(AppColor.colorPrimary)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
             
@@ -149,11 +149,11 @@ struct SignUpInputView: View {
                         
                     } label: {
                         Text("Fetch")
-                            .foregroundColor(Color("color-primary"))
+                            .foregroundColor(AppColor.colorPrimary)
                             .font(Font.custom("gilroy-semibold", size: 18))
                             .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
                     }
-                    .background(Color("color-lightgray"))
+                    .background(AppColor.colorLightGray)
                     .cornerRadius(20)
                     .padding(.leading, 30)
                 }
@@ -197,7 +197,7 @@ struct SignUpInputView: View {
                     .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
                     .font(Font.custom("gilroy-semibold", size: 18))
             }
-            .background(Color("color-primary"))
+            .background(AppColor.colorPrimary)
             .cornerRadius(18)
             .padding([.top, .bottom], 10)
         }

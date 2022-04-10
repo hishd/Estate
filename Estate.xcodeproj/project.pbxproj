@@ -37,6 +37,9 @@
 		4FADC01627F3706600503E5A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FADC00E27F3706600503E5A /* SignInView.swift */; };
 		4FADC01727F3706600503E5A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FADC00F27F3706600503E5A /* Launch Screen.storyboard */; };
 		4FADC01A27F3706600503E5A /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FADC01327F3706600503E5A /* SignInViewModel.swift */; };
+		4FFDBA4C28029D7C00EC832A /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA4B28029D7C00EC832A /* BottomView.swift */; };
+		4FFDBA4E2802A0F000EC832A /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA4D2802A0F000EC832A /* AppColor.swift */; };
+		4FFDBA512802CEE900EC832A /* CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA502802CEE900EC832A /* CustomRoundCorners.swift */; };
 		950321DF765A6042B3A38E1D /* Pods_EstateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA216CAE6E54B5F5BB460F /* Pods_EstateTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +94,9 @@
 		4FADC00F27F3706600503E5A /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		4FADC01327F3706600503E5A /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		4FADC01B27F3714100503E5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4FFDBA4B28029D7C00EC832A /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
+		4FFDBA4D2802A0F000EC832A /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		4FFDBA502802CEE900EC832A /* CustomRoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundCorners.swift; sourceTree = "<group>"; };
 		6ACD1163F198FF42A8AD8D05 /* Pods_Estate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Estate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47DE85F4852A5ABF0BE9849 /* Pods_Estate_EstateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Estate_EstateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B7058F66406B659285C1E0 /* Pods-EstateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EstateTests.release.xcconfig"; path = "Target Support Files/Pods-EstateTests/Pods-EstateTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 				4F2D42EE27F792A5006155FA /* ErrorPlaceholderView.swift */,
 				4F909A5F27F80C7400FF1CC2 /* ErrorDisplayView.swift */,
 				4F2E471C27FFFCD30071AC9B /* AddItemView.swift */,
+				4FFDBA4B28029D7C00EC832A /* BottomView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -178,6 +185,7 @@
 				4FADC00827F3706600503E5A /* Model */,
 				4FADC00A27F3706600503E5A /* Services */,
 				4FADC00B27F3706600503E5A /* Utils */,
+				4FFDBA4F2802CEC600EC832A /* Extensions */,
 				4FADC00D27F3706600503E5A /* View */,
 				4FADC01227F3706600503E5A /* ViewModel */,
 				4FADBFFD27F3703800503E5A /* fonts */,
@@ -246,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				4F6E18DD27F627E200375B25 /* FieldValidator.swift */,
+				4FFDBA4D2802A0F000EC832A /* AppColor.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -271,6 +280,14 @@
 				4F2E47202801FB1A0071AC9B /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4FFDBA4F2802CEC600EC832A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4FFDBA502802CEE900EC832A /* CustomRoundCorners.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A4968AFF05D8AECEFF993389 /* Frameworks */ = {
@@ -545,6 +562,7 @@
 				4FADC01A27F3706600503E5A /* SignInViewModel.swift in Sources */,
 				4F909A6027F80C7400FF1CC2 /* ErrorDisplayView.swift in Sources */,
 				4F2E47212801FB1A0071AC9B /* HomeViewModel.swift in Sources */,
+				4FFDBA4C28029D7C00EC832A /* BottomView.swift in Sources */,
 				4F2E471F2801FB070071AC9B /* HomeView.swift in Sources */,
 				4F6E18DE27F627E300375B25 /* FieldValidator.swift in Sources */,
 				4FADBFD427F36F6800503E5A /* EstateApp.swift in Sources */,
@@ -557,6 +575,8 @@
 				4F6E18DA27F5C1BA00375B25 /* SignUpView.swift in Sources */,
 				4FADC01627F3706600503E5A /* SignInView.swift in Sources */,
 				4F2D42F227F7960B006155FA /* AppConstants.swift in Sources */,
+				4FFDBA4E2802A0F000EC832A /* AppColor.swift in Sources */,
+				4FFDBA512802CEE900EC832A /* CustomRoundCorners.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

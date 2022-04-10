@@ -28,7 +28,7 @@ struct AddItemView: View {
                             .frame(width: 25, height: 25, alignment: .center)
                             .padding(.trailing, 5)
                         Text(addItem.town)
-                            .foregroundColor(Color("color-dark"))
+                            .foregroundColor(AppColor.colorDark)
                             .font(Font.custom("gilroy-bold", size: 18))
                         Spacer()
                     }
@@ -38,7 +38,7 @@ struct AddItemView: View {
                             .frame(width: 25, height: 16, alignment: .center)
                             .padding(.trailing, 5)
                         Text(addItem.price)
-                            .foregroundColor(Color("color-dark"))
+                            .foregroundColor(AppColor.colorDark)
                             .font(Font.custom("gilroy-bold", size: 18))
                         Spacer()
                     }
@@ -57,7 +57,7 @@ struct AddItemView: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
             .padding([.top, .trailing], 8)
         }
-        .background(Color("color-lightgray"))
+        .background(AppColor.colorLightGray)
         .cornerRadius(10)
     }
 }
