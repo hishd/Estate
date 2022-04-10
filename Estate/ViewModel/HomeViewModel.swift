@@ -10,10 +10,10 @@ import Foundation
 class HomeViewModel: ObservableObject {
     @Published var isGuestUser: Bool = true
     @Published var ads: [HomeViewAddItem] = []
-    @Published var selectedDistrict: String = "Colombo"
+    @Published var selectedDistrict: DistrictNames = .colombo
     
     //Bottom Filterview Properties
-    @Published var isVisible: Bool = false
+    @Published var userFilterVisible: Bool = false
     @Published var minPrice: String = ""
     @Published var maxPrice: String = ""
     @Published var searchRadius: Double = 0

@@ -17,7 +17,7 @@ struct EstateApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SignInView()
+            HomeView()
         }
     }
 }

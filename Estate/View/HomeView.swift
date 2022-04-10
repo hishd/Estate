@@ -18,10 +18,10 @@ struct HomeView: View {
             .padding()
             .onAppear {
                 viewModel.getAllAds()
-                viewModel.isGuestUser = false
+//                viewModel.isGuestUser = false
             }
-            .blur(radius: viewModel.isVisible ? 3 : 0)
-            if viewModel.isVisible {
+            .blur(radius: viewModel.userFilterVisible ? 3 : 0)
+            if viewModel.userFilterVisible {
                 BottomFilterView(viewModel: viewModel)
                     .transition(.move(edge: .bottom))
             }
@@ -47,10 +47,11 @@ struct AddList: View {
 
 struct TopView: View {
     @ObservedObject var viewModel: HomeViewModel
+    let districts = Array(DistrictNames.allCases)
     var body: some View {
         VStack {
             HStack {
-                Text("Ads in \(viewModel.selectedDistrict)")
+                Text("Ads in \(viewModel.selectedDistrict.rawValue)")
                     .font(Font.custom("gilroy-semibold", size: 26))
                 .foregroundColor(AppColor.colorPrimary)
                 Spacer()
@@ -60,19 +61,37 @@ struct TopView: View {
                     .font(Font.custom("gilroy-medium", size: 18))
                     .foregroundColor(AppColor.colorDark)
                 Spacer()
-                Button {
-                    withAnimation {
-                        viewModel.isVisible.toggle()
+                //If Guest user Show only the District Filter View
+                if viewModel.isGuestUser {
+                    ZStack {
+                        Picker("", selection: $viewModel.selectedDistrict) {
+                            ForEach(districts, id: \.rawValue) {
+                                Text($0.rawValue)
+                                    .tag($0)
+                                    .foregroundColor(AppColor.colorPrimary)
+                            }
+                        }
+                        .padding(EdgeInsets(top: 3, leading: 10, bottom: 3, trailing: 10))
                     }
-                } label: {
-                    Text(viewModel.isGuestUser ? "Select" : "Filter")
-                        .foregroundColor(AppColor.colorPrimary)
-                        .font(Font.custom("gilroy-semibold", size: 15))
-                        .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                    .background(AppColor.colorLightGray)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
-                .background(AppColor.colorLightGray)
-                .cornerRadius(20)
-                .padding(.leading, 30)
+                //Else show the Logged in user multi filter view
+                else {
+                    Button {
+                        withAnimation {
+                            viewModel.userFilterVisible.toggle()
+                        }
+                    } label: {
+                        Text(viewModel.isGuestUser ? "Select" : "Filter")
+                            .foregroundColor(AppColor.colorPrimary)
+                            .font(Font.custom("gilroy-semibold", size: 15))
+                            .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                    }
+                    .background(AppColor.colorLightGray)
+                    .cornerRadius(20)
+                    .padding(.leading, 30)
+                }
             }
             .padding(.top, 10)
         }
@@ -93,7 +112,7 @@ struct BottomFilterView: View {
                         Spacer()
                         Button {
                             withAnimation {
-                                viewModel.isVisible.toggle()
+                                viewModel.userFilterVisible.toggle()
                             }
                         } label: {
                             Text("Done")
