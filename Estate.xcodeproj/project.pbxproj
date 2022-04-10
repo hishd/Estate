@@ -38,6 +38,9 @@
 		4FADC01627F3706600503E5A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FADC00E27F3706600503E5A /* SignInView.swift */; };
 		4FADC01727F3706600503E5A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FADC00F27F3706600503E5A /* Launch Screen.storyboard */; };
 		4FADC01A27F3706600503E5A /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FADC01327F3706600503E5A /* SignInViewModel.swift */; };
+		4FBB7BA828035ED4000A583C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB7BA728035ED4000A583C /* MainView.swift */; };
+		4FBB7BAA28035F29000A583C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB7BA928035F28000A583C /* SettingsView.swift */; };
+		4FBB7BAC28035F33000A583C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBB7BAB28035F33000A583C /* ProfileView.swift */; };
 		4FFDBA4C28029D7C00EC832A /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA4B28029D7C00EC832A /* BottomView.swift */; };
 		4FFDBA4E2802A0F000EC832A /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA4D2802A0F000EC832A /* AppColor.swift */; };
 		4FFDBA512802CEE900EC832A /* CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA502802CEE900EC832A /* CustomRoundCorners.swift */; };
@@ -96,6 +99,9 @@
 		4FADC00F27F3706600503E5A /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		4FADC01327F3706600503E5A /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		4FADC01B27F3714100503E5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4FBB7BA728035ED4000A583C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		4FBB7BA928035F28000A583C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4FBB7BAB28035F33000A583C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4FFDBA4B28029D7C00EC832A /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		4FFDBA4D2802A0F000EC832A /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		4FFDBA502802CEE900EC832A /* CustomRoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundCorners.swift; sourceTree = "<group>"; };
@@ -270,6 +276,9 @@
 				4FADC00F27F3706600503E5A /* Launch Screen.storyboard */,
 				4F6E18D927F5C1BA00375B25 /* SignUpView.swift */,
 				4F2E471E2801FB070071AC9B /* HomeView.swift */,
+				4FBB7BA728035ED4000A583C /* MainView.swift */,
+				4FBB7BA928035F28000A583C /* SettingsView.swift */,
+				4FBB7BAB28035F33000A583C /* ProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -562,6 +571,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F0815C127FE12DE00418BDD /* NewAddViewModel.swift in Sources */,
+				4FBB7BA828035ED4000A583C /* MainView.swift in Sources */,
 				4FADC01A27F3706600503E5A /* SignInViewModel.swift in Sources */,
 				4F909A6027F80C7400FF1CC2 /* ErrorDisplayView.swift in Sources */,
 				4F2E47212801FB1A0071AC9B /* HomeViewModel.swift in Sources */,
@@ -577,8 +587,10 @@
 				4F0815BF27FE0FEF00418BDD /* AddItem.swift in Sources */,
 				4F6E18DA27F5C1BA00375B25 /* SignUpView.swift in Sources */,
 				4FADC01627F3706600503E5A /* SignInView.swift in Sources */,
+				4FBB7BAC28035F33000A583C /* ProfileView.swift in Sources */,
 				4F2D42F227F7960B006155FA /* AppConstants.swift in Sources */,
 				4FFDBA4E2802A0F000EC832A /* AppColor.swift in Sources */,
+				4FBB7BAA28035F29000A583C /* SettingsView.swift in Sources */,
 				4FFDBA512802CEE900EC832A /* CustomRoundCorners.swift in Sources */,
 				4F8AC2D428031A2400C0ED6D /* AppData.swift in Sources */,
 			);

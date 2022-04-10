@@ -18,7 +18,7 @@ struct HomeView: View {
             .padding()
             .onAppear {
                 viewModel.getAllAds()
-//                viewModel.isGuestUser = false
+                viewModel.isGuestUser = false
             }
             .blur(radius: viewModel.userFilterVisible ? 3 : 0)
             if viewModel.userFilterVisible {
@@ -60,7 +60,9 @@ struct TopView: View {
                 Text(viewModel.isGuestUser ? "Select District" : "Filter Ads")
                     .font(Font.custom("gilroy-medium", size: 18))
                     .foregroundColor(AppColor.colorDark)
+                
                 Spacer()
+                
                 //If Guest user Show only the District Filter View
                 if viewModel.isGuestUser {
                     ZStack {
