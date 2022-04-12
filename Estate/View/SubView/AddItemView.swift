@@ -37,7 +37,7 @@ struct AddItemView: View {
                             .resizable()
                             .frame(width: 25, height: 16, alignment: .center)
                             .padding(.trailing, 5)
-                        Text(addItem.price)
+                        Text(addItem.price.extractInMillions())
                             .foregroundColor(AppColor.colorDark)
                             .font(Font.custom("gilroy-bold", size: 18))
                         Spacer()

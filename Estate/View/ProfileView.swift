@@ -61,14 +61,26 @@ struct AllAdsContainer: View {
     @ObservedObject var viewModel: ProfileViewModel
     let columns: [GridItem] = [.init(.flexible())]
     var body: some View {
-        ScrollView(.vertical) {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(viewModel.allPostedAds) { add in
-                    PostedAddItem(addItem: add.addItem)
-                }
+//: Changed to List Implementation since onDelete is not Supported on Grids
+//        ScrollView(.vertical) {
+//            LazyVGrid(columns: columns, spacing: 20) {
+//                ForEach(viewModel.allPostedAds) { add in
+//                    PostedAddItem(addItem: add.addItem)
+//                }.onDelete { index in
+//
+//                }
+//            }
+//        }
+//        .padding(.top, 20)
+        List {
+            ForEach(viewModel.allPostedAds) { add in
+                PostedAddItem(addItem: add.addItem)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                    .listRowSeparator(.hidden)
+            }.onDelete { index in
+                //: Action on Delete
             }
-        }
-        .padding(.top, 20)
+        }.listStyle(.plain)
     }
 }
 
