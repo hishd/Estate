@@ -20,10 +20,22 @@ class AddItem {
     var locationLon: Double
     var isLand: Bool
     var information: String
+    var contactNo: String
     //Users email address
     var createdUser: String
     
-    init(addCaption: String, deedImageUrl: String?, addImageUrls: [String]?, price: Double, landSize: Double, district: String, town: String, locationLat: Double, locationLon: Double, isLand: Bool, information: String, createdUser: String) {
+    var allImageUrls: [String] {
+        var allImages: [String] = []
+        if let addImages = addImageUrls {
+            allImages.append(contentsOf: addImages)
+        }
+        if let deedImage = deedImageUrl {
+            allImages.append(deedImage)
+        }
+        return allImages
+    }
+    
+    init(addCaption: String, deedImageUrl: String?, addImageUrls: [String]?, price: Double, landSize: Double, district: String, town: String, locationLat: Double, locationLon: Double, isLand: Bool, information: String, createdUser: String, contactNo: String) {
         self.addCaption = addCaption
         self.deedImageUrl = deedImageUrl
         self.addImageUrls = addImageUrls
@@ -36,10 +48,11 @@ class AddItem {
         self.isLand = isLand
         self.information = information
         self.createdUser = createdUser
+        self.contactNo = contactNo
     }
     
     convenience init() {
-        self.init(addCaption: "", deedImageUrl: nil, addImageUrls: nil, price: 0, landSize: 0, district: "", town: "", locationLat: 0, locationLon: 0, isLand: true, information: "", createdUser: "")
+        self.init(addCaption: "", deedImageUrl: nil, addImageUrls: nil, price: 0, landSize: 0, district: "", town: "", locationLat: 0, locationLon: 0, isLand: true, information: "", createdUser: "", contactNo: "")
     }
 }
 
@@ -63,6 +76,8 @@ extension AddItem {
             locationLat: 0, locationLon: 0,
             isLand: true,
             information: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec turpis vel libero laoreet congue eu vitae risus. Donec ornare tellus nec lorem ullamcorper rhoncus.",
-            createdUser: "sample@email.com")
+            createdUser: "sample@email.com",
+            contactNo: "+94716667767"
+        )
     }
 }

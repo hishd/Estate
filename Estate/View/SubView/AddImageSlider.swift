@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct AddImageSlider: View {
-    let addImages: [String] = sampleAddImages
+    let addImages: [String]
     var body: some View {
         TabView {
             ForEach(addImages, id: \.self) { image in
                 ImageSliderItem(imageUrl: image)
                     .padding(.top, 10)
-                    .padding(.horizontal, 15)
             }
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
@@ -27,7 +26,6 @@ struct ImageSliderItem: View {
         AsyncImage(url: URL(string: imageUrl)) { image in
             image
                 .resizable()
-                .scaledToFit()
                 .cornerRadius(15)
         } placeholder: {
             ProgressView("Loading")
@@ -38,7 +36,7 @@ struct ImageSliderItem: View {
 
 struct AddImageSlider_Previews: PreviewProvider {
     static var previews: some View {
-        AddImageSlider()
+        AddImageSlider(addImages: sampleAddImages)
             .previewDevice("iPhone 11")
             .background(AppColor.colorGray)
     }
