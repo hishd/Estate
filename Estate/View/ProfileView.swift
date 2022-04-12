@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject var viewModel = ProfileViewModel()
     var body: some View {
         VStack {
             ProfileHeaderView()
+            AllAdsContainer(viewModel: viewModel)
+        }
+        .onAppear {
+            viewModel.fetchAllPostedAds()
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
         .padding()
@@ -49,6 +54,21 @@ struct ProfileHeaderView: View {
             }
             .padding(.top, 10)
         }
+    }
+}
+
+struct AllAdsContainer: View {
+    @ObservedObject var viewModel: ProfileViewModel
+    let columns: [GridItem] = [.init(.flexible())]
+    var body: some View {
+        ScrollView(.vertical) {
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(viewModel.allPostedAds) { add in
+                    PostedAddItem(addItem: add.addItem)
+                }
+            }
+        }
+        .padding(.top, 20)
     }
 }
 
