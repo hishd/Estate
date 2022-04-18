@@ -7,6 +7,27 @@
 
 import Foundation
 
-class SettingsViewModel: ObservableObject {
+class SettingsViewModel: ObservableObject, UserUpdateService {
+    @Published var mobileNo: String = ""
+    @Published var locationLat: Double = 0
+    @Published var locationLon: Double = 0
     
+    func fetchLocation() {
+        
+    }
+    
+    func signOut() {
+        
+    }
+}
+
+extension SettingsViewModel {
+    // MARK: Concrete methods
+    func updateUser(mobileNo: String, locationLat: Double, locationLon: Double) {
+        
+    }
+    
+    func updatePassword(current: String, new: String) {
+        
+    }
 }
