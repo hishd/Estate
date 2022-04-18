@@ -18,7 +18,7 @@ struct HomeView: View {
             .padding()
             .onAppear {
                 viewModel.getAllAds()
-                viewModel.isGuestUser = false
+//                viewModel.isGuestUser = false
             }
             .blur(radius: viewModel.userFilterVisible ? 3 : 0)
             if viewModel.userFilterVisible {

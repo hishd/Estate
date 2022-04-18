@@ -26,9 +26,9 @@ class FirebaseOperations {
     func signInAsync(emailAddress: String, password: String) async throws -> Bool {
         try await withCheckedThrowingContinuation { continuation in
             let auth = Auth.auth()
-            auth.signIn(withEmail: emailAddress, password: password) { [weak self] result, error in
+            auth.signIn(withEmail: emailAddress, password: password) { result, error in
                 guard result != nil, error == nil else {
-                    debugPrint(error)
+                    debugPrint(error?.localizedDescription)
                     continuation.resume(throwing: SignInError.operationError)
                     return
                 }

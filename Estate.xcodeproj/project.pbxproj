@@ -53,6 +53,11 @@
 		4FFDBA4E2802A0F000EC832A /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA4D2802A0F000EC832A /* AppColor.swift */; };
 		4FFDBA512802CEE900EC832A /* CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA502802CEE900EC832A /* CustomRoundCorners.swift */; };
 		950321DF765A6042B3A38E1D /* Pods_EstateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA216CAE6E54B5F5BB460F /* Pods_EstateTests.framework */; };
+		FD707A6C280DF39000CFB8A8 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A6B280DF39000CFB8A8 /* AuthenticationService.swift */; };
+		FD707A6E280DF40600CFB8A8 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A6D280DF40600CFB8A8 /* SignUpService.swift */; };
+		FD707A70280DF4D400CFB8A8 /* FetchAdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A6F280DF4D400CFB8A8 /* FetchAdsService.swift */; };
+		FD707A72280DF5E800CFB8A8 /* MyAdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A71280DF5E800CFB8A8 /* MyAdsService.swift */; };
+		FD707A74280DF90100CFB8A8 /* UserUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A73280DF90100CFB8A8 /* UserUpdateService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +133,11 @@
 		DB6B96D89CC239FCF5F79CC7 /* Pods-EstateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EstateTests.debug.xcconfig"; path = "Target Support Files/Pods-EstateTests/Pods-EstateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DBA96DE20AD77ED79AD6CFCC /* Pods-Estate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate.release.xcconfig"; path = "Target Support Files/Pods-Estate/Pods-Estate.release.xcconfig"; sourceTree = "<group>"; };
 		F3CD8365D3709A48DCA5BA96 /* Pods-Estate-EstateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate-EstateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Estate-EstateUITests/Pods-Estate-EstateUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FD707A6B280DF39000CFB8A8 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		FD707A6D280DF40600CFB8A8 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
+		FD707A6F280DF4D400CFB8A8 /* FetchAdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAdsService.swift; sourceTree = "<group>"; };
+		FD707A71280DF5E800CFB8A8 /* MyAdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdsService.swift; sourceTree = "<group>"; };
+		FD707A73280DF90100CFB8A8 /* UserUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateService.swift; sourceTree = "<group>"; };
 		FF92AB0E85B9E02B9B4A9C7E /* Pods-Estate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate.debug.xcconfig"; path = "Target Support Files/Pods-Estate/Pods-Estate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,7 +282,11 @@
 		4FADC00A27F3706600503E5A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				4F6E18DB27F5DF6100375B25 /* FirebaseOperations.swift */,
+				FD707A67280DF26E00CFB8A8 /* Firebase */,
+				FD707A6A280DF31500CFB8A8 /* User */,
+				FD707A69280DF29600CFB8A8 /* Ads */,
+				FD707A68280DF27900CFB8A8 /* SignUp */,
+				FD707A66280DF26200CFB8A8 /* Authentication */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -347,6 +361,47 @@
 				B8B7058F66406B659285C1E0 /* Pods-EstateTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FD707A66280DF26200CFB8A8 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				FD707A6B280DF39000CFB8A8 /* AuthenticationService.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		FD707A67280DF26E00CFB8A8 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				4F6E18DB27F5DF6100375B25 /* FirebaseOperations.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		FD707A68280DF27900CFB8A8 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				FD707A6D280DF40600CFB8A8 /* SignUpService.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		FD707A69280DF29600CFB8A8 /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				FD707A6F280DF4D400CFB8A8 /* FetchAdsService.swift */,
+				FD707A71280DF5E800CFB8A8 /* MyAdsService.swift */,
+			);
+			path = Ads;
+			sourceTree = "<group>";
+		};
+		FD707A6A280DF31500CFB8A8 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				FD707A73280DF90100CFB8A8 /* UserUpdateService.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -601,8 +656,10 @@
 				4F909A6027F80C7400FF1CC2 /* ErrorDisplayView.swift in Sources */,
 				4FD3B9DC280602D0002CE51E /* NumberCommaSeperator.swift in Sources */,
 				4F2E47212801FB1A0071AC9B /* HomeViewModel.swift in Sources */,
+				FD707A6C280DF39000CFB8A8 /* AuthenticationService.swift in Sources */,
 				4F2E09AB2805F70300B8F8C5 /* ProfileViewModel.swift in Sources */,
 				4FF481112805B87A00C53D86 /* AddImageSlider.swift in Sources */,
+				FD707A6E280DF40600CFB8A8 /* SignUpService.swift in Sources */,
 				4FF481132805BA5E00C53D86 /* SampleData.swift in Sources */,
 				4FF4810D2805B54900C53D86 /* AddInformationView.swift in Sources */,
 				4FFDBA4C28029D7C00EC832A /* BottomView.swift in Sources */,
@@ -621,10 +678,13 @@
 				4FBB7BAC28035F33000A583C /* ProfileView.swift in Sources */,
 				4F2D42F227F7960B006155FA /* AppConstants.swift in Sources */,
 				4F2E09AF2805F79100B8F8C5 /* PostedAddItem.swift in Sources */,
+				FD707A74280DF90100CFB8A8 /* UserUpdateService.swift in Sources */,
 				4FFDBA4E2802A0F000EC832A /* AppColor.swift in Sources */,
 				4FBB7BAA28035F29000A583C /* SettingsView.swift in Sources */,
+				FD707A72280DF5E800CFB8A8 /* MyAdsService.swift in Sources */,
 				4FFDBA512802CEE900EC832A /* CustomRoundCorners.swift in Sources */,
 				4F8AC2D428031A2400C0ED6D /* AppData.swift in Sources */,
+				FD707A70280DF4D400CFB8A8 /* FetchAdsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
