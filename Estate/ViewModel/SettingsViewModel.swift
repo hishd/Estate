@@ -9,11 +9,28 @@ import Foundation
 
 class SettingsViewModel: ObservableObject, UserUpdateService {
     @Published var mobileNo: String = ""
-    @Published var locationLat: Double = 0
-    @Published var locationLon: Double = 0
+    @Published var location: String = ""
+    
+    // MARK: Input Field Validations
+    @Published var isValidMobile: Bool = true
+    @Published var isValidLocation: Bool = true
     
     func fetchLocation() {
         
+    }
+}
+
+extension SettingsViewModel {
+    func validateInput() -> Bool {
+        if !FieldValidator.shared.isValidMobileNo(of: mobileNo) {
+            isValidMobile = false
+            return false
+        }
+        if location.isEmpty {
+            isValidLocation = false
+            return false
+        }
+        return true
     }
 }
 
