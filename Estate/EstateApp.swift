@@ -10,14 +10,14 @@ import Firebase
 
 @main
 struct EstateApp: App {
-    
+    let settings = UserSettings()
     init() {
         FirebaseApp.configure()
     }
     
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView().environmentObject(settings)
         }
     }
 }

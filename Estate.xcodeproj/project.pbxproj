@@ -58,6 +58,8 @@
 		FD707A70280DF4D400CFB8A8 /* FetchAdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A6F280DF4D400CFB8A8 /* FetchAdsService.swift */; };
 		FD707A72280DF5E800CFB8A8 /* MyAdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A71280DF5E800CFB8A8 /* MyAdsService.swift */; };
 		FD707A74280DF90100CFB8A8 /* UserUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A73280DF90100CFB8A8 /* UserUpdateService.swift */; };
+		FD707A78280E005400CFB8A8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A77280E005400CFB8A8 /* UserSettings.swift */; };
+		FD707A7A280E010400CFB8A8 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A79280E010400CFB8A8 /* StartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +140,8 @@
 		FD707A6F280DF4D400CFB8A8 /* FetchAdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAdsService.swift; sourceTree = "<group>"; };
 		FD707A71280DF5E800CFB8A8 /* MyAdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdsService.swift; sourceTree = "<group>"; };
 		FD707A73280DF90100CFB8A8 /* UserUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateService.swift; sourceTree = "<group>"; };
+		FD707A77280E005400CFB8A8 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		FD707A79280E010400CFB8A8 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		FF92AB0E85B9E02B9B4A9C7E /* Pods-Estate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate.debug.xcconfig"; path = "Target Support Files/Pods-Estate/Pods-Estate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -282,11 +286,9 @@
 		4FADC00A27F3706600503E5A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FD707A76280E003A00CFB8A8 /* Settings */,
+				FD707A75280E001400CFB8A8 /* Interfaces */,
 				FD707A67280DF26E00CFB8A8 /* Firebase */,
-				FD707A6A280DF31500CFB8A8 /* User */,
-				FD707A69280DF29600CFB8A8 /* Ads */,
-				FD707A68280DF27900CFB8A8 /* SignUp */,
-				FD707A66280DF26200CFB8A8 /* Authentication */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -313,6 +315,7 @@
 				4FBB7BA928035F28000A583C /* SettingsView.swift */,
 				4FBB7BAB28035F33000A583C /* ProfileView.swift */,
 				4FF4810C2805B54900C53D86 /* AddInformationView.swift */,
+				FD707A79280E010400CFB8A8 /* StartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -402,6 +405,25 @@
 				FD707A73280DF90100CFB8A8 /* UserUpdateService.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		FD707A75280E001400CFB8A8 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				FD707A6A280DF31500CFB8A8 /* User */,
+				FD707A69280DF29600CFB8A8 /* Ads */,
+				FD707A68280DF27900CFB8A8 /* SignUp */,
+				FD707A66280DF26200CFB8A8 /* Authentication */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		FD707A76280E003A00CFB8A8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FD707A77280E005400CFB8A8 /* UserSettings.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -650,10 +672,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F0815C127FE12DE00418BDD /* NewAddViewModel.swift in Sources */,
+				FD707A7A280E010400CFB8A8 /* StartView.swift in Sources */,
 				4FBB7BA828035ED4000A583C /* MainView.swift in Sources */,
 				4FF4810F2805B56200C53D86 /* AddInformationViewModel.swift in Sources */,
 				4FADC01A27F3706600503E5A /* SignInViewModel.swift in Sources */,
 				4F909A6027F80C7400FF1CC2 /* ErrorDisplayView.swift in Sources */,
+				FD707A78280E005400CFB8A8 /* UserSettings.swift in Sources */,
 				4FD3B9DC280602D0002CE51E /* NumberCommaSeperator.swift in Sources */,
 				4F2E47212801FB1A0071AC9B /* HomeViewModel.swift in Sources */,
 				FD707A6C280DF39000CFB8A8 /* AuthenticationService.swift in Sources */,

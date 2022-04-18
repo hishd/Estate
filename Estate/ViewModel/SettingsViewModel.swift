@@ -15,10 +15,6 @@ class SettingsViewModel: ObservableObject, UserUpdateService {
     func fetchLocation() {
         
     }
-    
-    func signOut() {
-        
-    }
 }
 
 extension SettingsViewModel {
