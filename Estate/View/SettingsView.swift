@@ -12,23 +12,30 @@ struct SettingsView: View {
     @EnvironmentObject var settings: UserSettings
     
     var body: some View {
-        VStack {
-            SettingsHeaderView()
-            UserInformationContainer(currentUser: settings.currentUser)
-                .padding(.top, 30)
-                .padding(.horizontal, 3)
-            UserInformationTextFields(viewModel: viewModel)
-                .padding(.top, 40)
-                .padding(.horizontal, 5)
-            SettingsActionsContainer(viewModel: viewModel)
-                .padding(.top, 40)
+        NavigationView {
+            VStack {
+                SettingsHeaderView(viewModel: viewModel)
+                UserInformationContainer(currentUser: settings.currentUser)
+                    .padding(.top, 30)
+                    .padding(.horizontal, 3)
+                ScrollView(.vertical, showsIndicators: false) {
+                    UserInformationTextFields(viewModel: viewModel)
+                        .padding(.top, 40)
+                        .padding(.horizontal, 5)
+                    SettingsActionsContainer(viewModel: viewModel)
+                        .padding(.top, 40)
+                }
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
+            .padding()
+            
+            .navigationBarHidden(true)
         }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-        .padding()
     }
 }
 
 struct SettingsHeaderView: View {
+    @ObservedObject var viewModel: SettingsViewModel
     var body: some View {
         VStack {
             HStack {
@@ -39,7 +46,7 @@ struct SettingsHeaderView: View {
                 Spacer()
                 
                 Button {
-                    
+                    viewModel.isSignOutShown.toggle()
                 } label: {
                     Text("Sign out")
                         .foregroundColor(AppColor.colorPrimary)
@@ -49,6 +56,11 @@ struct SettingsHeaderView: View {
                 .background(AppColor.colorLightGray)
                 .cornerRadius(20)
                 .padding(.leading, 30)
+                .confirmationDialog("Sign out from EState?", isPresented: $viewModel.isSignOutShown, titleVisibility: .visible) {
+                    Button("Sign Out", role: .destructive) {
+                        
+                    }
+                }
             }
         }
     }
@@ -129,6 +141,7 @@ struct UserInformationTextFields: View {
 
 struct SettingsActionsContainer: View {
     @ObservedObject var viewModel: SettingsViewModel
+    
     var body: some View {
         VStack(spacing: 20) {
             Button {
@@ -143,11 +156,18 @@ struct SettingsActionsContainer: View {
             .cornerRadius(18)
             .padding([.top, .bottom], 10)
             
-            Button("Change Password") {
-                
+            NavigationLink("Change Password", isActive: $viewModel.isPasswordOpen) {
+                ChangePasswordView(isPasswordOpen: $viewModel.isPasswordOpen)
             }
+            .navigationTitle("Settings")
             .foregroundColor(AppColor.colorPrimary)
             .font(Font.custom("gilroy-semibold", size: 18))
+            
+//            Button("Change Password") {
+//
+//            }
+//            .foregroundColor(AppColor.colorPrimary)
+//            .font(Font.custom("gilroy-semibold", size: 18))
         }
     }
 }

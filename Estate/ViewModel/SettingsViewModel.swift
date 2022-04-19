@@ -10,6 +10,8 @@ import Foundation
 class SettingsViewModel: ObservableObject, UserUpdateService {
     @Published var mobileNo: String = ""
     @Published var location: String = ""
+    @Published var isPasswordOpen: Bool = false
+    @Published var isSignOutShown: Bool = false
     
     // MARK: Input Field Validations
     @Published var isValidMobile: Bool = true
