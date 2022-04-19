@@ -8,7 +8,6 @@
 import Foundation
 
 class SignInViewModel: ObservableObject {
-    @Published var user = User()
     @Published var showSignUpView = false
     @Published var isSignedIn = false
     @Published var isError = false
@@ -17,16 +16,19 @@ class SignInViewModel: ObservableObject {
     // MARK: - Input Field Validations
     @Published var isValidEmail = true
     @Published var isValidPassword = true
+    
+    @Published var emailAddress: String = ""
+    @Published var password: String = ""
 }
 
 extension SignInViewModel {
     private func validateInput() -> Bool {
-        if !FieldValidator.shared.isValidEmailAddress(of: user.emailAddress) {
+        if !FieldValidator.shared.isValidEmailAddress(of: emailAddress) {
             isValidEmail = false
             return false
         }
         
-        if !FieldValidator.shared.isValidPassword(of: user.password) {
+        if !FieldValidator.shared.isValidPassword(of: password) {
             isValidPassword = false
             return false
         }
@@ -37,7 +39,7 @@ extension SignInViewModel {
     func userSignIn(emailAddress: String, password: String) {
         Task {
             do {
-                let (result) = try await user.signIn(emailAddress: emailAddress, password: password)
+                let (result) = try await User().signIn(emailAddress: emailAddress, password: password)
                 isError = false
                 isSignedIn = result
             } catch {

@@ -18,7 +18,7 @@ struct SignUpView: View {
             ScrollView {
                 SignUpTopView()
                     .padding(.bottom, 30)
-                SignUpInputView(user: $viewModel.user, viewModel: viewModel)
+                SignUpInputView(viewModel: viewModel)
                     .alert("Signup Successful", isPresented: $isShowingSuccess) {
                         Button("Ok") {
                             self.isShowingSuccess = false
@@ -46,7 +46,6 @@ struct SignUpTopView: View {
 }
 
 struct SignUpInputView: View {
-    @Binding var user: User
     @ObservedObject var viewModel: SignUpViewModel
     
     var body: some View {
@@ -56,8 +55,8 @@ struct SignUpInputView: View {
                     Text("NIC Number")
                     Spacer()
                 }
-                TextField("Enter NIC Number", text: $user.nicNo)
-                    .onChange(of: user.nicNo) { newValue in
+                TextField("Enter NIC Number", text: $viewModel.nicNo)
+                    .onChange(of: viewModel.nicNo) { newValue in
                         viewModel.isValidNIC = FieldValidator.shared.isValidNIC(of: newValue)
                     }
                 ErrorPlaceholder(isValid: $viewModel.isValidNIC, message: ValidationCaptions.invalidNIC.rawValue)
@@ -69,9 +68,9 @@ struct SignUpInputView: View {
                     Text("Your Name")
                     Spacer()
                 }
-                TextField("Enter Name", text: $user.name)
+                TextField("Enter Name", text: $viewModel.name)
                     .textContentType(.name)
-                    .onChange(of: user.name) { newValue in
+                    .onChange(of: viewModel.name) { newValue in
                         viewModel.isValidName = FieldValidator.shared.isValidPersonName(of: newValue)
                     }
                 ErrorPlaceholder(isValid: $viewModel.isValidName,message: ValidationCaptions.invalidName.rawValue)
@@ -83,10 +82,10 @@ struct SignUpInputView: View {
                     Text("Mobile Number")
                     Spacer()
                 }
-                TextField("Enter Mobile no.", text: $user.mobileNo)
+                TextField("Enter Mobile no.", text: $viewModel.mobileNo)
                     .textContentType(.telephoneNumber)
                     .keyboardType(.namePhonePad)
-                    .onChange(of: user.mobileNo) { newValue in
+                    .onChange(of: viewModel.mobileNo) { newValue in
                         viewModel.isValidMobile = FieldValidator.shared.isValidMobileNo(of: newValue)
                     }
                 ErrorPlaceholder(isValid: $viewModel.isValidMobile, message: ValidationCaptions.invalidMobileNo.rawValue)
@@ -98,10 +97,10 @@ struct SignUpInputView: View {
                     Text("Email Address")
                     Spacer()
                 }
-                TextField("Enter Email Address", text: $user.emailAddress)
+                TextField("Enter Email Address", text: $viewModel.emailAddress)
                     .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
-                    .onChange(of: user.emailAddress) { newValue in
+                    .onChange(of: viewModel.emailAddress) { newValue in
                         viewModel.isValidEmail = FieldValidator.shared.isValidEmailAddress(of: newValue)
                     }
                 ErrorPlaceholder(isValid: $viewModel.isValidEmail, message: ValidationCaptions.invalidEmail.rawValue)
@@ -124,7 +123,7 @@ struct SignUpInputView: View {
 //                        .keyboardType(.numberPad)
 //                }
                 
-                DatePicker(selection: $user.dob, in: ...Date(), displayedComponents: .date) {
+                DatePicker(selection: $viewModel.dob , in: ...Date(), displayedComponents: .date) {
                     Text("Date of Birth")
                 }
             }
@@ -167,10 +166,10 @@ struct SignUpInputView: View {
                     Text("Password")
                     Spacer()
                 }
-                SecureField("Enter Password", text: $user.password)
-                    .onChange(of: user.password) { newValue in
-                        viewModel.isValidPassword = FieldValidator.shared.isValidPassword(of: user.password)
-                        viewModel.isMatchingPasswords = user.password.elementsEqual(viewModel.confPassword)
+                SecureField("Enter Password", text: $viewModel.password)
+                    .onChange(of: viewModel.password) { newValue in
+                        viewModel.isValidPassword = FieldValidator.shared.isValidPassword(of: viewModel.password)
+                        viewModel.isMatchingPasswords = viewModel.password.elementsEqual(viewModel.confirmPassword)
                     }
                 ErrorPlaceholder(isValid: $viewModel.isValidPassword, message: ValidationCaptions.invalidPassword.rawValue)
             }
@@ -181,9 +180,9 @@ struct SignUpInputView: View {
                     Text("Confirm Password")
                     Spacer()
                 }
-                SecureField("Re-enter Password", text: $viewModel.confPassword)
-                    .onChange(of: viewModel.confPassword) { newValue in
-                        viewModel.isMatchingPasswords = user.password.elementsEqual(viewModel.confPassword)
+                SecureField("Re-enter Password", text: $viewModel.confirmPassword)
+                    .onChange(of: viewModel.confirmPassword) { newValue in
+                        viewModel.isMatchingPasswords = viewModel.password.elementsEqual(viewModel.confirmPassword)
                     }
                 ErrorPlaceholder(isValid: $viewModel.isMatchingPasswords, message: ValidationCaptions.passwordsNoMatch.rawValue)
             }

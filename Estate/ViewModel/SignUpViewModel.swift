@@ -8,10 +8,15 @@
 import Foundation
 
 class SignUpViewModel: ObservableObject {
-    @Published var user = User()
+    @Published var name: String = ""
+    @Published var emailAddress: String = ""
+    @Published var nicNo: String = ""
+    @Published var mobileNo: String = ""
     @Published var isMale: Bool = true
+    @Published var dob: Date = Date()
     @Published var location: String = ""
-    @Published var confPassword: String = ""
+    @Published var password: String = ""
+    @Published var confirmPassword: String = ""
     
     // MARK: - Input Field Validations
     @Published var isValidName: Bool = true
@@ -25,15 +30,15 @@ class SignUpViewModel: ObservableObject {
 
 extension SignUpViewModel {
     private func validateInput() -> Bool {
-        if !FieldValidator.shared.isValidNIC(of: user.nicNo) {
+        if !FieldValidator.shared.isValidNIC(of: nicNo) {
             isValidNIC = false
             return false
         }
-        if !FieldValidator.shared.isValidPersonName(of: user.name) {
+        if !FieldValidator.shared.isValidPersonName(of: name) {
             isValidName = false
             return false
         }
-        if !FieldValidator.shared.isValidMobileNo(of: user.mobileNo) {
+        if !FieldValidator.shared.isValidMobileNo(of: mobileNo) {
             isValidMobile = false
             return false
         }
@@ -41,15 +46,15 @@ extension SignUpViewModel {
             isValidLocation = false
             return false
         }
-        if !FieldValidator.shared.isValidEmailAddress(of: user.emailAddress) {
+        if !FieldValidator.shared.isValidEmailAddress(of: emailAddress) {
             isValidEmail = false
             return false
         }
-        if !FieldValidator.shared.isValidPassword(of: user.password) {
+        if !FieldValidator.shared.isValidPassword(of: password) {
             isValidPassword = false
             return false
         }
-        if user.password.elementsEqual(confPassword) {
+        if password.elementsEqual(confirmPassword) {
             isMatchingPasswords = false
             return false
         }
@@ -60,7 +65,7 @@ extension SignUpViewModel {
     func registeruser() {
         //Final check of the input fields
         if validateInput() {
-            //Process Gender, Location before sending the user instance
+            //Process Gender, Location, DOB before sending the user instance
         }
     }
 }

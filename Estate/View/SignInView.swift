@@ -28,7 +28,7 @@ struct LargeScaleDevice: View {
             VStack {
                 SignInTopView(showSignUpView: $signInViewModel.showSignUpView)
                 Spacer()
-                SignInInputView(signInViewModel: signInViewModel, user: $signInViewModel.user, isSmallDevice: false)
+                SignInInputView(signInViewModel: signInViewModel, isSmallDevice: false)
                 SignInForgotPasswordView()
                 SignInBottomView(signInViewModel: signInViewModel)
                 Spacer()
@@ -46,7 +46,7 @@ struct SmallScaleDevice: View {
                 ScrollView {
                     SignInTopView(showSignUpView: $signInViewModel.showSignUpView)
                     Spacer()
-                    SignInInputView(signInViewModel: signInViewModel, user: $signInViewModel.user, isSmallDevice: true)
+                    SignInInputView(signInViewModel: signInViewModel, isSmallDevice: true)
                     SignInForgotPasswordView()
                     SignInBottomView(signInViewModel: signInViewModel)
                     Spacer()
@@ -75,7 +75,6 @@ struct SignInTopView: View {
 
 struct SignInInputView: View {
     @ObservedObject var signInViewModel: SignInViewModel
-    @Binding var user: User
     let isSmallDevice: Bool
     
     var body: some View {
@@ -96,11 +95,11 @@ struct SignInInputView: View {
                     Text("Email Address")
                     Spacer()
                 }
-                TextField("Enter Email Address", text: $user.emailAddress)
+                TextField("Enter Email Address", text: $signInViewModel.emailAddress)
                     .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
-                    .onChange(of: user.emailAddress) { newValue in
-                        signInViewModel.isValidEmail = FieldValidator.shared.isValidEmailAddress(of: user.emailAddress)
+                    .onChange(of: signInViewModel.emailAddress) { newValue in
+                        signInViewModel.isValidEmail = FieldValidator.shared.isValidEmailAddress(of: signInViewModel.emailAddress)
                     }
                 ErrorPlaceholder(isValid: $signInViewModel.isValidEmail, message: ValidationCaptions.invalidEmail.rawValue)
                     .frame(width: .infinity, height: 20, alignment: .trailing)
@@ -111,9 +110,9 @@ struct SignInInputView: View {
                     Text("Password")
                     Spacer()
                 }
-                SecureField("Enter Password", text: $user.password)
-                    .onChange(of: user.password) { newValue in
-                        signInViewModel.isValidPassword = FieldValidator.shared.isValidPassword(of: user.password)
+                SecureField("Enter Password", text: $signInViewModel.password)
+                    .onChange(of: signInViewModel.password) { newValue in
+                        signInViewModel.isValidPassword = FieldValidator.shared.isValidPassword(of: signInViewModel.password)
                     }
                 ErrorPlaceholder(isValid: $signInViewModel.isValidPassword, message: ValidationCaptions.invalidPassword.rawValue)
                     .frame(width: .infinity, height: 20, alignment: .trailing)
@@ -153,7 +152,7 @@ struct SignInBottomView: View {
     var body: some View {
         VStack {
             Button {
-                signInViewModel.userSignIn(emailAddress: signInViewModel.user.emailAddress, password: signInViewModel.user.password)
+                signInViewModel.userSignIn(emailAddress: signInViewModel.emailAddress, password: signInViewModel.password)
             } label: {
                 Text(signInViewModel.isSignedIn ? "Success" : "Sign In")
                     .foregroundColor(.white)
