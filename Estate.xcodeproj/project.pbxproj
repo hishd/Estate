@@ -312,6 +312,7 @@
 			children = (
 				4F909A5E27F80C5A00FF1CC2 /* SubView */,
 				4FADC00F27F3706600503E5A /* Launch Screen.storyboard */,
+				FD707A79280E010400CFB8A8 /* StartView.swift */,
 				4FADC00E27F3706600503E5A /* SignInView.swift */,
 				4F6E18D927F5C1BA00375B25 /* SignUpView.swift */,
 				4F2E471E2801FB070071AC9B /* HomeView.swift */,
@@ -319,7 +320,6 @@
 				4FBB7BA928035F28000A583C /* SettingsView.swift */,
 				4FBB7BAB28035F33000A583C /* ProfileView.swift */,
 				4FF4810C2805B54900C53D86 /* AddInformationView.swift */,
-				FD707A79280E010400CFB8A8 /* StartView.swift */,
 				FDC8D19F280E13CA003A2999 /* ChangePasswordView.swift */,
 			);
 			path = View;

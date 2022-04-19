@@ -12,7 +12,7 @@ struct StartView: View {
     @EnvironmentObject var settings: UserSettings
     var body: some View {
         if settings.loggedIn {
-            return AnyView(HomeView())
+            return AnyView(MainView())
         } else {
             return AnyView(SignInView())
         }

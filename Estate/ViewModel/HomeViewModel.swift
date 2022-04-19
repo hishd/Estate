@@ -23,9 +23,11 @@ class HomeViewModel: ObservableObject {
     
     //Fetching all ads and present it on Home View
     func getAllAds() {
-        ads.removeAll()
-        for _ in 0...20 {
-            ads.append(HomeViewAddItem(addItem: AddItem.sample))
+        DispatchQueue.main.async {
+            self.ads.removeAll()
+            for _ in 0...20 {
+                self.ads.append(HomeViewAddItem(addItem: AddItem.sample))
+            }
         }
     }
 }
