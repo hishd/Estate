@@ -8,6 +8,17 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject var settings: UserSettings
+    var body: some View {
+        if settings.loggedIn {
+            MainTabView()
+        } else {
+            SignInView()
+        }
+    }
+}
+
+struct MainTabView: View {
     @State private var tabIndex = 0
     var body: some View {
         VStack {
@@ -39,6 +50,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView().environmentObject(UserSettings())
     }
 }

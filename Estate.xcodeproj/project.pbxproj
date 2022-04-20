@@ -59,7 +59,6 @@
 		FD707A72280DF5E800CFB8A8 /* MyAdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A71280DF5E800CFB8A8 /* MyAdsService.swift */; };
 		FD707A74280DF90100CFB8A8 /* UserUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A73280DF90100CFB8A8 /* UserUpdateService.swift */; };
 		FD707A78280E005400CFB8A8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A77280E005400CFB8A8 /* UserSettings.swift */; };
-		FD707A7A280E010400CFB8A8 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A79280E010400CFB8A8 /* StartView.swift */; };
 		FDC8D1A0280E13CA003A2999 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8D19F280E13CA003A2999 /* ChangePasswordView.swift */; };
 		FDC8D1A2280E13E4003A2999 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8D1A1280E13E4003A2999 /* ChangePasswordViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -143,7 +142,6 @@
 		FD707A71280DF5E800CFB8A8 /* MyAdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdsService.swift; sourceTree = "<group>"; };
 		FD707A73280DF90100CFB8A8 /* UserUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateService.swift; sourceTree = "<group>"; };
 		FD707A77280E005400CFB8A8 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
-		FD707A79280E010400CFB8A8 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		FDC8D19F280E13CA003A2999 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		FDC8D1A1280E13E4003A2999 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		FF92AB0E85B9E02B9B4A9C7E /* Pods-Estate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate.debug.xcconfig"; path = "Target Support Files/Pods-Estate/Pods-Estate.debug.xcconfig"; sourceTree = "<group>"; };
@@ -310,17 +308,16 @@
 		4FADC00D27F3706600503E5A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4F909A5E27F80C5A00FF1CC2 /* SubView */,
 				4FADC00F27F3706600503E5A /* Launch Screen.storyboard */,
-				FD707A79280E010400CFB8A8 /* StartView.swift */,
+				4FBB7BA728035ED4000A583C /* MainView.swift */,
 				4FADC00E27F3706600503E5A /* SignInView.swift */,
 				4F6E18D927F5C1BA00375B25 /* SignUpView.swift */,
 				4F2E471E2801FB070071AC9B /* HomeView.swift */,
-				4FBB7BA728035ED4000A583C /* MainView.swift */,
 				4FBB7BA928035F28000A583C /* SettingsView.swift */,
 				4FBB7BAB28035F33000A583C /* ProfileView.swift */,
 				4FF4810C2805B54900C53D86 /* AddInformationView.swift */,
 				FDC8D19F280E13CA003A2999 /* ChangePasswordView.swift */,
+				4F909A5E27F80C5A00FF1CC2 /* SubView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -678,7 +675,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F0815C127FE12DE00418BDD /* NewAddViewModel.swift in Sources */,
-				FD707A7A280E010400CFB8A8 /* StartView.swift in Sources */,
 				4FBB7BA828035ED4000A583C /* MainView.swift in Sources */,
 				4FF4810F2805B56200C53D86 /* AddInformationViewModel.swift in Sources */,
 				4FADC01A27F3706600503E5A /* SignInViewModel.swift in Sources */,
