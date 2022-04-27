@@ -10,7 +10,7 @@
 		386FE358E82313CC331EF62F /* Pods_Estate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ACD1163F198FF42A8AD8D05 /* Pods_Estate.framework */; };
 		387F965472F669F83393330A /* Pods_Estate_EstateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B47DE85F4852A5ABF0BE9849 /* Pods_Estate_EstateUITests.framework */; };
 		4F0815BF27FE0FEF00418BDD /* AddItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0815BE27FE0FEF00418BDD /* AddItem.swift */; };
-		4F0815C127FE12DE00418BDD /* NewAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0815C027FE12DE00418BDD /* NewAddViewModel.swift */; };
+		4F0815C127FE12DE00418BDD /* PostAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0815C027FE12DE00418BDD /* PostAddViewModel.swift */; };
 		4F2D42EF27F792A5006155FA /* ErrorPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D42EE27F792A5006155FA /* ErrorPlaceholderView.swift */; };
 		4F2D42F227F7960B006155FA /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D42F127F7960B006155FA /* AppConstants.swift */; };
 		4F2E09AB2805F70300B8F8C5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E09AA2805F70300B8F8C5 /* ProfileViewModel.swift */; };
@@ -53,6 +53,7 @@
 		4FFDBA4E2802A0F000EC832A /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA4D2802A0F000EC832A /* AppColor.swift */; };
 		4FFDBA512802CEE900EC832A /* CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA502802CEE900EC832A /* CustomRoundCorners.swift */; };
 		950321DF765A6042B3A38E1D /* Pods_EstateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA216CAE6E54B5F5BB460F /* Pods_EstateTests.framework */; };
+		FD6C5D5E2819195100B7B1B5 /* PostAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6C5D5D2819195100B7B1B5 /* PostAddView.swift */; };
 		FD707A6C280DF39000CFB8A8 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A6B280DF39000CFB8A8 /* AuthenticationService.swift */; };
 		FD707A6E280DF40600CFB8A8 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A6D280DF40600CFB8A8 /* SignUpService.swift */; };
 		FD707A70280DF4D400CFB8A8 /* FetchAdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A6F280DF4D400CFB8A8 /* FetchAdsService.swift */; };
@@ -83,7 +84,7 @@
 /* Begin PBXFileReference section */
 		1CF766718431429D70E72A0C /* Pods-Estate-EstateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate-EstateUITests.release.xcconfig"; path = "Target Support Files/Pods-Estate-EstateUITests/Pods-Estate-EstateUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4F0815BE27FE0FEF00418BDD /* AddItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItem.swift; sourceTree = "<group>"; };
-		4F0815C027FE12DE00418BDD /* NewAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddViewModel.swift; sourceTree = "<group>"; };
+		4F0815C027FE12DE00418BDD /* PostAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAddViewModel.swift; sourceTree = "<group>"; };
 		4F2D42EE27F792A5006155FA /* ErrorPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPlaceholderView.swift; sourceTree = "<group>"; };
 		4F2D42F127F7960B006155FA /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		4F2E09AA2805F70300B8F8C5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 		DB6B96D89CC239FCF5F79CC7 /* Pods-EstateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EstateTests.debug.xcconfig"; path = "Target Support Files/Pods-EstateTests/Pods-EstateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DBA96DE20AD77ED79AD6CFCC /* Pods-Estate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate.release.xcconfig"; path = "Target Support Files/Pods-Estate/Pods-Estate.release.xcconfig"; sourceTree = "<group>"; };
 		F3CD8365D3709A48DCA5BA96 /* Pods-Estate-EstateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate-EstateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Estate-EstateUITests/Pods-Estate-EstateUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FD6C5D5D2819195100B7B1B5 /* PostAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAddView.swift; sourceTree = "<group>"; };
 		FD707A6B280DF39000CFB8A8 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		FD707A6D280DF40600CFB8A8 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		FD707A6F280DF4D400CFB8A8 /* FetchAdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAdsService.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				4FBB7BAB28035F33000A583C /* ProfileView.swift */,
 				4FF4810C2805B54900C53D86 /* AddInformationView.swift */,
 				FDC8D19F280E13CA003A2999 /* ChangePasswordView.swift */,
+				FD6C5D5D2819195100B7B1B5 /* PostAddView.swift */,
 				4F909A5E27F80C5A00FF1CC2 /* SubView */,
 			);
 			path = View;
@@ -327,7 +330,7 @@
 			children = (
 				4FADC01327F3706600503E5A /* SignInViewModel.swift */,
 				4F71996C27F4C71E00024AC3 /* SignUpViewModel.swift */,
-				4F0815C027FE12DE00418BDD /* NewAddViewModel.swift */,
+				4F0815C027FE12DE00418BDD /* PostAddViewModel.swift */,
 				4F2E47202801FB1A0071AC9B /* HomeViewModel.swift */,
 				4FF4810E2805B56200C53D86 /* AddInformationViewModel.swift */,
 				4F2E09AA2805F70300B8F8C5 /* ProfileViewModel.swift */,
@@ -674,7 +677,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F0815C127FE12DE00418BDD /* NewAddViewModel.swift in Sources */,
+				4F0815C127FE12DE00418BDD /* PostAddViewModel.swift in Sources */,
 				4FBB7BA828035ED4000A583C /* MainView.swift in Sources */,
 				4FF4810F2805B56200C53D86 /* AddInformationViewModel.swift in Sources */,
 				4FADC01A27F3706600503E5A /* SignInViewModel.swift in Sources */,
@@ -688,6 +691,7 @@
 				4FF481112805B87A00C53D86 /* AddImageSlider.swift in Sources */,
 				FD707A6E280DF40600CFB8A8 /* SignUpService.swift in Sources */,
 				4FF481132805BA5E00C53D86 /* SampleData.swift in Sources */,
+				FD6C5D5E2819195100B7B1B5 /* PostAddView.swift in Sources */,
 				4FF4810D2805B54900C53D86 /* AddInformationView.swift in Sources */,
 				4FFDBA4C28029D7C00EC832A /* BottomView.swift in Sources */,
 				4F2E471F2801FB070071AC9B /* HomeView.swift in Sources */,
