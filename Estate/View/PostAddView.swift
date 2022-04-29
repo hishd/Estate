@@ -32,11 +32,12 @@ struct ImageContainerView: View {
         HStack {
             VStack {
                 ImagePlaceholderItem(image: addItem.deedImage)
+                    .padding(.top, 10)
                 
                 Text("Deed Image")
                     .foregroundColor(AppColor.colorDark)
                     .font(Font.custom("gilroy-regular", size: 13))
-                    .padding(.top, 5)
+                    .padding(.top, 13)
             }
             
             VStack {
@@ -75,8 +76,18 @@ struct ImagePlaceholderItem: View {
     var body: some View {
         VStack {
             if let image = image {
-                Image(uiImage: image)
-                    .resizable()
+                ZStack(alignment: .top) {
+                    Image(uiImage: image)
+                        .resizable()
+                        
+                    Button {
+                        
+                    } label: {
+                        Image("btn-remove")
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding([.top, .trailing], 3)
+                }
             } else {
                 Button {
                     
