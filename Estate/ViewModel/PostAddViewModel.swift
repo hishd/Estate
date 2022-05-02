@@ -82,8 +82,3 @@ struct NewAddItem {
     var deedImage: UIImage? = UIImage(named: "land1")
     var addImages: [UIImage] = []
 }
-
-//struct AddImageItem: Hashable {
-////    let id = UUID()
-//    let image: UIImage
-//}

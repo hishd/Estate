@@ -22,7 +22,7 @@ struct PostAddView: View {
             ScrollView {
                 AddInformationInputView(viewModel: viewModel)
             }
-            padding(.top, 20)
+            .padding(.top, 20)
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding()
@@ -91,11 +91,13 @@ struct ImagePlaceholderItem: View {
                         .resizable()
                         
                     Button {
-                        if !isDeedImage {
-                            viewModel.removeSelectedAddImage(at: index!)
-                        } else {
-                            self.image = nil
-                            viewModel.addItem.deedImage = nil
+                        withAnimation {
+                            if !isDeedImage {
+                                viewModel.removeSelectedAddImage(at: index!)
+                            } else {
+                                self.image = nil
+                                viewModel.addItem.deedImage = nil
+                            }
                         }
                     } label: {
                         Image("btn-remove")
@@ -132,129 +134,144 @@ struct AddInformationInputView: View {
     let districts = Array(DistrictNames.allCases)
     
     var body: some View {
-        VStack {
-            HStack(spacing: 20) {
-                VStack {
-                    HStack {
-                        Text("Price")
-                        Spacer()
-                    }
-                    TextField("Enter Price", text: $viewModel.price)
-                        .onChange(of: viewModel.price) { newValue in
-                            viewModel.isValidPrice = FieldValidator.shared.isValidPrice(of: newValue)
+        ScrollView(.vertical) {
+            VStack {
+                HStack(spacing: 20) {
+                    VStack {
+                        HStack {
+                            Text("Price")
+                            Spacer()
                         }
-                        .keyboardType(.decimalPad)
-                    ErrorPlaceholder(isValid: $viewModel.isValidPrice, message: ValidationCaptions.invalidPrice.rawValue)
+                        TextField("Enter Price", text: $viewModel.price)
+                            .onChange(of: viewModel.price) { newValue in
+                                viewModel.isValidPrice = FieldValidator.shared.isValidPrice(of: newValue)
+                            }
+                            .keyboardType(.decimalPad)
+                        ErrorPlaceholder(isValid: $viewModel.isValidPrice, message: ValidationCaptions.invalidPrice.rawValue)
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    
+                    VStack {
+                        HStack {
+                            Text("Land Size")
+                            Spacer()
+                        }
+                        TextField("Enter Size", text: $viewModel.landSize)
+                            .onChange(of: viewModel.landSize) { newValue in
+                                viewModel.isValidLandSize = FieldValidator.shared.isValidLandSize(of: newValue)
+                            }
+                            .keyboardType(.decimalPad)
+                        ErrorPlaceholder(isValid: $viewModel.isValidLandSize, message: ValidationCaptions.invalidLandSize.rawValue)
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity)
                 }
-                .frame(minWidth: 0, maxWidth: .infinity)
+                
+                HStack(spacing: 20) {
+                    VStack {
+                        HStack {
+                            Text("District")
+                            Spacer()
+                        }
+                        
+                        ZStack {
+                            Picker("", selection: $viewModel.district) {
+                                ForEach(districts, id: \.rawValue) {
+                                    Text($0.rawValue)
+                                        .tag($0)
+                                        .foregroundColor(AppColor.colorPrimary)
+                                }
+                            }
+                            .padding(EdgeInsets(top: 3, leading: 10, bottom: 3, trailing: 10))
+                            .frame(maxWidth: .infinity)
+                        }
+                        .background(AppColor.colorLightGray)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    
+                    VStack {
+                        HStack {
+                            Text("Town")
+                            Spacer()
+                        }
+                        TextField("Enter Town", text: $viewModel.town)
+                            .onChange(of: viewModel.town) { newValue in
+                                viewModel.isValidTown = FieldValidator.shared.isValidTownName(of: newValue)
+                            }
+                        ErrorPlaceholder(isValid: $viewModel.isValidTown, message: ValidationCaptions.invalidTown.rawValue)
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                }
+                .padding(.top, 10)
                 
                 VStack {
                     HStack {
-                        Text("Land Size")
+                        Text("Location")
                         Spacer()
                     }
-                    TextField("Enter Size", text: $viewModel.landSize)
-                        .onChange(of: viewModel.landSize) { newValue in
-                            viewModel.isValidLandSize = FieldValidator.shared.isValidLandSize(of: newValue)
-                        }
-                        .keyboardType(.decimalPad)
-                    ErrorPlaceholder(isValid: $viewModel.isValidLandSize, message: ValidationCaptions.invalidLandSize.rawValue)
-                }
-                .frame(minWidth: 0, maxWidth: .infinity)
-            }
-            
-            HStack(spacing: 20) {
-                VStack {
                     HStack {
-                        Text("District")
-                        Spacer()
+                        TextField("Press select to add", text: $viewModel.location)
+                            .disabled(true)
+                        Button {
+                            
+                        } label: {
+                            Text("Select")
+                                .foregroundColor(AppColor.colorPrimary)
+                                .font(Font.custom("gilroy-semibold", size: 18))
+                                .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                        }
+                        .background(AppColor.colorLightGray)
+                        .cornerRadius(20)
+                        .padding(.leading, 30)
                     }
                     
-                    ZStack {
-                        Picker("", selection: $viewModel.district) {
-                            ForEach(districts, id: \.rawValue) {
-                                Text($0.rawValue)
-                                    .tag($0)
-                                    .foregroundColor(AppColor.colorPrimary)
-                            }
-                        }
-                        .padding(EdgeInsets(top: 3, leading: 10, bottom: 3, trailing: 10))
-                        .frame(maxWidth: .infinity)
-                    }
-                    .background(AppColor.colorLightGray)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    ErrorPlaceholder(isValid: $viewModel.isValidLocation, message: ValidationCaptions.invalidLocation.rawValue)
                 }
-                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding(.top, 10)
+                
+                HStack {
+                    Text("Property Type : \(viewModel.isLand ? "Land" : "House")")
+                        .font(Font.custom("gilroy-regular", size: 16))
+                        .foregroundColor(AppColor.colorDark)
+                    Spacer()
+                    Toggle("", isOn: $viewModel.isLand)
+                        .tint(AppColor.colorPrimary)
+                        .padding(.trailing, 5)
+                }
+                .padding(.top, 10)
                 
                 VStack {
                     HStack {
-                        Text("Town")
+                        Text("Information")
                         Spacer()
                     }
-                    TextField("Enter Town", text: $viewModel.town)
-                        .onChange(of: viewModel.town) { newValue in
-                            viewModel.isValidTown = FieldValidator.shared.isValidTownName(of: newValue)
+                    TextEditor(text: $viewModel.information)
+                        .onChange(of: viewModel.information) { newValue in
+                            viewModel.isValidInformation = FieldValidator.shared.isValidAddInfo(of: newValue)
                         }
-                    ErrorPlaceholder(isValid: $viewModel.isValidTown, message: ValidationCaptions.invalidTown.rawValue)
+                        .overlay(RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.secondary).opacity(0.5))
+                        .frame(height: 100)
+                    ErrorPlaceholder(isValid: $viewModel.isValidInformation, message: ValidationCaptions.invalidInformation.rawValue)
                 }
-                .frame(minWidth: 0, maxWidth: .infinity)
-            }
-            .padding(.top, 10)
-            
-            VStack {
-                HStack {
-                    Text("Location")
-                    Spacer()
-                }
-                HStack {
-                    TextField("Press select to add", text: $viewModel.location)
-                        .disabled(true)
-                    Button {
-                        
-                    } label: {
-                        Text("Select")
-                            .foregroundColor(AppColor.colorPrimary)
-                            .font(Font.custom("gilroy-semibold", size: 18))
-                            .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-                    }
-                    .background(AppColor.colorLightGray)
-                    .cornerRadius(20)
-                    .padding(.leading, 30)
-                }
+                .padding(.top, 10)
                 
-                ErrorPlaceholder(isValid: $viewModel.isValidLocation, message: ValidationCaptions.invalidLocation.rawValue)
-            }
-            .padding(.top, 10)
-            
-            HStack {
-                Text("Property Type : \(viewModel.isLand ? "Land" : "House")")
-                    .font(Font.custom("gilroy-regular", size: 16))
-                    .foregroundColor(AppColor.colorDark)
-                Spacer()
-                Toggle("", isOn: $viewModel.isLand)
-                    .tint(AppColor.colorPrimary)
-            }
-            .padding(.top, 10)
-            
-            VStack {
-                HStack {
-                    Text("Information")
-                    Spacer()
+                Button {
+//                    viewModel.postNewAdd(of: <#T##NewAddContent#>)
+                } label: {
+                    Text("Post Add")
+                        .foregroundColor(.white)
+                        .padding(EdgeInsets(top: 15, leading: 30, bottom: 15, trailing: 30))
+                        .font(Font.custom("gilroy-semibold", size: 18))
                 }
-                TextEditor(text: $viewModel.information)
-                    .onChange(of: viewModel.information) { newValue in
-                        viewModel.isValidInformation = FieldValidator.shared.isValidAddInfo(of: newValue)
-                    }
-                    .overlay(RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.secondary).opacity(0.5))
-                    .frame(maxHeight: 100)
-                ErrorPlaceholder(isValid: $viewModel.isValidInformation, message: ValidationCaptions.invalidInformation.rawValue)
+                .background(AppColor.colorPrimary)
+                .cornerRadius(25)
+                .padding([.top, .bottom], 20)
+                
             }
-            .padding(.top, 10)
-            
+            .font(Font.custom("gilroy-regular", size: 18))
+            .textFieldStyle(.roundedBorder)
         }
-        .font(Font.custom("gilroy-regular", size: 18))
-        .textFieldStyle(.roundedBorder)
     }
 }
 
