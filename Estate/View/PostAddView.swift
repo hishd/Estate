@@ -82,6 +82,7 @@ struct ImagePlaceholderItem: View {
     var index: Int?
     var isDeedImage = false
     @State var image: UIImage?
+    @State private var showPickerSheet = false
     
     var body: some View {
         VStack {
@@ -107,7 +108,7 @@ struct ImagePlaceholderItem: View {
                 }
             } else {
                 Button {
-                    
+                    showPickerSheet.toggle()
                 } label: {
                     VStack {
                         Image("add")
@@ -118,6 +119,7 @@ struct ImagePlaceholderItem: View {
                             .foregroundColor(AppColor.colorDark)
                             .font(Font.custom("gilroy-regular", size: 11))
                             .padding(.top, 3)
+                            .environment(\.colorScheme, .light)
                     }
                 }
             }
@@ -126,6 +128,16 @@ struct ImagePlaceholderItem: View {
         .frame(width: 80, height: 80)
         .background(AppColor.colorLightGray)
         .cornerRadius(10)
+        .sheet(isPresented: $showPickerSheet) {
+            ImagePicker(sourceType: .photoLibrary) { image in
+                guard let image = image else {
+                    return
+                }
+                withAnimation {
+                    viewModel.addItem.addImages.append(image)
+                }
+            }
+        }
     }
 }
 
@@ -181,7 +193,6 @@ struct AddInformationInputView: View {
                                         .foregroundColor(AppColor.colorPrimary)
                                 }
                             }
-                            .padding(EdgeInsets(top: 3, leading: 10, bottom: 3, trailing: 10))
                             .frame(maxWidth: .infinity)
                         }
                         .background(AppColor.colorLightGray)

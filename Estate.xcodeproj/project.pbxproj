@@ -62,6 +62,7 @@
 		FD707A78280E005400CFB8A8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A77280E005400CFB8A8 /* UserSettings.swift */; };
 		FDC8D1A0280E13CA003A2999 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8D19F280E13CA003A2999 /* ChangePasswordView.swift */; };
 		FDC8D1A2280E13E4003A2999 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8D1A1280E13E4003A2999 /* ChangePasswordViewModel.swift */; };
+		FDDA9448282069620058EFF9 /* UIKitRepresentables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA9447282069620058EFF9 /* UIKitRepresentables.swift */; };
 		FDDC25AC281C24F4009D9B52 /* PostAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDC25AB281C24F4009D9B52 /* PostAddService.swift */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +148,7 @@
 		FD707A77280E005400CFB8A8 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		FDC8D19F280E13CA003A2999 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		FDC8D1A1280E13E4003A2999 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		FDDA9447282069620058EFF9 /* UIKitRepresentables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitRepresentables.swift; sourceTree = "<group>"; };
 		FDDC25AB281C24F4009D9B52 /* PostAddService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAddService.swift; sourceTree = "<group>"; };
 		FF92AB0E85B9E02B9B4A9C7E /* Pods-Estate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate.debug.xcconfig"; path = "Target Support Files/Pods-Estate/Pods-Estate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -305,6 +307,7 @@
 				4F6E18DD27F627E200375B25 /* FieldValidator.swift */,
 				4FFDBA4D2802A0F000EC832A /* AppColor.swift */,
 				4FF481122805BA5E00C53D86 /* SampleData.swift */,
+				FDDA9447282069620058EFF9 /* UIKitRepresentables.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				4F0815C127FE12DE00418BDD /* PostAddViewModel.swift in Sources */,
 				4FBB7BA828035ED4000A583C /* MainView.swift in Sources */,
 				4FF4810F2805B56200C53D86 /* AddInformationViewModel.swift in Sources */,
+				FDDA9448282069620058EFF9 /* UIKitRepresentables.swift in Sources */,
 				4FADC01A27F3706600503E5A /* SignInViewModel.swift in Sources */,
 				FDC8D1A2280E13E4003A2999 /* ChangePasswordViewModel.swift in Sources */,
 				FDDC25AC281C24F4009D9B52 /* PostAddService.swift in Sources */,
