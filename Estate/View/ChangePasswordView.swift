@@ -11,59 +11,67 @@ struct ChangePasswordView: View {
     @StateObject var viewModel = ChangePasswordViewModel()
     @Binding var isPasswordOpen: Bool
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 20) {
-                VStack {
-                    HStack {
-                        Text("Current Password")
-                        Spacer()
-                    }
-                    SecureField("Enter current Password", text: $viewModel.currentPassword)
-                    ErrorPlaceholder(isValid: $viewModel.isCorrectCurrentPassword, message: ValidationCaptions.passwordsNoMatch.rawValue)
-                }
-                
-                VStack {
-                    HStack {
-                        Text("New Password")
-                        Spacer()
-                    }
-                    SecureField("Enter new Password", text: $viewModel.newPassword)
-                        .onChange(of: viewModel.newPassword) { newValue in
-                            viewModel.isValidPassword = FieldValidator.shared.isValidPassword(of: viewModel.newPassword)
-                            viewModel.isMatchingPasswords = viewModel.newPassword.elementsEqual(viewModel.confirmPassword)
+        VStack {
+            Text("Change Password")
+                .font(Font.custom("gilroy-bold", size: 24))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.vertical, 30)
+            
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 20) {
+                    VStack {
+                        HStack {
+                            Text("Current Password")
+                            Spacer()
                         }
-                    ErrorPlaceholder(isValid: $viewModel.isValidPassword, message: ValidationCaptions.invalidPassword.rawValue)
-                }
-                
-                VStack {
-                    HStack {
-                        Text("Confirm Password")
-                        Spacer()
+                        SecureField("Enter current Password", text: $viewModel.currentPassword)
+                        ErrorPlaceholder(isValid: $viewModel.isCorrectCurrentPassword, message: ValidationCaptions.passwordsNoMatch.rawValue)
                     }
-                    SecureField("Re-enter Password", text: $viewModel.confirmPassword)
-                        .onChange(of: viewModel.confirmPassword) { newValue in
-                            viewModel.isMatchingPasswords = viewModel.newPassword.elementsEqual(viewModel.confirmPassword)
+                    
+                    VStack {
+                        HStack {
+                            Text("New Password")
+                            Spacer()
                         }
-                    ErrorPlaceholder(isValid: $viewModel.isMatchingPasswords, message: ValidationCaptions.passwordsNoMatch.rawValue)
-                }
-                
-                Button {
+                        SecureField("Enter new Password", text: $viewModel.newPassword)
+                            .onChange(of: viewModel.newPassword) { newValue in
+                                viewModel.isValidPassword = FieldValidator.shared.isValidPassword(of: viewModel.newPassword)
+                                viewModel.isMatchingPasswords = viewModel.newPassword.elementsEqual(viewModel.confirmPassword)
+                            }
+                        ErrorPlaceholder(isValid: $viewModel.isValidPassword, message: ValidationCaptions.invalidPassword.rawValue)
+                    }
+                    
+                    VStack {
+                        HStack {
+                            Text("Confirm Password")
+                            Spacer()
+                        }
+                        SecureField("Re-enter Password", text: $viewModel.confirmPassword)
+                            .onChange(of: viewModel.confirmPassword) { newValue in
+                                viewModel.isMatchingPasswords = viewModel.newPassword.elementsEqual(viewModel.confirmPassword)
+                            }
+                        ErrorPlaceholder(isValid: $viewModel.isMatchingPasswords, message: ValidationCaptions.passwordsNoMatch.rawValue)
+                    }
+                    
+                    Button {
 
-                } label: {
-                    Text("Update")
-                        .foregroundColor(.white)
-                        .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
-                        .font(Font.custom("gilroy-semibold", size: 18))
+                    } label: {
+                        Text("Update")
+                            .foregroundColor(.white)
+                            .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
+                            .font(Font.custom("gilroy-semibold", size: 18))
+                    }
+                    .background(AppColor.colorPrimary)
+                    .cornerRadius(18)
+                    .padding([.top, .bottom], 10)
                 }
-                .background(AppColor.colorPrimary)
-                .cornerRadius(18)
-                .padding([.top, .bottom], 10)
+                .frame(maxHeight: .infinity, alignment: .top)
+                .font(Font.custom("gilroy-regular", size: 18))
+                .textFieldStyle(.roundedBorder)
             }
-            .frame(maxHeight: .infinity, alignment: .top)
-            .padding(.horizontal, 20)
-            .font(Font.custom("gilroy-regular", size: 18))
-            .textFieldStyle(.roundedBorder)
         }
+        .padding(.horizontal, 20)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

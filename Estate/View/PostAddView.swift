@@ -122,6 +122,14 @@ struct ImagePlaceholderItem: View {
     }
 }
 
+struct AddInformationInputView: View {    
+    var body: some View {
+        VStack {
+            
+        }
+    }
+}
+
 struct PostAddView_Previews: PreviewProvider {
     @State static var isPostAddOpen = false
     static var previews: some View {
