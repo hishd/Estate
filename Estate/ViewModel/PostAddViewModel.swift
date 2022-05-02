@@ -38,6 +38,7 @@ class PostAddViewModel: ObservableObject, PostAddService {
         ]
     }
     
+    @MainActor
     func validateInput() -> Bool {
         if !FieldValidator.shared.isValidPrice(of: self.price) {
             self.isValidPrice = false
@@ -67,11 +68,13 @@ class PostAddViewModel: ObservableObject, PostAddService {
         return true
     }
     
+    @MainActor
     func removeSelectedAddImage(at index: Int) {
         self.addItem.addImages.remove(at: index)
     }
     
     // MARK: Concrete Implementation
+    @MainActor
     func postNewAdd(of content: NewAddContent) {
         
     }

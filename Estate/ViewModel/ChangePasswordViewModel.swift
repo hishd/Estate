@@ -19,6 +19,7 @@ class ChangePasswordViewModel: ObservableObject {
 }
 
 extension ChangePasswordViewModel {
+    @MainActor
     func validateInput() -> Bool {
         if !checkCurrentPassword() {
             isCorrectCurrentPassword = false
@@ -35,6 +36,7 @@ extension ChangePasswordViewModel {
         return true
     }
     
+    @MainActor
     func checkCurrentPassword() -> Bool {
         return true
     }

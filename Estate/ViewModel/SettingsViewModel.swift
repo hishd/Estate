@@ -23,6 +23,7 @@ class SettingsViewModel: ObservableObject, UserUpdateService {
 }
 
 extension SettingsViewModel {
+    @MainActor
     func validateInput() -> Bool {
         if !FieldValidator.shared.isValidMobileNo(of: mobileNo) {
             isValidMobile = false
@@ -38,10 +39,12 @@ extension SettingsViewModel {
 
 extension SettingsViewModel {
     // MARK: Concrete methods
+    @MainActor
     func updateUser(mobileNo: String, locationLat: Double, locationLon: Double) {
         
     }
     
+    @MainActor
     func updatePassword(current: String, new: String) {
         
     }

@@ -22,6 +22,8 @@ class SignInViewModel: ObservableObject {
 }
 
 extension SignInViewModel {
+    
+    @MainActor
     private func validateInput() -> Bool {
         if !FieldValidator.shared.isValidEmailAddress(of: emailAddress) {
             isValidEmail = false
@@ -36,6 +38,7 @@ extension SignInViewModel {
         return true
     }
     
+    @MainActor
     func userSignIn(emailAddress: String, password: String) {
         Task {
             do {
