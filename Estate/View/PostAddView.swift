@@ -16,7 +16,7 @@ struct PostAddView: View {
                 .font(Font.custom("gilroy-bold", size: 24))
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            ImageContainerView(addItem: $viewModel.addItem)
+            ImageContainerView(addItem: $viewModel.addItem, viewModel: viewModel)
                 .padding(.top, 32)
         }
         .frame(maxHeight: .infinity, alignment: .top)
@@ -25,13 +25,13 @@ struct PostAddView: View {
 }
 
 struct ImageContainerView: View {
-    
     @Binding var addItem: NewAddItem
+    @ObservedObject var viewModel: PostAddViewModel
     
     var body: some View {
         HStack {
             VStack {
-                ImagePlaceholderItem(image: addItem.deedImage)
+                ImagePlaceholderItem(viewModel: viewModel,isDeedImage: true, image: addItem.deedImage)
                     .padding(.top, 10)
                 
                 Text("Deed Image")
@@ -45,16 +45,17 @@ struct ImageContainerView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             if addItem.addImages.count <= 5 {
-                                ImagePlaceholderItem()
+                                ImagePlaceholderItem(viewModel: viewModel)
                             }
-                            ForEach(addItem.addImages, id: \.self) { image in
-                                ImagePlaceholderItem(image: image)
+                            ForEach(Array(addItem.addImages.enumerated()), id: \.element) { index, imageItem in
+                                ImagePlaceholderItem(viewModel: viewModel
+                                                     , index: index,
+                                                     image: imageItem)
                             }
                         }
                     }
                 }
                 .padding(8)
-                .frame(width: .infinity, height: 100)
                 .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(AppColor.colorGray, lineWidth: 1)
@@ -72,7 +73,11 @@ struct ImageContainerView: View {
 }
 
 struct ImagePlaceholderItem: View {
+    @ObservedObject var viewModel: PostAddViewModel
+    var index: Int?
+    var isDeedImage = false
     @State var image: UIImage?
+    
     var body: some View {
         VStack {
             if let image = image {
@@ -81,7 +86,12 @@ struct ImagePlaceholderItem: View {
                         .resizable()
                         
                     Button {
-                        
+                        if !isDeedImage {
+                            viewModel.removeSelectedAddImage(at: index!)
+                        } else {
+                            self.image = nil
+                            viewModel.addItem.deedImage = nil
+                        }
                     } label: {
                         Image("btn-remove")
                     }
@@ -109,9 +119,6 @@ struct ImagePlaceholderItem: View {
         .frame(width: 80, height: 80)
         .background(AppColor.colorLightGray)
         .cornerRadius(10)
-        .onLongPressGesture {
-            
-        }
     }
 }
 

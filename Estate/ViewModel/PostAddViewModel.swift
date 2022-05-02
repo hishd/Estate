@@ -29,7 +29,13 @@ class PostAddViewModel: ObservableObject, PostAddService {
     @Published var isValidInformation = true
     
     init() {
-        addItem.addImages = [UIImage(named: "land1")!, UIImage(named: "land2")!, UIImage(named: "land3")!, UIImage(named: "land1")!]
+        //TODO: Remove after the initial testing
+        addItem.addImages = [
+            UIImage(named: "land1")!,
+            UIImage(named: "land2")!,
+            UIImage(named: "land3")!,
+            UIImage(named: "land1")!
+        ]
     }
     
     func validateInput() -> Bool {
@@ -61,6 +67,10 @@ class PostAddViewModel: ObservableObject, PostAddService {
         return true
     }
     
+    func removeSelectedAddImage(at index: Int) {
+        self.addItem.addImages.remove(at: index)
+    }
+    
     // MARK: Concrete Implementation
     func postNewAdd(of content: NewAddContent) {
         
@@ -72,3 +82,8 @@ struct NewAddItem {
     var deedImage: UIImage? = UIImage(named: "land1")
     var addImages: [UIImage] = []
 }
+
+//struct AddImageItem: Hashable {
+////    let id = UUID()
+//    let image: UIImage
+//}
