@@ -33,7 +33,30 @@ class PostAddViewModel: ObservableObject, PostAddService {
     }
     
     func validateInput() -> Bool {
-        !if FieldValidator.shared.
+        if !FieldValidator.shared.isValidPrice(of: self.price) {
+            self.isValidPrice = false
+            return false
+        }
+        
+        if !FieldValidator.shared.isValidLandSize(of: self.landSize) {
+            self.isValidLandSize = false
+            return false
+        }
+        
+        if !FieldValidator.shared.isValidTownName(of: self.town) {
+            self.isValidTown = false
+            return false
+        }
+        
+        if location.isEmpty {
+            self.isValidLocation = false
+            return false
+        }
+        
+        if !FieldValidator.shared.isValidAddInfo(of: self.information) {
+            self.isValidInformation = false
+            return false
+        }
         
         return true
     }
