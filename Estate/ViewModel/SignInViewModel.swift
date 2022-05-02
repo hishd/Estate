@@ -40,8 +40,10 @@ extension SignInViewModel {
         Task {
             do {
                 let (result) = try await User().signIn(emailAddress: emailAddress, password: password)
-                isError = false
-                isSignedIn = result
+                DispatchQueue.main.async {
+                    self.isError = false
+                    self.isSignedIn = result
+                }
             } catch {
                 debugPrint(error.localizedDescription)
                 isError = true

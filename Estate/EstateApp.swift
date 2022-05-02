@@ -17,8 +17,8 @@ struct EstateApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            MainView().environmentObject(settings)
-            PostAddView(isPostAddOpen: true)
+            MainView().environmentObject(settings)
+//            PostAddView(isPostAddOpen: true)
         }
     }
 }

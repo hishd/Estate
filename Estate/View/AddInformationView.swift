@@ -14,7 +14,7 @@ struct AddInformationView: View {
         VStack {
             // TODO: - Remove the sample add images after firebase integration
             AddImageSlider(addImages: sampleAddImages)
-                .frame(width: .infinity, height: 250)
+                .frame(height: 250)
             
             Text(addItem.addCaption)
                 .font(Font.custom("gilroy-extrabold", size: 22))

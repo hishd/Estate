@@ -102,7 +102,7 @@ struct SignInInputView: View {
                         signInViewModel.isValidEmail = FieldValidator.shared.isValidEmailAddress(of: signInViewModel.emailAddress)
                     }
                 ErrorPlaceholder(isValid: $signInViewModel.isValidEmail, message: ValidationCaptions.invalidEmail.rawValue)
-                    .frame(width: .infinity, height: 20, alignment: .trailing)
+                    .frame(height: 20, alignment: .trailing)
             }.padding([.leading, .trailing, .top],30)
             
             VStack {
@@ -115,7 +115,7 @@ struct SignInInputView: View {
                         signInViewModel.isValidPassword = FieldValidator.shared.isValidPassword(of: signInViewModel.password)
                     }
                 ErrorPlaceholder(isValid: $signInViewModel.isValidPassword, message: ValidationCaptions.invalidPassword.rawValue)
-                    .frame(width: .infinity, height: 20, alignment: .trailing)
+                    .frame(height: 20, alignment: .trailing)
                     
             }.padding(EdgeInsets(top: 10, leading: 30, bottom: 0, trailing: 30))
             
