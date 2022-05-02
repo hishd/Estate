@@ -15,10 +15,10 @@ class PostAddViewModel: ObservableObject, PostAddService {
     // MARK: Input Fields
     @Published var price: String = ""
     @Published var landSize: String = ""
-    @Published var district: String = ""
+    @Published var district: DistrictNames = .colombo
     @Published var town: String = ""
     @Published var location: String = ""
-    @Published var isLand: String = ""
+    @Published var isLand: Bool = true
     @Published var information: String = ""
     
     // MARK: Input Field Validations
