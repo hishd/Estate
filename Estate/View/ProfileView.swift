@@ -45,7 +45,9 @@ struct ProfileHeaderView: View {
                 
                 Spacer()
                 NavigationLink(isActive: $isPostAddOpen) {
-                    PostAddView(isPostAddOpen: $isPostAddOpen)
+                    LazyView {
+                        PostAddView(isPostAddOpen: $isPostAddOpen)
+                    }
                 } label: {
                     Button {
                         isPostAddOpen.toggle()
