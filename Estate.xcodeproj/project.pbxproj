@@ -53,6 +53,7 @@
 		4FFDBA4E2802A0F000EC832A /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA4D2802A0F000EC832A /* AppColor.swift */; };
 		4FFDBA512802CEE900EC832A /* CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA502802CEE900EC832A /* CustomRoundCorners.swift */; };
 		950321DF765A6042B3A38E1D /* Pods_EstateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA216CAE6E54B5F5BB460F /* Pods_EstateTests.framework */; };
+		FD66DACB282ECBF300FF8846 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD66DACA282ECBF300FF8846 /* LazyView.swift */; };
 		FD6C5D5E2819195100B7B1B5 /* PostAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6C5D5D2819195100B7B1B5 /* PostAddView.swift */; };
 		FD707A6C280DF39000CFB8A8 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A6B280DF39000CFB8A8 /* AuthenticationService.swift */; };
 		FD707A6E280DF40600CFB8A8 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A6D280DF40600CFB8A8 /* SignUpService.swift */; };
@@ -139,6 +140,7 @@
 		DB6B96D89CC239FCF5F79CC7 /* Pods-EstateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EstateTests.debug.xcconfig"; path = "Target Support Files/Pods-EstateTests/Pods-EstateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DBA96DE20AD77ED79AD6CFCC /* Pods-Estate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate.release.xcconfig"; path = "Target Support Files/Pods-Estate/Pods-Estate.release.xcconfig"; sourceTree = "<group>"; };
 		F3CD8365D3709A48DCA5BA96 /* Pods-Estate-EstateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate-EstateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Estate-EstateUITests/Pods-Estate-EstateUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FD66DACA282ECBF300FF8846 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		FD6C5D5D2819195100B7B1B5 /* PostAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAddView.swift; sourceTree = "<group>"; };
 		FD707A6B280DF39000CFB8A8 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		FD707A6D280DF40600CFB8A8 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				4FFDBA4D2802A0F000EC832A /* AppColor.swift */,
 				4FF481122805BA5E00C53D86 /* SampleData.swift */,
 				FDDA9447282069620058EFF9 /* UIKitRepresentables.swift */,
+				FD66DACA282ECBF300FF8846 /* LazyView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				4F2E09AF2805F79100B8F8C5 /* PostedAddItem.swift in Sources */,
 				FD707A74280DF90100CFB8A8 /* UserUpdateService.swift in Sources */,
 				4FFDBA4E2802A0F000EC832A /* AppColor.swift in Sources */,
+				FD66DACB282ECBF300FF8846 /* LazyView.swift in Sources */,
 				4FBB7BAA28035F29000A583C /* SettingsView.swift in Sources */,
 				FD707A72280DF5E800CFB8A8 /* MyAdsService.swift in Sources */,
 				4FFDBA512802CEE900EC832A /* CustomRoundCorners.swift in Sources */,
