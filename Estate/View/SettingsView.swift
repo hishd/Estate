@@ -157,18 +157,17 @@ struct SettingsActionsContainer: View {
             .cornerRadius(18)
             .padding([.top, .bottom], 10)
             
-            NavigationLink("Change Password", isActive: $viewModel.isPasswordOpen) {
+
+            NavigationLink(isActive: $viewModel.isPasswordOpen) {
                 ChangePasswordView(isPasswordOpen: $viewModel.isPasswordOpen)
+            } label: {
+                Button("Change Password") {
+                    viewModel.isPasswordOpen.toggle()
+                }
+                .foregroundColor(AppColor.colorPrimary)
+                .font(Font.custom("gilroy-semibold", size: 18))
             }
             .navigationTitle("Settings")
-            .foregroundColor(AppColor.colorPrimary)
-            .font(Font.custom("gilroy-semibold", size: 18))
-            
-//            Button("Change Password") {
-//
-//            }
-//            .foregroundColor(AppColor.colorPrimary)
-//            .font(Font.custom("gilroy-semibold", size: 18))
         }
     }
 }
