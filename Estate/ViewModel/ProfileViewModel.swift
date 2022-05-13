@@ -14,7 +14,7 @@ class ProfileViewModel: ObservableObject {
     func fetchAllPostedAds() {
         DispatchQueue.main.async {
             self.allPostedAds.removeAll()
-            for _ in 0...20 {
+            for _ in 0...10 {
                 self.allPostedAds.append(ProfileViewAddItem(addItem: AddItem.sample))
             }
         }

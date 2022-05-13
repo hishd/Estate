@@ -10,19 +10,24 @@ import SwiftUI
 struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
     var body: some View {
-        VStack {
-            ProfileHeaderView()
-            AllAdsContainer(viewModel: viewModel)
+        NavigationView {
+            VStack {
+                ProfileHeaderView()
+                AllAdsContainer(viewModel: viewModel)
+            }
+            .onAppear {
+                viewModel.fetchAllPostedAds()
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
+            .padding()
+            
+            .navigationBarHidden(true)
         }
-        .onAppear {
-            viewModel.fetchAllPostedAds()
-        }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-        .padding()
     }
 }
 
 struct ProfileHeaderView: View {
+    @State var isPostAddOpen = false
     var body: some View {
         VStack {
             HStack {
@@ -39,18 +44,21 @@ struct ProfileHeaderView: View {
                     .foregroundColor(AppColor.colorDark)
                 
                 Spacer()
-                
-                Button {
-                    
+                NavigationLink(isActive: $isPostAddOpen) {
+                    PostAddView(isPostAddOpen: $isPostAddOpen)
                 } label: {
-                    Text("New Add")
-                        .foregroundColor(AppColor.colorPrimary)
-                        .font(Font.custom("gilroy-semibold", size: 15))
-                        .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                    Button {
+                        isPostAddOpen.toggle()
+                    } label: {
+                        Text("New Add")
+                            .foregroundColor(AppColor.colorPrimary)
+                            .font(Font.custom("gilroy-semibold", size: 15))
+                            .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                    }
+                    .background(AppColor.colorLightGray)
+                    .cornerRadius(20)
+                    .padding(.leading, 30)
                 }
-                .background(AppColor.colorLightGray)
-                .cornerRadius(20)
-                .padding(.leading, 30)
             }
             .padding(.top, 10)
         }

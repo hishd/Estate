@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PostAddView: View {
     @ObservedObject var viewModel = PostAddViewModel()
-    let isPostAddOpen: Bool
+    @Binding var isPostAddOpen: Bool
     var body: some View {
         VStack {
             Text("Add Information")
@@ -25,6 +25,7 @@ struct PostAddView: View {
             .padding(.top, 20)
         }
         .frame(maxHeight: .infinity, alignment: .top)
+        .navigationBarTitleDisplayMode(.inline)
         .padding()
     }
 }
@@ -32,11 +33,15 @@ struct PostAddView: View {
 struct ImageContainerView: View {
     @Binding var addItem: NewAddItem
     @ObservedObject var viewModel: PostAddViewModel
+    @State private var showPickerSheet = false
     
     var body: some View {
         HStack {
             VStack {
-                ImagePlaceholderItem(viewModel: viewModel,isDeedImage: true, image: addItem.deedImage)
+                ImagePlaceholderItem(viewModel: viewModel,
+                                     isDeedImage: true,
+                                     image: addItem.deedImage,
+                                     showPickerSheet: $showPickerSheet)
                     .padding(.top, 10)
                 
                 Text("Deed Image")
@@ -50,12 +55,13 @@ struct ImageContainerView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             if addItem.addImages.count <= 5 {
-                                ImagePlaceholderItem(viewModel: viewModel)
+                                ImagePlaceholderItem(viewModel: viewModel, showPickerSheet: $showPickerSheet)
                             }
                             ForEach(Array(addItem.addImages.enumerated()), id: \.element) { index, imageItem in
-                                ImagePlaceholderItem(viewModel: viewModel
-                                                     , index: index,
-                                                     image: imageItem)
+                                ImagePlaceholderItem(viewModel: viewModel,
+                                                     index: index,
+                                                     image: imageItem,
+                                                     showPickerSheet: $showPickerSheet)
                             }
                         }
                     }
@@ -74,6 +80,16 @@ struct ImageContainerView: View {
             .padding(.leading, 10)
         }
         .frame(maxWidth: .infinity)
+        .sheet(isPresented: $showPickerSheet) {
+            ImagePicker(sourceType: .photoLibrary) { image in
+                guard let image = image else {
+                    return
+                }
+                withAnimation {
+                    viewModel.addItem.addImages.append(image)
+                }
+            }
+        }
     }
 }
 
@@ -82,10 +98,12 @@ struct ImagePlaceholderItem: View {
     var index: Int?
     var isDeedImage = false
     @State var image: UIImage?
-    @State private var showPickerSheet = false
+    @Binding var showPickerSheet: Bool
     
     var body: some View {
         VStack {
+            //If theres a selected image is present
+            ///Show the Image with a remove button
             if let image = image {
                 ZStack(alignment: .top) {
                     Image(uiImage: image)
@@ -107,6 +125,8 @@ struct ImagePlaceholderItem: View {
                     .padding([.top, .trailing], 3)
                 }
             } else {
+                //If there is no selected image present
+                ///Show only the add image button
                 Button {
                     showPickerSheet.toggle()
                 } label: {
@@ -128,16 +148,6 @@ struct ImagePlaceholderItem: View {
         .frame(width: 80, height: 80)
         .background(AppColor.colorLightGray)
         .cornerRadius(10)
-        .sheet(isPresented: $showPickerSheet) {
-            ImagePicker(sourceType: .photoLibrary) { image in
-                guard let image = image else {
-                    return
-                }
-                withAnimation {
-                    viewModel.addItem.addImages.append(image)
-                }
-            }
-        }
     }
 }
 
@@ -289,7 +299,7 @@ struct AddInformationInputView: View {
 struct PostAddView_Previews: PreviewProvider {
     @State static var isPostAddOpen = false
     static var previews: some View {
-        PostAddView(isPostAddOpen: self.isPostAddOpen)
+        PostAddView(isPostAddOpen: self.$isPostAddOpen)
     }
 }
 
