@@ -64,11 +64,15 @@ struct SignInTopView: View {
         VStack {
             HStack {
                 Spacer()
-                NavigationLink("Sign Up", destination: SignUpView(showSignUpView: $showSignUpView), isActive: $showSignUpView)
+                NavigationLink("Sign Up",
+                               destination: LazyView(view: {
+                                    SignUpView(showSignUpView: $showSignUpView)
+                                }),
+                               isActive: $showSignUpView)
                     .navigationTitle("Sign in")
                     .foregroundColor(AppColor.colorPrimary)
                     .font(Font.custom("gilroy-semibold", size: 18))
-            }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 30))
+            }.padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 30))
         }
     }
 }
