@@ -159,7 +159,9 @@ struct SettingsActionsContainer: View {
             
 
             NavigationLink(isActive: $viewModel.isPasswordOpen) {
-                ChangePasswordView(isPasswordOpen: $viewModel.isPasswordOpen)
+                LazyView {
+                    ChangePasswordView(isPasswordOpen: $viewModel.isPasswordOpen)
+                }
             } label: {
                 Button("Change Password") {
                     viewModel.isPasswordOpen.toggle()
