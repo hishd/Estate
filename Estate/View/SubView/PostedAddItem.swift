@@ -13,15 +13,21 @@ struct PostedAddItem: View {
         HStack {
             if let imageUrl = addItem.addImageUrls?[0] {
                 ZStack {
-                    AsyncImage(url: URL(string: imageUrl)) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 150, height: 140)
-                            .clipped()
-                    } placeholder: {
-                        ProgressView("Loading")
-                            .padding()
+                    AsyncImage(url: URL(string: imageUrl), transaction: Transaction(animation: .spring())) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView("Loading")
+                                .padding()
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 150, height: 140)
+                                .clipped()
+                                .transition(.scale)
+                        default:
+                            Image(systemName: "exclamationmark.icloud")
+                        }
                     }
                 }
             } else {
