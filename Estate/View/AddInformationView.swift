@@ -13,7 +13,7 @@ struct AddInformationView: View {
     var body: some View {
         VStack {
             // TODO: - Remove the sample add images after firebase integration
-            AddImageSlider(addImages: sampleAddImages)
+            AddImageSlider(addImages: addItem.addImageUrls ?? [])
                 .frame(height: 250)
             
             Text(addItem.addCaption)
@@ -89,11 +89,11 @@ struct AddInformationContainer: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.top, 10)
+            .padding(.top, 15)
             
             //: Price and Size of Land Container
             HStack(alignment: .bottom, spacing: 20) {
-                HStack(alignment: .bottom,spacing: 15) {
+                HStack(alignment: .bottom, spacing: 15) {
                     Image("lkr")
                         .resizable()
                         .frame(width: 25, height: 16)
@@ -103,7 +103,7 @@ struct AddInformationContainer: View {
                     
                 }
                 
-                HStack(alignment: .bottom,spacing: 15) {
+                HStack(alignment: .bottom, spacing: 15) {
                     Image("size")
                         .resizable()
                         .frame(width: 20, height: 20)

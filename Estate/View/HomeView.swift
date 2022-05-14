@@ -10,21 +10,24 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
     var body: some View {
-        ZStack {
-            VStack {
-                TopView(viewModel: viewModel)
-                AddList(viewModel: viewModel)
+        NavigationView {
+            ZStack {
+                VStack {
+                    TopView(viewModel: viewModel)
+                    AddList(viewModel: viewModel)
+                }
+                .padding()
+                .onAppear {
+                    viewModel.getAllAds()
+    //                viewModel.isGuestUser = false
+                }
+                .blur(radius: viewModel.userFilterVisible ? 3 : 0)
+                if viewModel.userFilterVisible {
+                    BottomFilterView(viewModel: viewModel)
+                        .transition(.move(edge: .bottom))
+                }
             }
-            .padding()
-            .onAppear {
-                viewModel.getAllAds()
-//                viewModel.isGuestUser = false
-            }
-            .blur(radius: viewModel.userFilterVisible ? 3 : 0)
-            if viewModel.userFilterVisible {
-                BottomFilterView(viewModel: viewModel)
-                    .transition(.move(edge: .bottom))
-            }
+            .navigationBarHidden(true)
         }
     }
 }
@@ -36,8 +39,14 @@ struct AddList: View {
         ScrollView {
             LazyVGrid (columns: columns, spacing: 20) {
                 ForEach(viewModel.ads) { item in
-                    AddItemView(addItem: item.addItem)
-                        .aspectRatio(2/3, contentMode: .fit)
+                    NavigationLink {
+                        AddInformationView(addItem: item.addItem)
+                            .navigationTitle("Ad Information")
+                            .navigationBarTitleDisplayMode(.inline)
+                    } label: {
+                        AddItemView(addItem: item.addItem)
+                            .aspectRatio(2/3, contentMode: .fit)
+                    }
                 }
             }
         }
