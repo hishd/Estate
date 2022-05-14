@@ -15,11 +15,26 @@ struct AddItemView: View {
         ZStack {
             VStack {
                 if let imageUrl = addItem.addImageUrls?[0] {
-                    AsyncImage(url: URL(string: imageUrl)) { image in
-                        image.resizable()
-                    } placeholder: {
-                        ProgressView()
+                    ZStack {
+//                        AsyncImage(url: URL(string: imageUrl)) { image in
+//                            image.resizable()
+//                                .transition(.slide)
+//                        } placeholder: {
+//                            ProgressView()
+//                        }
+                        AsyncImage(url: URL(string: imageUrl), transaction: Transaction(animation: .spring())) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                            case .success(let image):
+                                image.resizable()
+                                .transition(.scale)
+                            default:
+                                Image(systemName: "exclamationmark.icloud")
+                            }
+                        }
                     }
+                    .frame(maxHeight: .infinity)
                 }
                 VStack {
                     HStack {

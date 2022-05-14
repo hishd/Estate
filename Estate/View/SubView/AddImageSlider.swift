@@ -23,14 +23,15 @@ struct AddImageSlider: View {
 struct ImageSliderItem: View {
     let imageUrl: String
     var body: some View {
-        AsyncImage(url: URL(string: imageUrl)) { image in
-            image
-                .resizable()
-                .cornerRadius(15)
-        } placeholder: {
-            ProgressView("Loading")
+        ZStack {
+            AsyncImage(url: URL(string: imageUrl)) { image in
+                image
+                    .resizable()
+                    .cornerRadius(15)
+            } placeholder: {
+                ProgressView("Loading")
+            }
         }
-
     }
 }
 

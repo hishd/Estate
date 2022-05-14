@@ -12,14 +12,17 @@ struct PostedAddItem: View {
     var body: some View {
         HStack {
             if let imageUrl = addItem.addImageUrls?[0] {
-                AsyncImage(url: URL(string: imageUrl)) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 150, height: 140)
-                        .clipped()
-                } placeholder: {
-                    ProgressView("Loading")
+                ZStack {
+                    AsyncImage(url: URL(string: imageUrl)) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 150, height: 140)
+                            .clipped()
+                    } placeholder: {
+                        ProgressView("Loading")
+                            .padding()
+                    }
                 }
             } else {
                 Image("sample-land")
