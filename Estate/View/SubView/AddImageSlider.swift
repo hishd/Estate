@@ -24,12 +24,19 @@ struct ImageSliderItem: View {
     let imageUrl: String
     var body: some View {
         ZStack {
-            AsyncImage(url: URL(string: imageUrl)) { image in
-                image
-                    .resizable()
-                    .cornerRadius(15)
-            } placeholder: {
-                ProgressView("Loading")
+            AsyncImage(url: URL(string: imageUrl), transaction: Transaction(animation: .spring())) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView("Loading")
+                        .padding()
+                case .success(let image):
+                    image
+                        .resizable()
+                        .cornerRadius(15)
+                        .transition(.scale)
+                default:
+                    Image(systemName: "exclamationmark.icloud")
+                }
             }
         }
     }
