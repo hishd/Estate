@@ -75,10 +75,12 @@ struct PostedAddItem: View {
                 .padding(.top, 3)
             }
             .padding(.horizontal)
+            .padding(.vertical, 10)
             Spacer()
         }
         .background(AppColor.colorLightGray)
         .cornerRadius(10)
+        .frame(height: 150)
     }
 }
 
