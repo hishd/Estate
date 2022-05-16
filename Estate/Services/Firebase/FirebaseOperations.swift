@@ -36,26 +36,50 @@ class FirebaseOperations {
         }
     }
     
-    func checkAndCreateAuthAccount(email: String) async throws -> Bool {
+    func registerUserAsync(user: User) async throws -> Bool {
+        guard try await checkAndCreateAuthAccount(email: user.emailAddress, password: user.password), try await createUseronDB(user: user) else {
+            return false
+        }
+        
+        return true
+    }
+    
+    private func checkAndCreateAuthAccount(email: String, password: String) async throws -> Bool {
         try await withCheckedThrowingContinuation({ continuation in
             self.db.collection("users")
                 .whereField("emailAddress", isEqualTo: email)
                 .getDocuments { snapshot, error in
-                    guard error != nil else {
-                        return continuation.resume(throwing: FirebaseOperationError.unknown)
+                    
+                    if let error = error {
+                        debugPrint(error)
+                        continuation.resume(throwing: FirebaseOperationError.unknown)
                     }
                     
-                    if let _ = snapshot?.documents.isEmpty {
-                        continuation.resume(throwing: FirebaseOperationError.userExists)
+                    guard let snapshot = snapshot else {
+                        continuation.resume(throwing: FirebaseOperationError.unknown)
+                        return
+                    }
+                    
+                    ///Check if the snapshot contains any data (existing data means theres already a user with the given email)
+                    if snapshot.documents.isEmpty {
+                        self.auth.createUser(withEmail: email, password: password) { result, error in
+                            guard result != nil, error == nil else {
+                                debugPrint(error?.localizedDescription ?? "")
+                                continuation.resume(throwing: FirebaseOperationError.userCreationFailed)
+                                return
+                            }
+                            
+                            continuation.resume(returning: true)
+                        }
                     } else {
-                        //TODO: Create Autentication account
-                        continuation.resume(returning: true)
+                        ///Return error - user exists when snapshot contains data
+                        continuation.resume(throwing: FirebaseOperationError.userExists)
                     }
                 }
         })
     }
     
-    func registerUserAsync(user: User) async throws -> Bool {
+    private func createUseronDB(user: User) async throws -> Bool {
         try await withCheckedThrowingContinuation { continuation in
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/YYYY"

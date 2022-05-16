@@ -34,6 +34,7 @@ class Authenticationtests: XCTestCase {
             let result = try await FirebaseOperations.shared.registerUserAsync(user: user)
             XCTAssertTrue(result)
         } catch {
+            debugPrint(error)
             XCTFail("Registration Failed with input data")
         }
     }
