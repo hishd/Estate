@@ -108,7 +108,7 @@ struct UserInformationTextFields: View {
                     .onChange(of: viewModel.mobileNo) { newValue in
                         viewModel.isValidMobile = FieldValidator.shared.isValidMobileNo(of: newValue)
                     }
-                ErrorPlaceholder(isValid: $viewModel.isValidMobile, message: ValidationCaptions.invalidMobileNo.rawValue)
+                TextFieldErrorPlaceholder(isValid: $viewModel.isValidMobile, message: ValidationCaptions.invalidMobileNo.rawValue)
             }
             
             VStack {
@@ -132,7 +132,7 @@ struct UserInformationTextFields: View {
                     .padding(.leading, 30)
                 }
                 
-                ErrorPlaceholder(isValid: $viewModel.isValidLocation, message: ValidationCaptions.invalidLocation.rawValue)
+                TextFieldErrorPlaceholder(isValid: $viewModel.isValidLocation, message: ValidationCaptions.invalidLocation.rawValue)
             }
         }
         .font(Font.custom("gilroy-regular", size: 18))

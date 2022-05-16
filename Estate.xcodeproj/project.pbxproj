@@ -25,7 +25,7 @@
 		4F6E18DE27F627E300375B25 /* FieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6E18DD27F627E200375B25 /* FieldValidator.swift */; };
 		4F71996D27F4C71E00024AC3 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F71996C27F4C71E00024AC3 /* SignUpViewModel.swift */; };
 		4F8AC2D428031A2400C0ED6D /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AC2D328031A2400C0ED6D /* AppData.swift */; };
-		4F909A6027F80C7400FF1CC2 /* ErrorDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F909A5F27F80C7400FF1CC2 /* ErrorDisplayView.swift */; };
+		4F909A6027F80C7400FF1CC2 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F909A5F27F80C7400FF1CC2 /* ErrorMessage.swift */; };
 		4FADBFD427F36F6800503E5A /* EstateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FADBFD327F36F6800503E5A /* EstateApp.swift */; };
 		4FADBFD827F36F6A00503E5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FADBFD727F36F6A00503E5A /* Assets.xcassets */; };
 		4FADBFDB27F36F6A00503E5A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FADBFDA27F36F6A00503E5A /* Preview Assets.xcassets */; };
@@ -102,7 +102,7 @@
 		4F6E18DD27F627E200375B25 /* FieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValidator.swift; sourceTree = "<group>"; };
 		4F71996C27F4C71E00024AC3 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		4F8AC2D328031A2400C0ED6D /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
-		4F909A5F27F80C7400FF1CC2 /* ErrorDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDisplayView.swift; sourceTree = "<group>"; };
+		4F909A5F27F80C7400FF1CC2 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		4FADBFD027F36F6800503E5A /* Estate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Estate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FADBFD327F36F6800503E5A /* EstateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstateApp.swift; sourceTree = "<group>"; };
 		4FADBFD727F36F6A00503E5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				4F2D42EE27F792A5006155FA /* ErrorPlaceholderView.swift */,
-				4F909A5F27F80C7400FF1CC2 /* ErrorDisplayView.swift */,
+				4F909A5F27F80C7400FF1CC2 /* ErrorMessage.swift */,
 				4F2E471C27FFFCD30071AC9B /* AddItemView.swift */,
 				4FFDBA4B28029D7C00EC832A /* BottomView.swift */,
 				4FF481102805B87A00C53D86 /* AddImageSlider.swift */,
@@ -725,7 +725,7 @@
 				4FADC01A27F3706600503E5A /* SignInViewModel.swift in Sources */,
 				FDC8D1A2280E13E4003A2999 /* ChangePasswordViewModel.swift in Sources */,
 				FDDC25AC281C24F4009D9B52 /* PostAddService.swift in Sources */,
-				4F909A6027F80C7400FF1CC2 /* ErrorDisplayView.swift in Sources */,
+				4F909A6027F80C7400FF1CC2 /* ErrorMessage.swift in Sources */,
 				FD707A78280E005400CFB8A8 /* UserSettings.swift in Sources */,
 				4FD3B9DC280602D0002CE51E /* NumberCommaSeperator.swift in Sources */,
 				4F2E47212801FB1A0071AC9B /* HomeViewModel.swift in Sources */,

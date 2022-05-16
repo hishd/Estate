@@ -25,7 +25,7 @@ struct ChangePasswordView: View {
                             Spacer()
                         }
                         SecureField("Enter current Password", text: $viewModel.currentPassword)
-                        ErrorPlaceholder(isValid: $viewModel.isCorrectCurrentPassword, message: ValidationCaptions.passwordsNoMatch.rawValue)
+                        TextFieldErrorPlaceholder(isValid: $viewModel.isCorrectCurrentPassword, message: ValidationCaptions.passwordsNoMatch.rawValue)
                     }
                     
                     VStack {
@@ -38,7 +38,7 @@ struct ChangePasswordView: View {
                                 viewModel.isValidPassword = FieldValidator.shared.isValidPassword(of: viewModel.newPassword)
                                 viewModel.isMatchingPasswords = viewModel.newPassword.elementsEqual(viewModel.confirmPassword)
                             }
-                        ErrorPlaceholder(isValid: $viewModel.isValidPassword, message: ValidationCaptions.invalidPassword.rawValue)
+                        TextFieldErrorPlaceholder(isValid: $viewModel.isValidPassword, message: ValidationCaptions.invalidPassword.rawValue)
                     }
                     
                     VStack {
@@ -50,7 +50,7 @@ struct ChangePasswordView: View {
                             .onChange(of: viewModel.confirmPassword) { newValue in
                                 viewModel.isMatchingPasswords = viewModel.newPassword.elementsEqual(viewModel.confirmPassword)
                             }
-                        ErrorPlaceholder(isValid: $viewModel.isMatchingPasswords, message: ValidationCaptions.passwordsNoMatch.rawValue)
+                        TextFieldErrorPlaceholder(isValid: $viewModel.isMatchingPasswords, message: ValidationCaptions.passwordsNoMatch.rawValue)
                     }
                     
                     Button {

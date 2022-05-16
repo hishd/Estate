@@ -92,7 +92,7 @@ struct SignInInputView: View {
                         EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0)
                 )
             
-            ErrorDisplayView(isShown: $signInViewModel.isError, message: $signInViewModel.errorCaption)
+            ErrorMessage(isShown: $signInViewModel.isError, message: $signInViewModel.errorCaption)
             
             VStack {
                 HStack {
@@ -105,7 +105,7 @@ struct SignInInputView: View {
                     .onChange(of: signInViewModel.emailAddress) { newValue in
                         signInViewModel.isValidEmail = FieldValidator.shared.isValidEmailAddress(of: signInViewModel.emailAddress)
                     }
-                ErrorPlaceholder(isValid: $signInViewModel.isValidEmail, message: ValidationCaptions.invalidEmail.rawValue)
+                TextFieldErrorPlaceholder(isValid: $signInViewModel.isValidEmail, message: ValidationCaptions.invalidEmail.rawValue)
                     .frame(height: 20, alignment: .trailing)
             }.padding([.leading, .trailing, .top],30)
             
@@ -118,7 +118,7 @@ struct SignInInputView: View {
                     .onChange(of: signInViewModel.password) { newValue in
                         signInViewModel.isValidPassword = FieldValidator.shared.isValidPassword(of: signInViewModel.password)
                     }
-                ErrorPlaceholder(isValid: $signInViewModel.isValidPassword, message: ValidationCaptions.invalidPassword.rawValue)
+                TextFieldErrorPlaceholder(isValid: $signInViewModel.isValidPassword, message: ValidationCaptions.invalidPassword.rawValue)
                     .frame(height: 20, alignment: .trailing)
                     
             }.padding(EdgeInsets(top: 10, leading: 30, bottom: 0, trailing: 30))
@@ -158,7 +158,7 @@ struct SignInBottomView: View {
             Button {
                 signInViewModel.userSignIn(emailAddress: signInViewModel.emailAddress, password: signInViewModel.password)
             } label: {
-                Text(signInViewModel.isSignedIn ? "Success" : "Sign In")
+                Text("Sign In")
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
                     .font(Font.custom("gilroy-semibold", size: 18))
@@ -189,8 +189,8 @@ struct SignInBottomView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView()
-            .previewDevice("iPhone 8")
+//        SignInView()
+//            .previewDevice("iPhone 8")
         SignInView()
             .previewDevice("iPhone 11")
     }

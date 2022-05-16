@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ErrorDisplayView: View {
+struct ErrorMessage: View {
     @Binding var isShown: Bool
     @Binding var message: String
     var body: some View {

@@ -59,7 +59,7 @@ struct SignUpInputView: View {
                     .onChange(of: viewModel.nicNo) { newValue in
                         viewModel.isValidNIC = FieldValidator.shared.isValidNIC(of: newValue)
                     }
-                ErrorPlaceholder(isValid: $viewModel.isValidNIC, message: ValidationCaptions.invalidNIC.rawValue)
+                TextFieldErrorPlaceholder(isValid: $viewModel.isValidNIC, message: ValidationCaptions.invalidNIC.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -73,7 +73,7 @@ struct SignUpInputView: View {
                     .onChange(of: viewModel.name) { newValue in
                         viewModel.isValidName = FieldValidator.shared.isValidPersonName(of: newValue)
                     }
-                ErrorPlaceholder(isValid: $viewModel.isValidName,message: ValidationCaptions.invalidName.rawValue)
+                TextFieldErrorPlaceholder(isValid: $viewModel.isValidName,message: ValidationCaptions.invalidName.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -88,7 +88,7 @@ struct SignUpInputView: View {
                     .onChange(of: viewModel.mobileNo) { newValue in
                         viewModel.isValidMobile = FieldValidator.shared.isValidMobileNo(of: newValue)
                     }
-                ErrorPlaceholder(isValid: $viewModel.isValidMobile, message: ValidationCaptions.invalidMobileNo.rawValue)
+                TextFieldErrorPlaceholder(isValid: $viewModel.isValidMobile, message: ValidationCaptions.invalidMobileNo.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -103,7 +103,7 @@ struct SignUpInputView: View {
                     .onChange(of: viewModel.emailAddress) { newValue in
                         viewModel.isValidEmail = FieldValidator.shared.isValidEmailAddress(of: newValue)
                     }
-                ErrorPlaceholder(isValid: $viewModel.isValidEmail, message: ValidationCaptions.invalidEmail.rawValue)
+                TextFieldErrorPlaceholder(isValid: $viewModel.isValidEmail, message: ValidationCaptions.invalidEmail.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -157,7 +157,7 @@ struct SignUpInputView: View {
                     .padding(.leading, 30)
                 }
                 
-                ErrorPlaceholder(isValid: $viewModel.isValidLocation, message: ValidationCaptions.invalidLocation.rawValue)
+                TextFieldErrorPlaceholder(isValid: $viewModel.isValidLocation, message: ValidationCaptions.invalidLocation.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
@@ -171,7 +171,7 @@ struct SignUpInputView: View {
                         viewModel.isValidPassword = FieldValidator.shared.isValidPassword(of: viewModel.password)
                         viewModel.isMatchingPasswords = viewModel.password.elementsEqual(viewModel.confirmPassword)
                     }
-                ErrorPlaceholder(isValid: $viewModel.isValidPassword, message: ValidationCaptions.invalidPassword.rawValue)
+                TextFieldErrorPlaceholder(isValid: $viewModel.isValidPassword, message: ValidationCaptions.invalidPassword.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
             
@@ -184,7 +184,7 @@ struct SignUpInputView: View {
                     .onChange(of: viewModel.confirmPassword) { newValue in
                         viewModel.isMatchingPasswords = viewModel.password.elementsEqual(viewModel.confirmPassword)
                     }
-                ErrorPlaceholder(isValid: $viewModel.isMatchingPasswords, message: ValidationCaptions.passwordsNoMatch.rawValue)
+                TextFieldErrorPlaceholder(isValid: $viewModel.isMatchingPasswords, message: ValidationCaptions.passwordsNoMatch.rawValue)
             }
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
             

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ErrorPlaceholder: View {
+struct TextFieldErrorPlaceholder: View {
     @Binding var isValid: Bool
     let message: String
     

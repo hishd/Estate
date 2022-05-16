@@ -169,7 +169,7 @@ struct AddInformationInputView: View {
                                 viewModel.isValidPrice = FieldValidator.shared.isValidPrice(of: newValue)
                             }
                             .keyboardType(.decimalPad)
-                        ErrorPlaceholder(isValid: $viewModel.isValidPrice, message: ValidationCaptions.invalidPrice.rawValue)
+                        TextFieldErrorPlaceholder(isValid: $viewModel.isValidPrice, message: ValidationCaptions.invalidPrice.rawValue)
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
                     
@@ -183,7 +183,7 @@ struct AddInformationInputView: View {
                                 viewModel.isValidLandSize = FieldValidator.shared.isValidLandSize(of: newValue)
                             }
                             .keyboardType(.decimalPad)
-                        ErrorPlaceholder(isValid: $viewModel.isValidLandSize, message: ValidationCaptions.invalidLandSize.rawValue)
+                        TextFieldErrorPlaceholder(isValid: $viewModel.isValidLandSize, message: ValidationCaptions.invalidLandSize.rawValue)
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
                 }
@@ -219,7 +219,7 @@ struct AddInformationInputView: View {
                             .onChange(of: viewModel.town) { newValue in
                                 viewModel.isValidTown = FieldValidator.shared.isValidTownName(of: newValue)
                             }
-                        ErrorPlaceholder(isValid: $viewModel.isValidTown, message: ValidationCaptions.invalidTown.rawValue)
+                        TextFieldErrorPlaceholder(isValid: $viewModel.isValidTown, message: ValidationCaptions.invalidTown.rawValue)
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
                 }
@@ -246,7 +246,7 @@ struct AddInformationInputView: View {
                         .padding(.leading, 30)
                     }
                     
-                    ErrorPlaceholder(isValid: $viewModel.isValidLocation, message: ValidationCaptions.invalidLocation.rawValue)
+                    TextFieldErrorPlaceholder(isValid: $viewModel.isValidLocation, message: ValidationCaptions.invalidLocation.rawValue)
                 }
                 .padding(.top, 10)
                 
@@ -273,7 +273,7 @@ struct AddInformationInputView: View {
                         .overlay(RoundedRectangle(cornerRadius: 8)
                         .stroke(Color.secondary).opacity(0.5))
                         .frame(height: 100)
-                    ErrorPlaceholder(isValid: $viewModel.isValidInformation, message: ValidationCaptions.invalidInformation.rawValue)
+                    TextFieldErrorPlaceholder(isValid: $viewModel.isValidInformation, message: ValidationCaptions.invalidInformation.rawValue)
                 }
                 .padding(.top, 10)
                 
