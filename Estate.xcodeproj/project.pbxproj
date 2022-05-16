@@ -11,7 +11,7 @@
 		387F965472F669F83393330A /* Pods_Estate_EstateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B47DE85F4852A5ABF0BE9849 /* Pods_Estate_EstateUITests.framework */; };
 		4F0815BF27FE0FEF00418BDD /* AddItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0815BE27FE0FEF00418BDD /* AddItem.swift */; };
 		4F0815C127FE12DE00418BDD /* PostAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0815C027FE12DE00418BDD /* PostAddViewModel.swift */; };
-		4F2D42EF27F792A5006155FA /* ErrorPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D42EE27F792A5006155FA /* ErrorPlaceholderView.swift */; };
+		4F2D42EF27F792A5006155FA /* TextFieldErrorPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D42EE27F792A5006155FA /* TextFieldErrorPlaceholder.swift */; };
 		4F2D42F227F7960B006155FA /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D42F127F7960B006155FA /* AppConstants.swift */; };
 		4F2E09AB2805F70300B8F8C5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E09AA2805F70300B8F8C5 /* ProfileViewModel.swift */; };
 		4F2E09AD2805F75C00B8F8C5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E09AC2805F75C00B8F8C5 /* SettingsViewModel.swift */; };
@@ -53,6 +53,7 @@
 		4FFDBA4E2802A0F000EC832A /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA4D2802A0F000EC832A /* AppColor.swift */; };
 		4FFDBA512802CEE900EC832A /* CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA502802CEE900EC832A /* CustomRoundCorners.swift */; };
 		950321DF765A6042B3A38E1D /* Pods_EstateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA216CAE6E54B5F5BB460F /* Pods_EstateTests.framework */; };
+		FD46005C28323FDB00663C47 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46005B28323FDB00663C47 /* MessageView.swift */; };
 		FD66DACB282ECBF300FF8846 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD66DACA282ECBF300FF8846 /* LazyView.swift */; };
 		FD6C5D5E2819195100B7B1B5 /* PostAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6C5D5D2819195100B7B1B5 /* PostAddView.swift */; };
 		FD707A6C280DF39000CFB8A8 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A6B280DF39000CFB8A8 /* AuthenticationService.swift */; };
@@ -88,7 +89,7 @@
 		1CF766718431429D70E72A0C /* Pods-Estate-EstateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate-EstateUITests.release.xcconfig"; path = "Target Support Files/Pods-Estate-EstateUITests/Pods-Estate-EstateUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4F0815BE27FE0FEF00418BDD /* AddItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItem.swift; sourceTree = "<group>"; };
 		4F0815C027FE12DE00418BDD /* PostAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAddViewModel.swift; sourceTree = "<group>"; };
-		4F2D42EE27F792A5006155FA /* ErrorPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPlaceholderView.swift; sourceTree = "<group>"; };
+		4F2D42EE27F792A5006155FA /* TextFieldErrorPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldErrorPlaceholder.swift; sourceTree = "<group>"; };
 		4F2D42F127F7960B006155FA /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		4F2E09AA2805F70300B8F8C5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		4F2E09AC2805F75C00B8F8C5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -140,6 +141,7 @@
 		DB6B96D89CC239FCF5F79CC7 /* Pods-EstateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EstateTests.debug.xcconfig"; path = "Target Support Files/Pods-EstateTests/Pods-EstateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DBA96DE20AD77ED79AD6CFCC /* Pods-Estate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate.release.xcconfig"; path = "Target Support Files/Pods-Estate/Pods-Estate.release.xcconfig"; sourceTree = "<group>"; };
 		F3CD8365D3709A48DCA5BA96 /* Pods-Estate-EstateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate-EstateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Estate-EstateUITests/Pods-Estate-EstateUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FD46005B28323FDB00663C47 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		FD66DACA282ECBF300FF8846 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		FD6C5D5D2819195100B7B1B5 /* PostAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAddView.swift; sourceTree = "<group>"; };
 		FD707A6B280DF39000CFB8A8 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
@@ -195,12 +197,13 @@
 		4F909A5E27F80C5A00FF1CC2 /* SubView */ = {
 			isa = PBXGroup;
 			children = (
-				4F2D42EE27F792A5006155FA /* ErrorPlaceholderView.swift */,
+				4F2D42EE27F792A5006155FA /* TextFieldErrorPlaceholder.swift */,
 				4F909A5F27F80C7400FF1CC2 /* ErrorMessage.swift */,
 				4F2E471C27FFFCD30071AC9B /* AddItemView.swift */,
 				4FFDBA4B28029D7C00EC832A /* BottomView.swift */,
 				4FF481102805B87A00C53D86 /* AddImageSlider.swift */,
 				4F2E09AE2805F79100B8F8C5 /* PostedAddItem.swift */,
+				FD46005B28323FDB00663C47 /* MessageView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -741,11 +744,12 @@
 				4F6E18DE27F627E300375B25 /* FieldValidator.swift in Sources */,
 				4FADBFD427F36F6800503E5A /* EstateApp.swift in Sources */,
 				FDC8D1A0280E13CA003A2999 /* ChangePasswordView.swift in Sources */,
-				4F2D42EF27F792A5006155FA /* ErrorPlaceholderView.swift in Sources */,
+				4F2D42EF27F792A5006155FA /* TextFieldErrorPlaceholder.swift in Sources */,
 				4F71996D27F4C71E00024AC3 /* SignUpViewModel.swift in Sources */,
 				4F2E09AD2805F75C00B8F8C5 /* SettingsViewModel.swift in Sources */,
 				4F6E18DC27F5DF6200375B25 /* FirebaseOperations.swift in Sources */,
 				4FADC01427F3706600503E5A /* User.swift in Sources */,
+				FD46005C28323FDB00663C47 /* MessageView.swift in Sources */,
 				4F2E471D27FFFCD30071AC9B /* AddItemView.swift in Sources */,
 				4F0815BF27FE0FEF00418BDD /* AddItem.swift in Sources */,
 				4F6E18DA27F5C1BA00375B25 /* SignUpView.swift in Sources */,
