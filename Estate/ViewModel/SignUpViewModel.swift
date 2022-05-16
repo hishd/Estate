@@ -19,6 +19,12 @@ class SignUpViewModel: NSObject, ObservableObject {
     @Published var password: String = ""
     @Published var confirmPassword: String = ""
     
+    @Published var errorSignup = false
+    @Published var errorSignupMessage: String = ""
+    
+    @Published var isOnProgress = false
+    @Published var isShowingSuccess = false
+    
     lazy var manager: CLLocationManager = {
         var locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -72,7 +78,7 @@ extension SignUpViewModel {
             isValidPassword = false
             return false
         }
-        if password.elementsEqual(confirmPassword) {
+        if !password.elementsEqual(confirmPassword) {
             isMatchingPasswords = false
             return false
         }
@@ -81,11 +87,37 @@ extension SignUpViewModel {
     }
     
     @MainActor
-    func registeruser() {
+    func registeruser() async -> Bool {
         //Final check of the input fields
+        self.isOnProgress = true
         if validateInput() {
-            //Process Gender, Location, DOB before sending the user instance
+            do {
+                let user = User(nicNo: self.nicNo,
+                                password: self.password,
+                                name: self.name,
+                                mobileNo: self.mobileNo,
+                                emailAddress: self.emailAddress,
+                                dob: self.dob,
+                                gender: self.isMale ? "Male" : "Female",
+                                locationLat: self.locationLat,
+                                locationLon: self.locationLon)
+                guard try await FirebaseOperations.shared.registerUserAsync(user: user) else {
+                    return false
+                }
+                self.isOnProgress = false
+                return true
+            } catch {
+                self.errorSignup = true
+                switch error {
+                case let error as FirebaseOperationError:
+                    self.errorSignupMessage = error.localizedDescription
+                default:
+                    self.errorSignupMessage = FirebaseOperationError.unknown.localizedDescription
+                }
+            }
         }
+        self.isOnProgress = false
+        return false
     }
 }
 

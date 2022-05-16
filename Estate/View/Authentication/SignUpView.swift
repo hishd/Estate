@@ -10,10 +10,8 @@ import CoreLocationUI
 
 struct SignUpView: View {
     
-    @State var isShowingSuccess = false
     @Binding var showSignUpView: Bool
     @StateObject var viewModel = SignUpViewModel()
-    let messageCallback: ((String) -> Void)?
     
     var body: some View {
         VStack {
@@ -21,15 +19,24 @@ struct SignUpView: View {
                 SignUpTopView()
                     .padding(.bottom, 30)
                 SignUpInputView(viewModel: viewModel)
-                    .alert("Signup Successful", isPresented: $isShowingSuccess) {
+                    .alert("Signup Successful", isPresented: $viewModel.isShowingSuccess) {
                         Button("Ok") {
-                            self.isShowingSuccess = false
+                            viewModel.isShowingSuccess = false
                             self.showSignUpView = false
                         }
+                    } message: {
+                        Text("User Signup successful. Please use your provided credentials on Signin.")
                     }
             }
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
+        .alert("Sign up Error", isPresented: $viewModel.errorSignup) {
+            
+        } message: {
+            Text(viewModel.errorSignupMessage)
+        }
+        .progressDialog(isShowing: $viewModel.isOnProgress, message: "Please wait...", progress: Progress(totalUnitCount: 0))
+
     }
 }
 
@@ -110,21 +117,6 @@ struct SignUpInputView: View {
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
             
             VStack {
-//                HStack {
-//                    Text("Date of Birth")
-//                    Spacer()
-//                }
-//                HStack {
-//                    TextField("Day", text: $user.dobDay)
-//                        .padding(.trailing, 10)
-//                        .keyboardType(.numberPad)
-//                    TextField("Month", text: $user.dobMonth)
-//                        .padding(.trailing, 10)
-//                        .keyboardType(.numberPad)
-//                    TextField("Year", text: $user.dobYear)
-//                        .keyboardType(.numberPad)
-//                }
-                
                 DatePicker(selection: $viewModel.dob , in: ...Date(), displayedComponents: .date) {
                     Text("Date of Birth")
                 }
@@ -146,17 +138,6 @@ struct SignUpInputView: View {
                 HStack {
                     TextField("Press button to load", text: $viewModel.currentLocation)
                         .disabled(true)
-//                    Button {
-//
-//                    } label: {
-//                        Text("Fetch")
-//                            .foregroundColor(AppColor.colorPrimary)
-//                            .font(Font.custom("gilroy-semibold", size: 18))
-//                            .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-//                    }
-//                    .background(AppColor.colorLightGray)
-//                    .cornerRadius(20)
-//                    .padding(.leading, 30)
                     
                     LocationButton(.currentLocation) {
                         viewModel.loadCurrentLocation()
@@ -198,7 +179,11 @@ struct SignUpInputView: View {
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
             
             Button {
-                viewModel.registeruser()
+                Task {
+                    if await viewModel.registeruser() {
+                        viewModel.isShowingSuccess = true
+                    }
+                }
             } label: {
                 Text("Sign Up")
                     .foregroundColor(.white)
@@ -217,7 +202,7 @@ struct SignUpInputView: View {
 struct SignUpView_Previews: PreviewProvider {
     @State static var showSignUpView = false
     static var previews: some View {
-        SignUpView(showSignUpView: self.$showSignUpView, messageCallback: nil)
+        SignUpView(showSignUpView: self.$showSignUpView)
             .previewDevice("iPhone 11")
     }
 }

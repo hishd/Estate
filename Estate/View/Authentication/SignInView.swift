@@ -67,9 +67,7 @@ struct SignInTopView: View {
                 Spacer()
                 NavigationLink("Sign Up",
                                destination: LazyView(view: {
-                                    SignUpView(showSignUpView: $showSignUpView, messageCallback: { message in
-                                        self.signInViewModel.messageCaption = message
-                                    })
+                                    SignUpView(showSignUpView: $showSignUpView)
                                 }),
                                isActive: $showSignUpView)
                     .navigationTitle("Sign in")
@@ -96,9 +94,6 @@ struct SignInInputView: View {
                 )
             
             ErrorMessage(isShown: $signInViewModel.isError, message: $signInViewModel.errorCaption)
-            if !signInViewModel.messageCaption.isEmpty {
-                MessageView(message: $signInViewModel.messageCaption, color: AppColor.colorPrimary)
-            }
             
             VStack {
                 HStack {

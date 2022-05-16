@@ -67,6 +67,7 @@
 		FDC8D1A2280E13E4003A2999 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8D1A1280E13E4003A2999 /* ChangePasswordViewModel.swift */; };
 		FDDA9448282069620058EFF9 /* UIKitRepresentables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA9447282069620058EFF9 /* UIKitRepresentables.swift */; };
 		FDDC25AC281C24F4009D9B52 /* PostAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDC25AB281C24F4009D9B52 /* PostAddService.swift */; };
+		FDE98FC22832C70400262C10 /* ProgressDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE98FC12832C70400262C10 /* ProgressDialog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,7 @@
 		FDC8D1A1280E13E4003A2999 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		FDDA9447282069620058EFF9 /* UIKitRepresentables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitRepresentables.swift; sourceTree = "<group>"; };
 		FDDC25AB281C24F4009D9B52 /* PostAddService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAddService.swift; sourceTree = "<group>"; };
+		FDE98FC12832C70400262C10 /* ProgressDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDialog.swift; sourceTree = "<group>"; };
 		FF92AB0E85B9E02B9B4A9C7E /* Pods-Estate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate.debug.xcconfig"; path = "Target Support Files/Pods-Estate/Pods-Estate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +208,7 @@
 				4FF481102805B87A00C53D86 /* AddImageSlider.swift */,
 				4F2E09AE2805F79100B8F8C5 /* PostedAddItem.swift */,
 				FD46005B28323FDB00663C47 /* MessageView.swift */,
+				FDE98FC12832C70400262C10 /* ProgressDialog.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				4FADBFD427F36F6800503E5A /* EstateApp.swift in Sources */,
 				FDC8D1A0280E13CA003A2999 /* ChangePasswordView.swift in Sources */,
 				4F2D42EF27F792A5006155FA /* TextFieldErrorPlaceholder.swift in Sources */,
+				FDE98FC22832C70400262C10 /* ProgressDialog.swift in Sources */,
 				4F71996D27F4C71E00024AC3 /* SignUpViewModel.swift in Sources */,
 				4F2E09AD2805F75C00B8F8C5 /* SettingsViewModel.swift in Sources */,
 				4F6E18DC27F5DF6200375B25 /* FirebaseOperations.swift in Sources */,
