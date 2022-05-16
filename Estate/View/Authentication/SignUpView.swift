@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreLocation
 import CoreLocationUI
 
 struct SignUpView: View {
@@ -145,7 +144,7 @@ struct SignUpInputView: View {
                     Spacer()
                 }
                 HStack {
-                    TextField("Press Button to load", text: $viewModel.location)
+                    TextField("Press button to load", text: $viewModel.currentLocation)
                         .disabled(true)
 //                    Button {
 //
@@ -160,10 +159,11 @@ struct SignUpInputView: View {
 //                    .padding(.leading, 30)
                     
                     LocationButton(.currentLocation) {
-                        
+                        viewModel.loadCurrentLocation()
                     }
                     .labelStyle(.iconOnly)
                     .cornerRadius(8)
+                    .tint(AppColor.colorPrimary)
                 }
                 
                 TextFieldErrorPlaceholder(isValid: $viewModel.isValidLocation, message: ValidationCaptions.invalidLocation.rawValue)

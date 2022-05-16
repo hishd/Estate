@@ -13,7 +13,7 @@ enum ValidationCaptions: String {
     case invalidName = "Invalid person name"
     case invalidMobileNo = "Invalid Mobile no."
     case invalidEmail = "Invalid Email Address"
-    case invalidLocation = "Select fetch to load location"
+    case invalidLocation = "Please turn on location & press load"
     case invalidPassword = "Password minimum length is 8"
     case passwordsNoMatch = "Passwords don't match"
     case invalidPrice = "Invalid Price"
