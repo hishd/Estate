@@ -19,16 +19,14 @@ class FirebaseOperations {
         return auth.currentUser != nil
     }
     
-    private init() {
-        
-    }
+    private init() {}
     
     func signInAsync(emailAddress: String, password: String) async throws -> Bool {
         try await withCheckedThrowingContinuation { continuation in
             let auth = Auth.auth()
             auth.signIn(withEmail: emailAddress, password: password) { result, error in
                 guard result != nil, error == nil else {
-                    debugPrint(error?.localizedDescription)
+                    debugPrint(error?.localizedDescription ?? "")
                     continuation.resume(throwing: SignInError.operationError)
                     return
                 }

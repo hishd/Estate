@@ -318,16 +318,12 @@
 		4FADC00D27F3706600503E5A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FD46005A28323BBB00663C47 /* Ads */,
+				FD46005928323BA100663C47 /* Profile */,
+				FD46005828323B8500663C47 /* TabView */,
+				FD46005728323A5A00663C47 /* Authentication */,
 				4FADC00F27F3706600503E5A /* Launch Screen.storyboard */,
 				4FBB7BA728035ED4000A583C /* MainView.swift */,
-				4FADC00E27F3706600503E5A /* SignInView.swift */,
-				4F6E18D927F5C1BA00375B25 /* SignUpView.swift */,
-				4F2E471E2801FB070071AC9B /* HomeView.swift */,
-				4FBB7BA928035F28000A583C /* SettingsView.swift */,
-				4FBB7BAB28035F33000A583C /* ProfileView.swift */,
-				4FF4810C2805B54900C53D86 /* AddInformationView.swift */,
-				FDC8D19F280E13CA003A2999 /* ChangePasswordView.swift */,
-				FD6C5D5D2819195100B7B1B5 /* PostAddView.swift */,
 				4F909A5E27F80C5A00FF1CC2 /* SubView */,
 			);
 			path = View;
@@ -378,6 +374,42 @@
 				B8B7058F66406B659285C1E0 /* Pods-EstateTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FD46005728323A5A00663C47 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4FADC00E27F3706600503E5A /* SignInView.swift */,
+				4F6E18D927F5C1BA00375B25 /* SignUpView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		FD46005828323B8500663C47 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				4F2E471E2801FB070071AC9B /* HomeView.swift */,
+				4FBB7BA928035F28000A583C /* SettingsView.swift */,
+				4FBB7BAB28035F33000A583C /* ProfileView.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
+		FD46005928323BA100663C47 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FDC8D19F280E13CA003A2999 /* ChangePasswordView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		FD46005A28323BBB00663C47 /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				4FF4810C2805B54900C53D86 /* AddInformationView.swift */,
+				FD6C5D5D2819195100B7B1B5 /* PostAddView.swift */,
+			);
+			path = Ads;
 			sourceTree = "<group>";
 		};
 		FD707A66280DF26200CFB8A8 /* Authentication */ = {
