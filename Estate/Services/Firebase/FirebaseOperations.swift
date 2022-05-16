@@ -36,6 +36,25 @@ class FirebaseOperations {
         }
     }
     
+    func checkAndCreateAuthAccount(email: String) async throws -> Bool {
+        try await withCheckedThrowingContinuation({ continuation in
+            self.db.collection("users")
+                .whereField("emailAddress", isEqualTo: email)
+                .getDocuments { snapshot, error in
+                    guard error != nil else {
+                        return continuation.resume(throwing: FirebaseOperationError.unknown)
+                    }
+                    
+                    if let _ = snapshot?.documents.isEmpty {
+                        continuation.resume(throwing: FirebaseOperationError.userExists)
+                    } else {
+                        //TODO: Create Autentication account
+                        continuation.resume(returning: true)
+                    }
+                }
+        })
+    }
+    
     func registerUserAsync(user: User) async throws -> Bool {
         try await withCheckedThrowingContinuation { continuation in
             let dateFormatter = DateFormatter()
@@ -53,11 +72,30 @@ class FirebaseOperations {
                 ]) { error in
                     if let error = error {
                         debugPrint(error)
-                        continuation.resume(throwing: error)
+                        continuation.resume(throwing: FirebaseOperationError.unknown)
                     } else {
                         continuation.resume(returning: true)
                     }
                 }
+        }
+    }
+}
+
+public enum FirebaseOperationError: Error {
+    case userExists
+    case userCreationFailed
+    case unknown
+}
+
+extension FirebaseOperationError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .userExists:
+            return NSLocalizedString("User already exists with email address", comment: "User already exists")
+        case .userCreationFailed:
+            return NSLocalizedString("User creation failed with error", comment: "User creation failed")
+        case .unknown:
+            return NSLocalizedString("unknown error occurred while creating user", comment: "Unknown error")
         }
     }
 }
