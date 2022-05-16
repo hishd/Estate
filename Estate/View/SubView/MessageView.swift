@@ -9,14 +9,11 @@ import Foundation
 import SwiftUI
 
 struct MessageView: View {
-    @Binding var isShown: Bool
     @Binding var message: String
-    @Binding var color: Color
+    let color: Color
     var body: some View {
-        if isShown {
-            Text(message)
-                .foregroundColor(color)
-                .font(Font.custom("gilroy-regular", size: 15))
-        }
+        Text(message)
+            .foregroundColor(color)
+            .font(Font.custom("gilroy-regular", size: 15))
     }
 }

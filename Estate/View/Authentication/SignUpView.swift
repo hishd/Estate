@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import CoreLocation
+import CoreLocationUI
 
 struct SignUpView: View {
     
     @State var isShowingSuccess = false
     @Binding var showSignUpView: Bool
     @StateObject var viewModel = SignUpViewModel()
+    let messageCallback: ((String) -> Void)?
     
     var body: some View {
         VStack {
@@ -142,19 +145,25 @@ struct SignUpInputView: View {
                     Spacer()
                 }
                 HStack {
-                    TextField("Press Fetch to load", text: $viewModel.location)
+                    TextField("Press Button to load", text: $viewModel.location)
                         .disabled(true)
-                    Button {
+//                    Button {
+//
+//                    } label: {
+//                        Text("Fetch")
+//                            .foregroundColor(AppColor.colorPrimary)
+//                            .font(Font.custom("gilroy-semibold", size: 18))
+//                            .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+//                    }
+//                    .background(AppColor.colorLightGray)
+//                    .cornerRadius(20)
+//                    .padding(.leading, 30)
+                    
+                    LocationButton(.currentLocation) {
                         
-                    } label: {
-                        Text("Fetch")
-                            .foregroundColor(AppColor.colorPrimary)
-                            .font(Font.custom("gilroy-semibold", size: 18))
-                            .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
                     }
-                    .background(AppColor.colorLightGray)
-                    .cornerRadius(20)
-                    .padding(.leading, 30)
+                    .labelStyle(.iconOnly)
+                    .cornerRadius(8)
                 }
                 
                 TextFieldErrorPlaceholder(isValid: $viewModel.isValidLocation, message: ValidationCaptions.invalidLocation.rawValue)
@@ -208,7 +217,7 @@ struct SignUpInputView: View {
 struct SignUpView_Previews: PreviewProvider {
     @State static var showSignUpView = false
     static var previews: some View {
-        SignUpView(showSignUpView: self.$showSignUpView)
+        SignUpView(showSignUpView: self.$showSignUpView, messageCallback: nil)
             .previewDevice("iPhone 11")
     }
 }

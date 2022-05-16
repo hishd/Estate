@@ -26,7 +26,7 @@ struct LargeScaleDevice: View {
     var body: some View {
         NavigationView {
             VStack {
-                SignInTopView(showSignUpView: $signInViewModel.showSignUpView)
+                SignInTopView(showSignUpView: $signInViewModel.showSignUpView, signInViewModel: signInViewModel)
                 Spacer()
                 SignInInputView(signInViewModel: signInViewModel, isSmallDevice: false)
                 SignInForgotPasswordView()
@@ -44,7 +44,7 @@ struct SmallScaleDevice: View {
         NavigationView {
             VStack {
                 ScrollView {
-                    SignInTopView(showSignUpView: $signInViewModel.showSignUpView)
+                    SignInTopView(showSignUpView: $signInViewModel.showSignUpView, signInViewModel: signInViewModel)
                     Spacer()
                     SignInInputView(signInViewModel: signInViewModel, isSmallDevice: true)
                     SignInForgotPasswordView()
@@ -59,6 +59,7 @@ struct SmallScaleDevice: View {
 
 struct SignInTopView: View {
     @Binding var showSignUpView: Bool
+    @ObservedObject var signInViewModel: SignInViewModel
     
     var body: some View {
         VStack {
@@ -66,7 +67,9 @@ struct SignInTopView: View {
                 Spacer()
                 NavigationLink("Sign Up",
                                destination: LazyView(view: {
-                                    SignUpView(showSignUpView: $showSignUpView)
+                                    SignUpView(showSignUpView: $showSignUpView, messageCallback: { message in
+                                        self.signInViewModel.messageCaption = message
+                                    })
                                 }),
                                isActive: $showSignUpView)
                     .navigationTitle("Sign in")
@@ -93,6 +96,9 @@ struct SignInInputView: View {
                 )
             
             ErrorMessage(isShown: $signInViewModel.isError, message: $signInViewModel.errorCaption)
+            if !signInViewModel.messageCaption.isEmpty {
+                MessageView(message: $signInViewModel.messageCaption, color: AppColor.colorPrimary)
+            }
             
             VStack {
                 HStack {

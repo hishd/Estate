@@ -12,6 +12,7 @@ class SignInViewModel: ObservableObject {
     @Published var isSignedIn = false
     @Published var isError = false
     @Published var errorCaption = ""
+    @Published var messageCaption = ""
     
     // MARK: - Input Field Validations
     @Published var isValidEmail = true
