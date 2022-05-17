@@ -9,13 +9,14 @@ import SwiftUI
 
 struct SignInView: View {
     let screenHeight: Int = Int(UIScreen.main.bounds.height)
+    @EnvironmentObject var settings: UserSettings
     
     var body: some View {
         VStack {
             if screenHeight > 667 {
-                LargeScaleDevice()
+                LargeScaleDevice(settings: settings)
             } else {
-                SmallScaleDevice()
+                SmallScaleDevice(settings: settings)
             }
         }
     }
@@ -23,6 +24,7 @@ struct SignInView: View {
 
 struct LargeScaleDevice: View {
     @StateObject private var signInViewModel = SignInViewModel()
+    @ObservedObject var settings: UserSettings
     var body: some View {
         NavigationView {
             VStack {
@@ -30,7 +32,7 @@ struct LargeScaleDevice: View {
                 Spacer()
                 SignInInputView(signInViewModel: signInViewModel, isSmallDevice: false)
                 SignInForgotPasswordView()
-                SignInBottomView(signInViewModel: signInViewModel)
+                SignInBottomView(signInViewModel: signInViewModel, settings: settings)
                 Spacer()
             }
             .navigationBarHidden(true)
@@ -40,6 +42,7 @@ struct LargeScaleDevice: View {
 
 struct SmallScaleDevice: View {
     @StateObject private var signInViewModel = SignInViewModel()
+    @ObservedObject var settings: UserSettings
     var body: some View {
         NavigationView {
             VStack {
@@ -48,7 +51,7 @@ struct SmallScaleDevice: View {
                     Spacer()
                     SignInInputView(signInViewModel: signInViewModel, isSmallDevice: true)
                     SignInForgotPasswordView()
-                    SignInBottomView(signInViewModel: signInViewModel)
+                    SignInBottomView(signInViewModel: signInViewModel, settings: settings)
                     Spacer()
                 }
             }
@@ -153,11 +156,18 @@ struct SignInForgotPasswordView: View {
 
 struct SignInBottomView: View {
     @ObservedObject var signInViewModel: SignInViewModel
-    
+    @ObservedObject var settings: UserSettings
     var body: some View {
         VStack {
             Button {
-                signInViewModel.userSignIn(emailAddress: signInViewModel.emailAddress, password: signInViewModel.password)
+                //Calling Async method through Task Block
+                //Modifying the loggedIn value of the environment object to change the view
+                Task {
+                    let result = await signInViewModel.userSignIn()
+                    if result {
+                        settings.loggedIn = true
+                    }
+                }
             } label: {
                 Text("Sign In")
                     .foregroundColor(.white)

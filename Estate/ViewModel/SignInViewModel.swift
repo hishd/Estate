@@ -12,7 +12,6 @@ class SignInViewModel: ObservableObject {
     @Published var isSignedIn = false
     @Published var isError = false
     @Published var errorCaption = ""
-//    @Published var messageCaption = ""
     
     // MARK: - Input Field Validations
     @Published var isValidEmail = true
@@ -40,19 +39,19 @@ extension SignInViewModel {
     }
     
     @MainActor
-    func userSignIn(emailAddress: String, password: String) {
-        Task {
-            do {
-                let (result) = try await User().signIn(emailAddress: emailAddress, password: password)
-                DispatchQueue.main.async {
-                    self.isError = false
-                    self.isSignedIn = result
-                }
-            } catch {
-                debugPrint(error.localizedDescription)
-                isError = true
-                errorCaption = error.localizedDescription
+    func userSignIn() async -> Bool {
+        do {
+            let (result) = try await User().signIn(emailAddress: emailAddress, password: password)
+            DispatchQueue.main.async {
+                self.isError = false
+                self.isSignedIn = result
             }
+            return result
+        } catch {
+            debugPrint(error.localizedDescription)
+            isError = true
+            errorCaption = error.localizedDescription
+            return false
         }
     }
 }

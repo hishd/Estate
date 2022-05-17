@@ -101,7 +101,7 @@ extension SignUpViewModel {
                                 gender: self.isMale ? "Male" : "Female",
                                 locationLat: self.locationLat,
                                 locationLon: self.locationLon)
-                guard try await FirebaseOperations.shared.registerUserAsync(user: user) else {
+                guard try await user.signUp(user: user) else {
                     return false
                 }
                 self.isOnProgress = false
