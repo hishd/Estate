@@ -44,6 +44,13 @@ class FirebaseOperations {
         return true
     }
     
+    func signOutUser() throws {
+        try auth.signOut()
+    }
+}
+
+// MARK: Private methods of FirebaseOperations
+extension FirebaseOperations {
     private func checkAndCreateAuthAccount(email: String, password: String) async throws -> Bool {
         try await withCheckedThrowingContinuation({ continuation in
             self.db.collection("users")

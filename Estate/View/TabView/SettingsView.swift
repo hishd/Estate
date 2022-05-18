@@ -59,8 +59,13 @@ struct SettingsHeaderView: View {
                 .padding(.leading, 30)
                 .confirmationDialog("Sign out from EState?", isPresented: $viewModel.isSignOutShown, titleVisibility: .visible) {
                     Button("Sign Out", role: .destructive) {
-                        settings.loggedIn = false
+                        if viewModel.signOut() {
+                            settings.loggedIn = false
+                        }
                     }
+                }
+                .genericDialog(isShowing: $viewModel.isError) {
+                    Text(viewModel.errorMessage)
                 }
             }
         }

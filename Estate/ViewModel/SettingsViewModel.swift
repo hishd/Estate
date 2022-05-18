@@ -16,9 +16,22 @@ class SettingsViewModel: ObservableObject, UserUpdateService {
     // MARK: Input Field Validations
     @Published var isValidMobile: Bool = true
     @Published var isValidLocation: Bool = true
+    @Published var isError: Bool = false
+    @Published var errorMessage: String = ""
     
     func fetchLocation() {
         
+    }
+    
+    func signOut() -> Bool {
+        do {
+            try FirebaseOperations.shared.signOutUser()
+            return true
+        } catch {
+            self.isError = true
+            self.errorMessage = "Error occurred during sign out."
+        }
+        return false
     }
 }
 
