@@ -8,5 +8,6 @@
 import Foundation
 
 protocol AuthenticationService {
-    func performSignIn(email: String, password: String)
+    @MainActor
+    func performSignIn() async
 }

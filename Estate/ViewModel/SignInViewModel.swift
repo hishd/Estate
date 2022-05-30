@@ -19,6 +19,12 @@ class SignInViewModel: ObservableObject {
     
     @Published var emailAddress: String = ""
     @Published var password: String = ""
+    
+    var settingsEO: UserSettings?
+    
+    func setSettingsEO(eo: UserSettings) {
+        self.settingsEO = eo
+    }
 }
 
 extension SignInViewModel {
@@ -37,21 +43,25 @@ extension SignInViewModel {
         
         return true
     }
-    
+}
+
+// MARK: Concrete Methods
+extension SignInViewModel: AuthenticationService {
     @MainActor
-    func userSignIn() async -> Bool {
+    func performSignIn() async {
         do {
             let (result) = try await User().signIn(emailAddress: emailAddress, password: password)
             DispatchQueue.main.async {
                 self.isError = false
                 self.isSignedIn = result
             }
-            return result
+            if result {
+                self.settingsEO?.loggedIn = true
+            }
         } catch {
             debugPrint(error.localizedDescription)
             isError = true
             errorCaption = error.localizedDescription
-            return false
         }
     }
 }
