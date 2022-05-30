@@ -180,9 +180,7 @@ struct SignUpInputView: View {
             
             Button {
                 Task {
-                    if await viewModel.registeruser() {
-                        viewModel.isShowingSuccess = true
-                    }
+                    await viewModel.performRegistration()
                 }
             } label: {
                 Text("Sign Up")

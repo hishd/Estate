@@ -85,9 +85,12 @@ extension SignUpViewModel {
         
         return true
     }
-    
+}
+
+// MARK: Concrete Methods Implementation
+extension SignUpViewModel: AuthenticationService {
     @MainActor
-    func registeruser() async -> Bool {
+    func performRegistration() async {
         //Final check of the input fields
         self.isOnProgress = true
         if validateInput() {
@@ -102,10 +105,10 @@ extension SignUpViewModel {
                                 locationLat: self.locationLat,
                                 locationLon: self.locationLon)
                 guard try await user.signUp(user: user) else {
-                    return false
+                    return
                 }
                 self.isOnProgress = false
-                return true
+                self.isShowingSuccess = true
             } catch {
                 self.errorSignup = true
                 switch error {
@@ -117,7 +120,6 @@ extension SignUpViewModel {
             }
         }
         self.isOnProgress = false
-        return false
     }
 }
 

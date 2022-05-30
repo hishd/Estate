@@ -14,7 +14,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                SettingsHeaderView(viewModel: viewModel, settings: settings)
+                SettingsHeaderView(viewModel: viewModel)
                 UserInformationContainer(currentUser: settings.currentUser)
                     .padding(.top, 30)
                     .padding(.horizontal, 3)
@@ -31,12 +31,14 @@ struct SettingsView: View {
             
             .navigationBarHidden(true)
         }
+        .onAppear {
+            viewModel.setSettingsEO(eo: settings)
+        }
     }
 }
 
 struct SettingsHeaderView: View {
     @ObservedObject var viewModel: SettingsViewModel
-    @ObservedObject var settings: UserSettings
     var body: some View {
         VStack {
             HStack {
@@ -59,9 +61,7 @@ struct SettingsHeaderView: View {
                 .padding(.leading, 30)
                 .confirmationDialog("Sign out from EState?", isPresented: $viewModel.isSignOutShown, titleVisibility: .visible) {
                     Button("Sign Out", role: .destructive) {
-                        if viewModel.signOut() {
-                            settings.loggedIn = false
-                        }
+                        viewModel.signOut()
                     }
                 }
                 .genericDialog(isShowing: $viewModel.isError) {

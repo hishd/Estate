@@ -20,7 +20,7 @@ class SignInViewModel: ObservableObject {
     @Published var emailAddress: String = ""
     @Published var password: String = ""
     
-    var settingsEO: UserSettings?
+    private var settingsEO: UserSettings?
     
     func setSettingsEO(eo: UserSettings) {
         self.settingsEO = eo

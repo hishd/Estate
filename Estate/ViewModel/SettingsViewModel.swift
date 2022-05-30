@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SettingsViewModel: ObservableObject, UserUpdateService {
+class SettingsViewModel: ObservableObject {
     @Published var mobileNo: String = ""
     @Published var location: String = ""
     @Published var isPasswordOpen: Bool = false
@@ -19,19 +19,24 @@ class SettingsViewModel: ObservableObject, UserUpdateService {
     @Published var isError: Bool = false
     @Published var errorMessage: String = ""
     
+    private var settingsEO: UserSettings?
+    
+    func setSettingsEO(eo: UserSettings) {
+        self.settingsEO = eo
+    }
+    
     func fetchLocation() {
         
     }
     
-    func signOut() -> Bool {
+    func signOut() {
         do {
             try FirebaseOperations.shared.signOutUser()
-            return true
+            settingsEO?.loggedIn = false
         } catch {
             self.isError = true
             self.errorMessage = "Error occurred during sign out."
         }
-        return false
     }
 }
 
@@ -50,7 +55,7 @@ extension SettingsViewModel {
     }
 }
 
-extension SettingsViewModel {
+extension SettingsViewModel: UserUpdateService {
     // MARK: Concrete methods
     @MainActor
     func updateUser(mobileNo: String, locationLat: Double, locationLon: Double) {
