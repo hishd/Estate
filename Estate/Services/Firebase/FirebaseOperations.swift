@@ -44,6 +44,34 @@ class FirebaseOperations {
         return true
     }
     
+    func getUserDataAsync(by email: String) async throws -> User? {
+        try await withCheckedThrowingContinuation({ continuation in
+            self.db.collection("users")
+                .whereField("emailAddress", isEqualTo: email)
+                .getDocuments { snapshot, error in
+                    if let error = error {
+                        debugPrint(error)
+                        continuation.resume(throwing: FirebaseOperationError.userDataNotFound)
+                    }
+                    
+                    guard let userData = snapshot?.documents.first?.data() else {
+                        continuation.resume(throwing: FirebaseOperationError.noData)
+                        return
+                    }
+                    
+                    continuation.resume(returning:
+                                            User(nicNo: userData["nicNo"] as! String,
+                                                name: userData["name"] as! String,
+                                                mobileNo: userData["mobileNo"] as! String,
+                                                emailAddress: userData["emailAddress"] as! String,
+                                                gender: userData["gender"] as! String,
+                                                locationLat: userData["locationLat"] as! Double,
+                                                locationLon: userData["locationLon"] as! Double)
+                    )
+                }
+        })
+    }
+    
     func signOutUser() throws {
         try auth.signOut()
     }
@@ -63,7 +91,7 @@ extension FirebaseOperations {
                     }
                     
                     guard let snapshot = snapshot else {
-                        continuation.resume(throwing: FirebaseOperationError.unknown)
+                        continuation.resume(throwing: FirebaseOperationError.noData)
                         return
                     }
                     
@@ -115,6 +143,8 @@ extension FirebaseOperations {
 public enum FirebaseOperationError: Error {
     case userExists
     case userCreationFailed
+    case userDataNotFound
+    case noData
     case unknown
 }
 
@@ -125,6 +155,10 @@ extension FirebaseOperationError: LocalizedError {
             return NSLocalizedString("User already exists with email address", comment: "User already exists")
         case .userCreationFailed:
             return NSLocalizedString("User creation failed with error", comment: "User creation failed")
+        case .userDataNotFound:
+            return NSLocalizedString("User data not found", comment: "User data not found")
+        case .noData:
+            return NSLocalizedString("No data found", comment: "No Data found")
         case .unknown:
             return NSLocalizedString("unknown error occurred while creating user", comment: "Unknown error")
         }

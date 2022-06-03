@@ -43,6 +43,10 @@ class User: Codable {
         self.init(nicNo: "", password: "", name: "", mobileNo: "", emailAddress: "", dob: Date(), gender: "", locationLat: 0, locationLon: 0)
     }
     
+    convenience init(nicNo: String, name: String, mobileNo: String, emailAddress: String, gender: String, locationLat: Double, locationLon: Double) {
+        self.init(nicNo: nicNo, password: "", name: name, mobileNo: mobileNo, emailAddress: emailAddress, dob: Date(), gender: gender, locationLat: locationLat, locationLon: locationLon)
+    }
+    
     func signIn(emailAddress: String, password: String) async throws -> Bool {
         if FirebaseOperations.shared.isSignedIn {
             return true

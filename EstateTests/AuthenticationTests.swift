@@ -38,4 +38,14 @@ class Authenticationtests: XCTestCase {
             XCTFail("Registration Failed with input data")
         }
     }
+    
+    func testGetUserData() async {
+        do {
+            let user = try await FirebaseOperations.shared.getUserDataAsync(by: "hisharadilshan2@gmail.com")
+            XCTAssertEqual(user?.nicNo, "963070080V")
+        } catch {
+            debugPrint(error)
+            XCTFail("Could not fetch user data")
+        }
+    }
 }
