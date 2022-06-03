@@ -9,7 +9,6 @@ import Foundation
 
 class SignInViewModel: ObservableObject {
     @Published var showSignUpView = false
-    @Published var isSignedIn = false
     @Published var isError = false
     @Published var errorCaption = ""
     
@@ -53,7 +52,6 @@ extension SignInViewModel: AuthenticationService {
             let (result) = try await User().signIn(emailAddress: emailAddress, password: password)
             DispatchQueue.main.async {
                 self.isError = false
-                self.isSignedIn = result
             }
             if result {
                 self.settingsEO?.loggedIn = true
