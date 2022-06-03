@@ -54,7 +54,11 @@ extension SignInViewModel: AuthenticationService {
                 self.isError = false
             }
             if result {
-                self.settingsEO?.loggedIn = true
+                if let user = try await User().getUserData(of: emailAddress) {
+                    SessionManager.shared.authState = true
+                    try SessionManager.shared.saveUserSession(for: user)
+                    self.settingsEO?.loggedIn = true
+                }
             }
         } catch {
             debugPrint(error.localizedDescription)

@@ -58,4 +58,8 @@ class User: Codable {
     func signUp(user: User) async throws -> Bool {
         return try await FirebaseOperations.shared.registerUserAsync(user: user)
     }
+    
+    func getUserData(of emailAddress: String) async throws -> User? {
+        return try await FirebaseOperations.shared.getUserDataAsync(by: emailAddress)
+    }
 }
