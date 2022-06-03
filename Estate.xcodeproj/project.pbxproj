@@ -53,6 +53,7 @@
 		4FFDBA4E2802A0F000EC832A /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA4D2802A0F000EC832A /* AppColor.swift */; };
 		4FFDBA512802CEE900EC832A /* CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA502802CEE900EC832A /* CustomRoundCorners.swift */; };
 		950321DF765A6042B3A38E1D /* Pods_EstateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA216CAE6E54B5F5BB460F /* Pods_EstateTests.framework */; };
+		FD24ED81284A808A001608CD /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24ED80284A808A001608CD /* SessionManager.swift */; };
 		FD46005C28323FDB00663C47 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46005B28323FDB00663C47 /* MessageView.swift */; };
 		FD46005E28325C9F00663C47 /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46005D28325C9E00663C47 /* AuthenticationTests.swift */; };
 		FD66DACB282ECBF300FF8846 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD66DACA282ECBF300FF8846 /* LazyView.swift */; };
@@ -143,6 +144,7 @@
 		DB6B96D89CC239FCF5F79CC7 /* Pods-EstateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EstateTests.debug.xcconfig"; path = "Target Support Files/Pods-EstateTests/Pods-EstateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DBA96DE20AD77ED79AD6CFCC /* Pods-Estate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate.release.xcconfig"; path = "Target Support Files/Pods-Estate/Pods-Estate.release.xcconfig"; sourceTree = "<group>"; };
 		F3CD8365D3709A48DCA5BA96 /* Pods-Estate-EstateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate-EstateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Estate-EstateUITests/Pods-Estate-EstateUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FD24ED80284A808A001608CD /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		FD46005B28323FDB00663C47 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		FD46005D28325C9E00663C47 /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
 		FD66DACA282ECBF300FF8846 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				4FF481122805BA5E00C53D86 /* SampleData.swift */,
 				FDDA9447282069620058EFF9 /* UIKitRepresentables.swift */,
 				FD66DACA282ECBF300FF8846 /* LazyView.swift */,
+				FD24ED80284A808A001608CD /* SessionManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -751,6 +754,7 @@
 				4FADBFD427F36F6800503E5A /* EstateApp.swift in Sources */,
 				FDC8D1A0280E13CA003A2999 /* ChangePasswordView.swift in Sources */,
 				4F2D42EF27F792A5006155FA /* TextFieldErrorPlaceholder.swift in Sources */,
+				FD24ED81284A808A001608CD /* SessionManager.swift in Sources */,
 				FDE98FC22832C70400262C10 /* ProgressDialog.swift in Sources */,
 				4F71996D27F4C71E00024AC3 /* SignUpViewModel.swift in Sources */,
 				4F2E09AD2805F75C00B8F8C5 /* SettingsViewModel.swift in Sources */,

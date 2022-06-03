@@ -12,7 +12,7 @@ enum SignInError: Error {
     case noUserFound
 }
 
-class User {
+class User: Codable {
     var nicNo: String
     var password: String
     var name: String

@@ -21,3 +21,8 @@ enum ValidationCaptions: String {
     case invalidTown = "Invalid Town"
     case invalidInformation = "Invalid Information"
 }
+
+enum SessionManagerKeys: String {
+    case userSession = "USER_SESSION"
+    case authState = "AUTH_STATE"
+}
