@@ -54,6 +54,7 @@
 		4FFDBA512802CEE900EC832A /* CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA502802CEE900EC832A /* CustomRoundCorners.swift */; };
 		950321DF765A6042B3A38E1D /* Pods_EstateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA216CAE6E54B5F5BB460F /* Pods_EstateTests.framework */; };
 		FD22CD8C28579FD800D8E8FC /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22CD8B28579FD800D8E8FC /* WebService.swift */; };
+		FD22CD8E2857ACCC00D8E8FC /* FakeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22CD8D2857ACCC00D8E8FC /* FakeAPIService.swift */; };
 		FD24ED81284A808A001608CD /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24ED80284A808A001608CD /* UserSettings.swift */; };
 		FD46005C28323FDB00663C47 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46005B28323FDB00663C47 /* MessageView.swift */; };
 		FD46005E28325C9F00663C47 /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46005D28325C9E00663C47 /* AuthenticationTests.swift */; };
@@ -139,6 +140,7 @@
 		DBA96DE20AD77ED79AD6CFCC /* Pods-Estate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate.release.xcconfig"; path = "Target Support Files/Pods-Estate/Pods-Estate.release.xcconfig"; sourceTree = "<group>"; };
 		F3CD8365D3709A48DCA5BA96 /* Pods-Estate-EstateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate-EstateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Estate-EstateUITests/Pods-Estate-EstateUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD22CD8B28579FD800D8E8FC /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		FD22CD8D2857ACCC00D8E8FC /* FakeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAPIService.swift; sourceTree = "<group>"; };
 		FD24ED80284A808A001608CD /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		FD46005B28323FDB00663C47 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		FD46005D28325C9E00663C47 /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 		4FADC00A27F3706600503E5A /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
+				FD22CD8D2857ACCC00D8E8FC /* FakeAPIService.swift */,
 				4F6E18DB27F5DF6100375B25 /* FirebaseOperations.swift */,
 				FD22CD8B28579FD800D8E8FC /* WebService.swift */,
 			);
@@ -658,6 +661,7 @@
 			files = (
 				4F0815C127FE12DE00418BDD /* PostAddViewModel.swift in Sources */,
 				4FBB7BA828035ED4000A583C /* MainView.swift in Sources */,
+				FD22CD8E2857ACCC00D8E8FC /* FakeAPIService.swift in Sources */,
 				4FF4810F2805B56200C53D86 /* AddInformationViewModel.swift in Sources */,
 				FDDA9448282069620058EFF9 /* UIKitRepresentables.swift in Sources */,
 				4FADC01A27F3706600503E5A /* SignInViewModel.swift in Sources */,
