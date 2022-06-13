@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class PostAddViewModel: ObservableObject, PostAddService {
+class PostAddViewModel: ObservableObject {
     @Published var addItem = NewAddItem(addItem: AddItem())
     @Published var isError = false
     

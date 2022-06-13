@@ -31,7 +31,7 @@ class SettingsViewModel: ObservableObject {
     
     func signOut() {
         do {
-            try FirebaseOperations.shared.signOutUser()
+            try User().performSignOut()
             UserSettings.shared.clearUserSession()
             settingsEO?.loggedIn = false
         } catch {
@@ -56,7 +56,7 @@ extension SettingsViewModel {
     }
 }
 
-extension SettingsViewModel: UserUpdateService {
+extension SettingsViewModel {
     // MARK: Concrete methods
     @MainActor
     func updateUser(mobileNo: String, locationLat: Double, locationLon: Double) {

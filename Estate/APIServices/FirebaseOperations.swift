@@ -9,19 +9,23 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 
-class FirebaseOperations {
-    static let shared = FirebaseOperations()
+class FirebaseService: WebService {
+    static let shared = FirebaseService()
     private let db = Firestore.firestore()
     weak var ref: DocumentReference?
     lazy var auth = Auth.auth()
     
+    private init() {}
+}
+
+
+// MARK: Authenticate Based Concrete Implementation
+extension FirebaseService {
     var isSignedIn: Bool {
         return auth.currentUser != nil
     }
     
-    private init() {}
-    
-    func signInAsync(emailAddress: String, password: String) async throws -> Bool {
+    func performSignIn(emailAddress: String, password: String) async throws -> Bool {
         try await withCheckedThrowingContinuation { continuation in
             let auth = Auth.auth()
             auth.signIn(withEmail: emailAddress, password: password) { result, error in
@@ -36,7 +40,11 @@ class FirebaseOperations {
         }
     }
     
-    func registerUserAsync(user: User) async throws -> Bool {
+    func performSignOut() throws {
+        try auth.signOut()
+    }
+    
+    func performRegistration(user: User) async throws -> Bool {
         guard try await checkAndCreateAuthAccount(email: user.emailAddress, password: user.password), try await createUseronDB(user: user) else {
             return false
         }
@@ -44,41 +52,6 @@ class FirebaseOperations {
         return true
     }
     
-    func getUserDataAsync(by email: String) async throws -> User? {
-        try await withCheckedThrowingContinuation({ continuation in
-            self.db.collection("users")
-                .whereField("emailAddress", isEqualTo: email)
-                .getDocuments { snapshot, error in
-                    if let error = error {
-                        debugPrint(error)
-                        continuation.resume(throwing: FirebaseOperationError.userDataNotFound)
-                    }
-                    
-                    guard let userData = snapshot?.documents.first?.data() else {
-                        continuation.resume(throwing: FirebaseOperationError.noData)
-                        return
-                    }
-                    
-                    continuation.resume(returning:
-                                            User(nicNo: userData["nicNo"] as! String,
-                                                name: userData["name"] as! String,
-                                                mobileNo: userData["mobileNo"] as! String,
-                                                emailAddress: userData["emailAddress"] as! String,
-                                                gender: userData["gender"] as! String,
-                                                locationLat: userData["locationLat"] as! Double,
-                                                locationLon: userData["locationLon"] as! Double)
-                    )
-                }
-        })
-    }
-    
-    func signOutUser() throws {
-        try auth.signOut()
-    }
-}
-
-// MARK: Private methods of FirebaseOperations
-extension FirebaseOperations {
     private func checkAndCreateAuthAccount(email: String, password: String) async throws -> Bool {
         try await withCheckedThrowingContinuation({ continuation in
             self.db.collection("users")
@@ -137,6 +110,76 @@ extension FirebaseOperations {
                     }
                 }
         }
+    }
+}
+
+// MARK: User Based Concrete Implementation
+extension FirebaseService {
+    func getUserDataAsync(by email: String) async throws -> User? {
+        try await withCheckedThrowingContinuation({ continuation in
+            self.db.collection("users")
+                .whereField("emailAddress", isEqualTo: email)
+                .getDocuments { snapshot, error in
+                    if let error = error {
+                        debugPrint(error)
+                        continuation.resume(throwing: FirebaseOperationError.userDataNotFound)
+                    }
+                    
+                    guard let userData = snapshot?.documents.first?.data() else {
+                        continuation.resume(throwing: FirebaseOperationError.noData)
+                        return
+                    }
+                    
+                    continuation.resume(returning:
+                                            User(nicNo: userData["nicNo"] as! String,
+                                                name: userData["name"] as! String,
+                                                mobileNo: userData["mobileNo"] as! String,
+                                                emailAddress: userData["emailAddress"] as! String,
+                                                gender: userData["gender"] as! String,
+                                                locationLat: userData["locationLat"] as! Double,
+                                                locationLon: userData["locationLon"] as! Double)
+                    )
+                }
+        })
+    }
+    
+    func updateUser(mobileNo: String, locationLat: Double, locationLon: Double) async throws -> Bool {
+        return false
+    }
+    
+    func updatePassword(of email: String, of current: String, with new: String) async throws -> Bool {
+        return false
+    }
+}
+
+// MARK: Ads based Concrete Implementation
+extension FirebaseService {
+    func fetchAllAds() async throws -> [AddItem] {
+        return []
+    }
+    
+    func filterAds(by district: String) async throws -> [AddItem] {
+        return []
+    }
+    
+    func filterAds(minPrice: Double, maxPrice: Double, maxRadius: Int, isLand: Bool) async throws -> [AddItem] {
+        return []
+    }
+    
+    func fetchMyAds(by email: String) async throws -> [AddItem] {
+        return []
+    }
+    
+    func removeAdd(by addId: String) async throws -> Bool {
+        return false
+    }
+    
+    func updateAdd(by addId: String, with addItem: AddItem) async throws -> Bool {
+        return false
+    }
+    
+    func postNewAdd(of content: NewAddContent) async throws -> Bool {
+        return false
     }
 }
 

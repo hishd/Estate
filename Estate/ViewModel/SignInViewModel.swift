@@ -46,15 +46,15 @@ extension SignInViewModel {
 }
 
 // MARK: Concrete Methods
-extension SignInViewModel: AuthenticationService {
+extension SignInViewModel {
     @MainActor
     func performSignIn() async {
         do {
             self.isOnProgress = true
-            let (result) = try await User().signIn(emailAddress: emailAddress, password: password)
+            let (result) = try await User().performSignIn(emailAddress: emailAddress, password: password)
             self.isError = false
             if result {
-                if let user = try await User().getUserData(of: emailAddress) {
+                if let user = try await User().getUserDataAsync(by: emailAddress) {
                     UserSettings.shared.authState = true
                     try UserSettings.shared.saveUserSession(for: user)
                     self.isOnProgress = false

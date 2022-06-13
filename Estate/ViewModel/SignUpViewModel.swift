@@ -88,7 +88,7 @@ extension SignUpViewModel {
 }
 
 // MARK: Concrete Methods Implementation
-extension SignUpViewModel: AuthenticationService {
+extension SignUpViewModel {
     @MainActor
     func performRegistration() async {
         //Final check of the input fields
@@ -104,7 +104,7 @@ extension SignUpViewModel: AuthenticationService {
                                 gender: self.isMale ? "Male" : "Female",
                                 locationLat: self.locationLat,
                                 locationLon: self.locationLon)
-                guard try await user.signUp(user: user) else {
+                guard try await user.performRegistration(user: user) else {
                     return
                 }
                 self.isOnProgress = false

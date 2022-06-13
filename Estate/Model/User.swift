@@ -47,19 +47,35 @@ class User: Codable {
         self.init(nicNo: nicNo, password: "", name: name, mobileNo: mobileNo, emailAddress: emailAddress, dob: Date(), gender: gender, locationLat: locationLat, locationLon: locationLon)
     }
     
-    func signIn(emailAddress: String, password: String) async throws -> Bool {
-        if FirebaseOperations.shared.isSignedIn {
+}
+
+extension User: UserService, AuthenticationService {
+    
+    func performSignIn(emailAddress: String, password: String) async throws -> Bool {
+        if FirebaseService.shared.isSignedIn {
             return true
         } else {
-            return try await FirebaseOperations.shared.signInAsync(emailAddress: emailAddress, password: password)
+            return try await FirebaseService.shared.performSignIn(emailAddress: emailAddress, password: password)
         }
     }
     
-    func signUp(user: User) async throws -> Bool {
-        return try await FirebaseOperations.shared.registerUserAsync(user: user)
+    func performRegistration(user: User) async throws -> Bool {
+        return try await FirebaseService.shared.performRegistration(user: user)
     }
     
-    func getUserData(of emailAddress: String) async throws -> User? {
-        return try await FirebaseOperations.shared.getUserDataAsync(by: emailAddress)
+    func getUserDataAsync(by email: String) async throws -> User? {
+        return try await FirebaseService.shared.getUserDataAsync(by: emailAddress)
+    }
+    
+    func updateUser(mobileNo: String, locationLat: Double, locationLon: Double) async throws -> Bool {
+        return try await FirebaseService.shared.updateUser(mobileNo: mobileNo, locationLat: locationLat, locationLon: locationLon)
+    }
+    
+    func updatePassword(of email: String, of current: String, with new: String) async throws -> Bool {
+        return try await FirebaseService.shared.updatePassword(of: email, of: current, with: new)
+    }
+    
+    func performSignOut() throws {
+        try FirebaseService.shared.performSignOut()
     }
 }
