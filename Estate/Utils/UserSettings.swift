@@ -50,6 +50,11 @@ class UserSettings: ObservableObject {
         }
     }
     
+    func clearUserSession() {
+        UserDefaults.standard.removeObject(forKey: SessionManagerKeys.authState.rawValue)
+        UserDefaults.standard.removeObject(forKey: SessionManagerKeys.userSession.rawValue)
+    }
+    
 //    func getUserSession() throws -> User? {
 //        guard let session = UserDefaults.standard.string(forKey: SessionManagerKeys.userSession.rawValue) else {
 //            NSLog("Previous Sessions not found")

@@ -32,6 +32,7 @@ class SettingsViewModel: ObservableObject {
     func signOut() {
         do {
             try FirebaseOperations.shared.signOutUser()
+            UserSettings.shared.clearUserSession()
             settingsEO?.loggedIn = false
         } catch {
             self.isError = true
