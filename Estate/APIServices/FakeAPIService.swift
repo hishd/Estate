@@ -8,9 +8,13 @@
 import Foundation
 
 class FakeAPIService: WebService {
-    let shared = FakeAPIService()
+    static let shared = FakeAPIService()
     
     private init() {}
+    
+    var isSignedIn: Bool {
+        return true
+    }
     
     func getUserDataAsync(by email: String) async throws -> User? {
         return User(nicNo: "", password: "", name: "", mobileNo: "", emailAddress: "", dob: Date(), gender: "", locationLat: 0, locationLon: 0)

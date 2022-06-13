@@ -9,8 +9,8 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 
-class FirebaseService: WebService {
-    static let shared = FirebaseService()
+class FirebaseAPIService: WebService {
+    static let shared = FirebaseAPIService()
     private let db = Firestore.firestore()
     weak var ref: DocumentReference?
     lazy var auth = Auth.auth()
@@ -20,7 +20,7 @@ class FirebaseService: WebService {
 
 
 // MARK: Authenticate Based Concrete Implementation
-extension FirebaseService {
+extension FirebaseAPIService {
     var isSignedIn: Bool {
         return auth.currentUser != nil
     }
@@ -114,7 +114,7 @@ extension FirebaseService {
 }
 
 // MARK: User Based Concrete Implementation
-extension FirebaseService {
+extension FirebaseAPIService {
     func getUserDataAsync(by email: String) async throws -> User? {
         try await withCheckedThrowingContinuation({ continuation in
             self.db.collection("users")
@@ -153,7 +153,7 @@ extension FirebaseService {
 }
 
 // MARK: Ads based Concrete Implementation
-extension FirebaseService {
+extension FirebaseAPIService {
     func fetchAllAds() async throws -> [AddItem] {
         return []
     }

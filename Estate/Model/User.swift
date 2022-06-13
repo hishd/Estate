@@ -51,31 +51,35 @@ class User: Codable {
 
 extension User: UserService, AuthenticationService {
     
+    var isSignedIn: Bool {
+        return APIServiceFactory.getApiService().isSignedIn
+    }
+    
     func performSignIn(emailAddress: String, password: String) async throws -> Bool {
-        if FirebaseService.shared.isSignedIn {
+        if isSignedIn {
             return true
         } else {
-            return try await FirebaseService.shared.performSignIn(emailAddress: emailAddress, password: password)
+            return try await APIServiceFactory.getApiService().performSignIn(emailAddress: emailAddress, password: password)
         }
     }
     
     func performRegistration(user: User) async throws -> Bool {
-        return try await FirebaseService.shared.performRegistration(user: user)
+        return try await APIServiceFactory.getApiService().performRegistration(user: user)
     }
     
     func getUserDataAsync(by email: String) async throws -> User? {
-        return try await FirebaseService.shared.getUserDataAsync(by: emailAddress)
+        return try await APIServiceFactory.getApiService().getUserDataAsync(by: emailAddress)
     }
     
     func updateUser(mobileNo: String, locationLat: Double, locationLon: Double) async throws -> Bool {
-        return try await FirebaseService.shared.updateUser(mobileNo: mobileNo, locationLat: locationLat, locationLon: locationLon)
+        return try await APIServiceFactory.getApiService().updateUser(mobileNo: mobileNo, locationLat: locationLat, locationLon: locationLon)
     }
     
     func updatePassword(of email: String, of current: String, with new: String) async throws -> Bool {
-        return try await FirebaseService.shared.updatePassword(of: email, of: current, with: new)
+        return try await APIServiceFactory.getApiService().updatePassword(of: email, of: current, with: new)
     }
     
     func performSignOut() throws {
-        try FirebaseService.shared.performSignOut()
+        try APIServiceFactory.getApiService().performSignOut()
     }
 }

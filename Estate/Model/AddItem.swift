@@ -76,30 +76,30 @@ extension AddItem {
 
 extension AddItem: AdsService {
     func fetchAllAds() async throws -> [AddItem] {
-        return try await FirebaseService.shared.fetchAllAds()
+        return try await APIServiceFactory.getApiService().fetchAllAds()
     }
     
     func filterAds(by district: String) async throws -> [AddItem] {
-        return try await FirebaseService.shared.filterAds(by: district)
+        return try await APIServiceFactory.getApiService().filterAds(by: district)
     }
     
     func filterAds(minPrice: Double, maxPrice: Double, maxRadius: Int, isLand: Bool) async throws -> [AddItem] {
-        return try await FirebaseService.shared.filterAds(minPrice: minPrice, maxPrice: maxPrice, maxRadius: maxRadius, isLand: isLand)
+        return try await APIServiceFactory.getApiService().filterAds(minPrice: minPrice, maxPrice: maxPrice, maxRadius: maxRadius, isLand: isLand)
     }
     
     func fetchMyAds(by email: String) async throws -> [AddItem] {
-        return try await FirebaseService.shared.fetchMyAds(by: email)
+        return try await APIServiceFactory.getApiService().fetchMyAds(by: email)
     }
     
     func removeAdd(by addId: String) async throws -> Bool {
-        return try await FirebaseService.shared.removeAdd(by: addId)
+        return try await APIServiceFactory.getApiService().removeAdd(by: addId)
     }
     
     func updateAdd(by addId: String, with addItem: AddItem) async throws -> Bool {
-        return try await FirebaseService.shared.updateAdd(by: addId, with: addItem)
+        return try await APIServiceFactory.getApiService().updateAdd(by: addId, with: addItem)
     }
     
     func postNewAdd(of content: NewAddContent) async throws -> Bool {
-        return try await FirebaseService.shared.postNewAdd(of: content)
+        return try await APIServiceFactory.getApiService().postNewAdd(of: content)
     }
 }

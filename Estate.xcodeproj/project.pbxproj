@@ -21,7 +21,7 @@
 		4F2E47212801FB1A0071AC9B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E47202801FB1A0071AC9B /* HomeViewModel.swift */; };
 		4F6E18D827F5BC1500375B25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F6E18D727F5BC1500375B25 /* GoogleService-Info.plist */; };
 		4F6E18DA27F5C1BA00375B25 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6E18D927F5C1BA00375B25 /* SignUpView.swift */; };
-		4F6E18DC27F5DF6200375B25 /* FirebaseOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6E18DB27F5DF6100375B25 /* FirebaseOperations.swift */; };
+		4F6E18DC27F5DF6200375B25 /* FirebaseAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6E18DB27F5DF6100375B25 /* FirebaseAPIService.swift */; };
 		4F6E18DE27F627E300375B25 /* FieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6E18DD27F627E200375B25 /* FieldValidator.swift */; };
 		4F71996D27F4C71E00024AC3 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F71996C27F4C71E00024AC3 /* SignUpViewModel.swift */; };
 		4F8AC2D428031A2400C0ED6D /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AC2D328031A2400C0ED6D /* AppData.swift */; };
@@ -55,6 +55,7 @@
 		950321DF765A6042B3A38E1D /* Pods_EstateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA216CAE6E54B5F5BB460F /* Pods_EstateTests.framework */; };
 		FD22CD8C28579FD800D8E8FC /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22CD8B28579FD800D8E8FC /* WebService.swift */; };
 		FD22CD8E2857ACCC00D8E8FC /* FakeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22CD8D2857ACCC00D8E8FC /* FakeAPIService.swift */; };
+		FD22CD902857AECB00D8E8FC /* APIServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22CD8F2857AECB00D8E8FC /* APIServiceFactory.swift */; };
 		FD24ED81284A808A001608CD /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24ED80284A808A001608CD /* UserSettings.swift */; };
 		FD46005C28323FDB00663C47 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46005B28323FDB00663C47 /* MessageView.swift */; };
 		FD46005E28325C9F00663C47 /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46005D28325C9E00663C47 /* AuthenticationTests.swift */; };
@@ -97,7 +98,7 @@
 		4F2E47202801FB1A0071AC9B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4F6E18D727F5BC1500375B25 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F6E18D927F5C1BA00375B25 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		4F6E18DB27F5DF6100375B25 /* FirebaseOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseOperations.swift; sourceTree = "<group>"; };
+		4F6E18DB27F5DF6100375B25 /* FirebaseAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPIService.swift; sourceTree = "<group>"; };
 		4F6E18DD27F627E200375B25 /* FieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValidator.swift; sourceTree = "<group>"; };
 		4F71996C27F4C71E00024AC3 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		4F8AC2D328031A2400C0ED6D /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
@@ -141,6 +142,7 @@
 		F3CD8365D3709A48DCA5BA96 /* Pods-Estate-EstateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate-EstateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Estate-EstateUITests/Pods-Estate-EstateUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD22CD8B28579FD800D8E8FC /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		FD22CD8D2857ACCC00D8E8FC /* FakeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAPIService.swift; sourceTree = "<group>"; };
+		FD22CD8F2857AECB00D8E8FC /* APIServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceFactory.swift; sourceTree = "<group>"; };
 		FD24ED80284A808A001608CD /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		FD46005B28323FDB00663C47 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		FD46005D28325C9E00663C47 /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
@@ -298,8 +300,9 @@
 			isa = PBXGroup;
 			children = (
 				FD22CD8D2857ACCC00D8E8FC /* FakeAPIService.swift */,
-				4F6E18DB27F5DF6100375B25 /* FirebaseOperations.swift */,
+				4F6E18DB27F5DF6100375B25 /* FirebaseAPIService.swift */,
 				FD22CD8B28579FD800D8E8FC /* WebService.swift */,
+				FD22CD8F2857AECB00D8E8FC /* APIServiceFactory.swift */,
 			);
 			path = APIServices;
 			sourceTree = "<group>";
@@ -685,13 +688,14 @@
 				FDE98FC22832C70400262C10 /* ProgressDialog.swift in Sources */,
 				4F71996D27F4C71E00024AC3 /* SignUpViewModel.swift in Sources */,
 				4F2E09AD2805F75C00B8F8C5 /* SettingsViewModel.swift in Sources */,
-				4F6E18DC27F5DF6200375B25 /* FirebaseOperations.swift in Sources */,
+				4F6E18DC27F5DF6200375B25 /* FirebaseAPIService.swift in Sources */,
 				4FADC01427F3706600503E5A /* User.swift in Sources */,
 				FD46005C28323FDB00663C47 /* MessageView.swift in Sources */,
 				4F2E471D27FFFCD30071AC9B /* AddItemView.swift in Sources */,
 				4F0815BF27FE0FEF00418BDD /* AddItem.swift in Sources */,
 				4F6E18DA27F5C1BA00375B25 /* SignUpView.swift in Sources */,
 				4FADC01627F3706600503E5A /* SignInView.swift in Sources */,
+				FD22CD902857AECB00D8E8FC /* APIServiceFactory.swift in Sources */,
 				4FBB7BAC28035F33000A583C /* ProfileView.swift in Sources */,
 				4F2D42F227F7960B006155FA /* AppConstants.swift in Sources */,
 				4F2E09AF2805F79100B8F8C5 /* PostedAddItem.swift in Sources */,

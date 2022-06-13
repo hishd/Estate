@@ -57,6 +57,7 @@ struct NewAddContent {
 
 // MARK: Authntication Service
 protocol AuthenticationService {
+    var isSignedIn: Bool { get }
     func performSignIn(emailAddress: String, password: String) async throws -> Bool
     func performRegistration(user: User) async throws -> Bool
     func performSignOut() throws
