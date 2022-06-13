@@ -8,6 +8,10 @@
 import Foundation
 
 class FakeAPIService: WebService {
+    let shared = FakeAPIService()
+    
+    private init() {}
+    
     func getUserDataAsync(by email: String) async throws -> User? {
         return User(nicNo: "", password: "", name: "", mobileNo: "", emailAddress: "", dob: Date(), gender: "", locationLat: 0, locationLon: 0)
     }
@@ -57,6 +61,6 @@ class FakeAPIService: WebService {
     }
     
     func performSignOut() throws {
-        return true
+        
     }
 }
