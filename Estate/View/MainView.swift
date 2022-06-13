@@ -50,6 +50,6 @@ struct MainTabView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView().environmentObject(UserSettings())
+        MainView().environmentObject(UserSettings.shared)
     }
 }

@@ -10,7 +10,7 @@ import Firebase
 
 @main
 struct EstateApp: App {
-    let settings = UserSettings()
+    let settings = UserSettings.shared
     init() {
         FirebaseApp.configure()
     }

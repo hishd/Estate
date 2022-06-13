@@ -55,8 +55,8 @@ extension SignInViewModel: AuthenticationService {
             }
             if result {
                 if let user = try await User().getUserData(of: emailAddress) {
-                    SessionManager.shared.authState = true
-                    try SessionManager.shared.saveUserSession(for: user)
+                    UserSettings.shared.authState = true
+                    try UserSettings.shared.saveUserSession(for: user)
                     self.settingsEO?.loggedIn = true
                 }
             }

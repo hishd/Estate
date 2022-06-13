@@ -73,7 +73,7 @@ struct SettingsHeaderView: View {
 }
 
 struct UserInformationContainer: View {
-    let currentUser: User
+    let currentUser: User?
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: "person.circle.fill")
@@ -82,13 +82,13 @@ struct UserInformationContainer: View {
                 .frame(width: 80, height: 80)
                 .foregroundColor(AppColor.colorPrimary)
             VStack(alignment: .leading, spacing: 6) {
-                Text(currentUser.name)
+                Text(currentUser?.name ?? "")
                     .font(Font.custom("gilroy-semibold", size: 22))
                     .foregroundColor(AppColor.colorDark)
-                Text(currentUser.emailAddress)
+                Text(currentUser?.emailAddress ?? "")
                     .font(Font.custom("gilroy-semibold", size: 18))
                     .foregroundColor(AppColor.colorGray)
-                Text(currentUser.nicNo)
+                Text(currentUser?.nicNo ?? "")
                     .font(Font.custom("gilroy-semibold", size: 16))
                     .foregroundColor(AppColor.colorGray)
             }
@@ -181,6 +181,6 @@ struct SettingsActionsContainer: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView().environmentObject(UserSettings())
+        SettingsView().environmentObject(UserSettings.shared)
     }
 }

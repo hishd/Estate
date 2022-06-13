@@ -53,7 +53,7 @@
 		4FFDBA4E2802A0F000EC832A /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA4D2802A0F000EC832A /* AppColor.swift */; };
 		4FFDBA512802CEE900EC832A /* CustomRoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDBA502802CEE900EC832A /* CustomRoundCorners.swift */; };
 		950321DF765A6042B3A38E1D /* Pods_EstateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA216CAE6E54B5F5BB460F /* Pods_EstateTests.framework */; };
-		FD24ED81284A808A001608CD /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24ED80284A808A001608CD /* SessionManager.swift */; };
+		FD24ED81284A808A001608CD /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24ED80284A808A001608CD /* UserSettings.swift */; };
 		FD46005C28323FDB00663C47 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46005B28323FDB00663C47 /* MessageView.swift */; };
 		FD46005E28325C9F00663C47 /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46005D28325C9E00663C47 /* AuthenticationTests.swift */; };
 		FD66DACB282ECBF300FF8846 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD66DACA282ECBF300FF8846 /* LazyView.swift */; };
@@ -63,7 +63,6 @@
 		FD707A70280DF4D400CFB8A8 /* FetchAdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A6F280DF4D400CFB8A8 /* FetchAdsService.swift */; };
 		FD707A72280DF5E800CFB8A8 /* MyAdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A71280DF5E800CFB8A8 /* MyAdsService.swift */; };
 		FD707A74280DF90100CFB8A8 /* UserUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A73280DF90100CFB8A8 /* UserUpdateService.swift */; };
-		FD707A78280E005400CFB8A8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD707A77280E005400CFB8A8 /* UserSettings.swift */; };
 		FDC8D1A0280E13CA003A2999 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8D19F280E13CA003A2999 /* ChangePasswordView.swift */; };
 		FDC8D1A2280E13E4003A2999 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC8D1A1280E13E4003A2999 /* ChangePasswordViewModel.swift */; };
 		FDDA9448282069620058EFF9 /* UIKitRepresentables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDA9447282069620058EFF9 /* UIKitRepresentables.swift */; };
@@ -144,7 +143,7 @@
 		DB6B96D89CC239FCF5F79CC7 /* Pods-EstateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EstateTests.debug.xcconfig"; path = "Target Support Files/Pods-EstateTests/Pods-EstateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DBA96DE20AD77ED79AD6CFCC /* Pods-Estate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate.release.xcconfig"; path = "Target Support Files/Pods-Estate/Pods-Estate.release.xcconfig"; sourceTree = "<group>"; };
 		F3CD8365D3709A48DCA5BA96 /* Pods-Estate-EstateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estate-EstateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Estate-EstateUITests/Pods-Estate-EstateUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		FD24ED80284A808A001608CD /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		FD24ED80284A808A001608CD /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		FD46005B28323FDB00663C47 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		FD46005D28325C9E00663C47 /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
 		FD66DACA282ECBF300FF8846 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
@@ -154,7 +153,6 @@
 		FD707A6F280DF4D400CFB8A8 /* FetchAdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAdsService.swift; sourceTree = "<group>"; };
 		FD707A71280DF5E800CFB8A8 /* MyAdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdsService.swift; sourceTree = "<group>"; };
 		FD707A73280DF90100CFB8A8 /* UserUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateService.swift; sourceTree = "<group>"; };
-		FD707A77280E005400CFB8A8 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		FDC8D19F280E13CA003A2999 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		FDC8D1A1280E13E4003A2999 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		FDDA9447282069620058EFF9 /* UIKitRepresentables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitRepresentables.swift; sourceTree = "<group>"; };
@@ -245,7 +243,7 @@
 				4FADC00827F3706600503E5A /* Model */,
 				4FADC00D27F3706600503E5A /* View */,
 				4FADC01227F3706600503E5A /* ViewModel */,
-				4FADC00A27F3706600503E5A /* Services */,
+				4FADC00A27F3706600503E5A /* APIServices */,
 				4F2D42F027F795F9006155FA /* Constants */,
 				4FADC00B27F3706600503E5A /* Utils */,
 				4FFDBA4F2802CEC600EC832A /* Extensions */,
@@ -304,14 +302,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		4FADC00A27F3706600503E5A /* Services */ = {
+		4FADC00A27F3706600503E5A /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
-				FD707A76280E003A00CFB8A8 /* Settings */,
 				FD707A75280E001400CFB8A8 /* Interfaces */,
 				FD707A67280DF26E00CFB8A8 /* Firebase */,
 			);
-			path = Services;
+			path = APIServices;
 			sourceTree = "<group>";
 		};
 		4FADC00B27F3706600503E5A /* Utils */ = {
@@ -322,7 +319,7 @@
 				4FF481122805BA5E00C53D86 /* SampleData.swift */,
 				FDDA9447282069620058EFF9 /* UIKitRepresentables.swift */,
 				FD66DACA282ECBF300FF8846 /* LazyView.swift */,
-				FD24ED80284A808A001608CD /* SessionManager.swift */,
+				FD24ED80284A808A001608CD /* UserSettings.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -475,14 +472,6 @@
 				FD707A66280DF26200CFB8A8 /* Authentication */,
 			);
 			path = Interfaces;
-			sourceTree = "<group>";
-		};
-		FD707A76280E003A00CFB8A8 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				FD707A77280E005400CFB8A8 /* UserSettings.swift */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -738,7 +727,6 @@
 				FDC8D1A2280E13E4003A2999 /* ChangePasswordViewModel.swift in Sources */,
 				FDDC25AC281C24F4009D9B52 /* PostAddService.swift in Sources */,
 				4F909A6027F80C7400FF1CC2 /* ErrorMessage.swift in Sources */,
-				FD707A78280E005400CFB8A8 /* UserSettings.swift in Sources */,
 				4FD3B9DC280602D0002CE51E /* NumberCommaSeperator.swift in Sources */,
 				4F2E47212801FB1A0071AC9B /* HomeViewModel.swift in Sources */,
 				FD707A6C280DF39000CFB8A8 /* AuthenticationService.swift in Sources */,
@@ -754,7 +742,7 @@
 				4FADBFD427F36F6800503E5A /* EstateApp.swift in Sources */,
 				FDC8D1A0280E13CA003A2999 /* ChangePasswordView.swift in Sources */,
 				4F2D42EF27F792A5006155FA /* TextFieldErrorPlaceholder.swift in Sources */,
-				FD24ED81284A808A001608CD /* SessionManager.swift in Sources */,
+				FD24ED81284A808A001608CD /* UserSettings.swift in Sources */,
 				FDE98FC22832C70400262C10 /* ProgressDialog.swift in Sources */,
 				4F71996D27F4C71E00024AC3 /* SignUpViewModel.swift in Sources */,
 				4F2E09AD2805F75C00B8F8C5 /* SettingsViewModel.swift in Sources */,
