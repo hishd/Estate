@@ -10,20 +10,21 @@ import SwiftUI
 struct SignInView: View {
     let screenHeight: Int = Int(UIScreen.main.bounds.height)
     @EnvironmentObject var settings: UserSettings
-    @StateObject var signInViewModel: SignInViewModel = SignInViewModel()
+    @StateObject var viewModel: SignInViewModel = SignInViewModel()
     
     var body: some View {
         VStack {
             if screenHeight > 667 {
-                LargeScaleDevice(signInViewModel: signInViewModel)
+                LargeScaleDevice(signInViewModel: viewModel)
             } else {
-                SmallScaleDevice(signInViewModel: signInViewModel)
+                SmallScaleDevice(signInViewModel: viewModel)
             }
         }
         ///Setting the Environment Object for the ViewModel
         .onAppear {
-            signInViewModel.setSettingsEO(eo: settings)
+            viewModel.setSettingsEO(eo: settings)
         }
+        .progressDialog(isShowing: $viewModel.isOnProgress, message: "Please wait...", progress: Progress(totalUnitCount: 0))
     }
 }
 
@@ -135,10 +136,11 @@ struct SignInInputView: View {
         }
         .font(Font.custom("gilroy-regular", size: 18))
         .textFieldStyle(.roundedBorder)
-        .onAppear {
-            signInViewModel.isError = true
-            signInViewModel.errorCaption = "Sample Error"
-        }
+        //TODO: Remove after testing
+//        .onAppear {
+//            signInViewModel.isError = true
+//            signInViewModel.errorCaption = "Sample Error"
+//        }
     }
 }
 

@@ -11,6 +11,7 @@ class SignInViewModel: ObservableObject {
     @Published var showSignUpView = false
     @Published var isError = false
     @Published var errorCaption = ""
+    @Published var isOnProgress = false
     
     // MARK: - Input Field Validations
     @Published var isValidEmail = true
@@ -49,18 +50,19 @@ extension SignInViewModel: AuthenticationService {
     @MainActor
     func performSignIn() async {
         do {
+            self.isOnProgress = true
             let (result) = try await User().signIn(emailAddress: emailAddress, password: password)
-            DispatchQueue.main.async {
-                self.isError = false
-            }
+            self.isError = false
             if result {
                 if let user = try await User().getUserData(of: emailAddress) {
                     UserSettings.shared.authState = true
                     try UserSettings.shared.saveUserSession(for: user)
+                    self.isOnProgress = false
                     self.settingsEO?.loggedIn = true
                 }
             }
         } catch {
+            self.isOnProgress = false
             debugPrint(error.localizedDescription)
             isError = true
             errorCaption = error.localizedDescription
